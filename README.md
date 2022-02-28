@@ -1,7 +1,7 @@
 # CSCI2356-Project
 
 gfdgdfgfd
-<<<<<<< Updated upstream
+Updated upstream
 howdy
 MomoM
 
@@ -14,6 +14,5 @@ Howdy
 MomoM
 
 Test
->>>>>>> Stashed changes
-
-somethiong mo
+Stashed changes ds
+dsdsdsa
