@@ -21,8 +21,6 @@ const Keyboard = {
     },
 
     init() {
-        // Change Style Here!!!!
-
         // Creates keyboard containers
         this.elements.main = document.createElement("div");
         this.elements.keysContainer = document.createElement("div");
