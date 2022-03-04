@@ -128,7 +128,7 @@ const Keyboard = {
 	    this.properties.capsLock = !this.properties.capsLock;
 	    for (let key of this.elements.keys) {
 		if (key.childElementCount === 0) {
-                if (key.textContent === "Space" || key.textContent === "Enter") continue;
+                if (key.textContent.length > 1) continue;
 		    key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
 		}
 	    }
