@@ -44,7 +44,7 @@ const Keyboard = {
 	];
 
 	const createIcon = (icon_name) => {
-		return `<i class="${icon_name}"></i>`;
+	    return `<i class="${icon_name}"></i>`;
 	};
 
         let currentRow = document.createElement("div");
