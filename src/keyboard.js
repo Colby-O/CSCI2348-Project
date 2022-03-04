@@ -82,7 +82,7 @@ const Keyboard = {
                     keyElement.innerHTML = "Enter";
 
                     keyElement.addEventListener("click", () => {
-			this.properties.value = "\n";
+			this.properties.value += "\n";
 			this._triggerEvent("oninput");
 		    });
                     break;
@@ -91,7 +91,7 @@ const Keyboard = {
                     keyElement.innerHTML = "Space";
 
                     keyElement.addEventListener("click", () => {
-			this.properties.value = " ";
+			this.properties.value += " ";
 			this._triggerEvent("oninput");
 		    });                    
                     break;
