@@ -139,8 +139,6 @@ const Keyboard = {
     startup(initalValue, oninput, onclose) {
 		this.properties.value = initalValue || "";
 		this.eventHandlers.oninput = oninput;
-		this.eventHandlers.onclose = onclose;
-		this.elements.main.classList.remove("mikmaqKeyboard--hidden");
 	},
 
 };
