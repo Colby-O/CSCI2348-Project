@@ -60,7 +60,7 @@ const Keyboard = {
 	    const breakLine = ['shift', 'backspace', '"', ","].indexOf(key) !== -1;
 
 	    keyElement.setAttribute("type", "button");
-        // ADD BOOTSTRAP CLAESS FOR ALL BUTTONS TYPES
+            // ADD BOOTSTRAP CLAESS FOR ALL BUTTONS TYPES
 	    keyElement.classList.add("keyboardKey")
 
             switch(key) {
@@ -153,7 +153,7 @@ const Keyboard = {
 window.addEventListener("DOMContentLoaded", () => {
 	// Inits the keyboard
 	Keyboard.init();
-	// adds the keyboard for element with the class useLobbyKeyboard
+	// adds the keyboard for element with the class useKeyboard
 	document.querySelectorAll(".useKeyboard").forEach(element => {
 	    Keyboard.startup($(element).val(), currentValue => {
         	$(element).val(currentValue);
