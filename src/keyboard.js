@@ -25,7 +25,9 @@ const Keyboard = {
         this.elements.main = document.createElement("div");
         this.elements.keysContainer = document.createElement("div");
 
+        // ADD BOOTSTRAP CLAESS FOR WHOLE KEYBOARD
         this.elements.main.classList.add("keyboard");
+        // ADD BOOTSTRAP CLAESS FOR KEY CONTAINER
         this.elements.keysContainer.classList.add("keyboardKeys");
         this.elements.keysContainer.appendChild(this._createKeys());
 
@@ -48,7 +50,9 @@ const Keyboard = {
 	};
 
         let currentRow = document.createElement("div");
-        currentRow.classList.add("m-1");
+        // ADD BOOTSTRAP CLASSES FPOR BUTTON ROW GROUP HERE
+        const rowClassList = "m-1";
+        currentRow.classList.add(rowClassList);
 
         keyLayout.forEach(key => {
             const keyElement = document.createElement('a');
@@ -56,10 +60,12 @@ const Keyboard = {
 	    const breakLine = ['shift', 'backspace', '"', ","].indexOf(key) !== -1;
 
 	    keyElement.setAttribute("type", "button");
+        // ADD BOOTSTRAP CLAESS FOR ALL BUTTONS TYPES
 	    keyElement.classList.add("keyboardKey")
 
             switch(key) {
                 case "shift":
+                    // ADD BOOTSTRAP CLAESS FOR SHIFT KEY
                     keyElement.classList.add("btn", "btn-dark");
 		    keyElement.innerHTML = createIcon("bi-arrow-up");
 
@@ -69,6 +75,7 @@ const Keyboard = {
 		    });
                     break;
                 case "backspace":
+                    // ADD BOOTSTRAP CLAESS FOR BACKSPACE KEY
                     keyElement.classList.add("btn", "btn-dark");
                     keyElement.innerHTML = createIcon("bi-arrow-left");
 
@@ -78,6 +85,7 @@ const Keyboard = {
 		    });
                     break;
                 case "enter":
+                    // ADD BOOTSTRAP CLAESS FOR ENTER KEY
                     keyElement.classList.add("btn", "btn-dark");
                     keyElement.innerHTML = "Enter";
 
@@ -87,6 +95,7 @@ const Keyboard = {
 		    });
                     break;
                 case "space":
+                    // ADD BOOTSTRAP CLAESS FOR SPACE KEY
                     keyElement.classList.add("btn", "btn-dark");
                     keyElement.innerHTML = "Space";
 
@@ -96,6 +105,7 @@ const Keyboard = {
 		    });                    
                     break;
                 default:
+                    // ADD BOOTSTRAP CLAESS FOR ALL OTHER KEYS
                     keyElement.classList.add("btn", "btn-danger");
                     keyElement.innerHTML = key.toLowerCase();
 
@@ -110,9 +120,8 @@ const Keyboard = {
 
             if (breakLine) {
                 fragment.append(currentRow);
-		//fragment.appendChild(document.createElement("br"));
                 currentRow = document.createElement("div");
-                currentRow.classList.add("m-1");
+                currentRow.classList.add(rowClassList);
 	    }
         });
 
