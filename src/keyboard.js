@@ -137,7 +137,7 @@ const Keyboard = {
     startup(initalValue, oninput, onclose) {
 	    this.properties.value = initalValue || "";
 	    this.eventHandlers.oninput = oninput;
-	},
+	}
 
 };
 
