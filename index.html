@@ -1,6 +1,6 @@
 <!--
-    Author: Sebastian Duque Rivera (A00441528)
-    Author: Felipe Duque Rivera (A00446745)
+    Author: Sebastian Duque Rivera (A00441528) or SDR
+    Author: Felipe Duque Rivera (A00446745) or FDR
     Author: Mo (A00391502)
     Author: Colby (A00428974)
 
@@ -239,29 +239,49 @@
         </div>
       </div>
     </div>
+    <br></br>
     <!-- Keyboard -->
-    <div class="keyboard-container"></div>
+    <div class="keyboard-container centerBox"></div>
 
-    <div class="m-1">
-      <a data-role="button" class="btn btn-secondary" onclick="addChar('')">
-        Word<i class="bi bi-piggy-bank"></i>
-      </a>
-      <a>
-        <input class="width" type="text" id="words" />
-      </a>
-      <a data-role="button" class="btn btn-secondary" onclick="addChar('')">
-        <i class="bi bi-star"></i>
-      </a>
-      <a data-role="button" class="btn btn-secondary" onclick="addChar('')">
-        Word<i class="bi bi-piggy-bank"></i>
-      </a>
-      <a>
-        <input class="width" type="text" id="words" />
-      </a>
-      <a data-role="button" class="btn btn-secondary" onclick="addChar('')">
-        <i class="bi bi-star"></i>
-      </a>
-    </div>
+    <!-- 
+      Piggy bank section 
+      Felipe Duque Rivera March 2, 2022
+      Sebastian Duque Rivera March 2, 2022 
+      
+      Modified: March 5, 2022 (SDR)
+    -->
+    <div class="centerBox">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <a data-role="button" class="btn btn-secondary" onclick="addChar('')">
+            Word<i class="bi bi-piggy-bank"></i>
+          </a>
+        </div>
+        <a>
+          <input class="width" type="text" id="words" />
+        </a>
+        <div class="input-group-append">
+          <a data-role="button" class="btn btn-secondary" onclick="addChar('')">
+            <i class="bi bi-star"></i>
+          </a>
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <a data-role="button" class="btn btn-secondary" onclick="addChar('')">
+            Word<i class="bi bi-piggy-bank"></i>
+          </a>
+        </div>
+        <a>
+          <input class="width" type="text" id="words" />
+        </a>
+        <div class="input-group-append">
+          <a data-role="button" class="btn btn-secondary" onclick="addChar('')">
+            <i class="bi bi-star"></i>
+          </a>
+        </div>
+      </div>
+    </div>  
 
     <textarea row="20" id="textbox" class="useKeyboard"></textarea>
   </body>

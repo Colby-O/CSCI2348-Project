@@ -1,6 +1,6 @@
 /*
-    Author: Sebastian Duque Rivera (A00441528)
-    Author: Felipe Duque Rivera (A00446745)
+    Author: Sebastian Duque Rivera (A00441528) or SDR
+    Author: Felipe Duque Rivera (A00446745) or FDR
     Author: Mo ()
     Author: Colby ()
 
@@ -9,3 +9,18 @@
     
     Current Phase: 1 , Date created: March 3, 2022.
 */
+
+/*
+    Used to center a <div> (SDR March 5, 2022)
+*/
+.centerBox {
+  margin: auto;
+  width: 68%;
+}
+
+/*
+    Used for spacing between keys (SDR March 5, 2022)
+*/
+.keySpacing {
+  width: auto;
+}
