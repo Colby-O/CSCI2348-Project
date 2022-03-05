@@ -19,12 +19,11 @@
   padding: 10px;
 }
 
-.fullLength {
-  width: 75px;
+.fullWid {
+  width: 930px;
 }
 
 .blogSize {
-  width: 500px;
   height: 300px;
   padding: 10px;
 }
