@@ -278,23 +278,13 @@
     </div>
 
     <!-- Save and cancel buttons (SDR March 5, 2022)-->
-    <div
-      class="btn-group centerBox"
-      role="group"
-      aria-label="Save and Cancel buttons"
-    >
-      <input
-        type="button"
-        class="btn btn-danger"
-        value="Save"
-        onclick="save()"
-      />
-      <input
-        type="button"
-        class="btn btn-warning"
-        value="Cancel"
-        onclick="cancel()"
-      />
+    <div class="centerBox">
+      <div class="input-group">
+        <a data-role="button" class="btn btn-danger" onclick="save()"> Save </a>
+        <a data-role="button" class="btn btn-warning" onclick="cancel()">
+          Cancel
+        </a>
+      </div>
     </div>
 
     <!-- Blog text box -->
