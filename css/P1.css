@@ -1,8 +1,5 @@
 /*
     Author: Sebastian Duque Rivera (A00441528) or SDR
-    Author: Felipe Duque Rivera (A00446745) or FDR
-    Author: Mo ()
-    Author: Colby ()
 
     This file will be used throughout our project for the three phases of our service learning
     assignment for Northwood Care. This is our formatting sheet.
@@ -19,10 +16,16 @@
   padding: 10px;
 }
 
+/*
+    The width remaining to reach end of publish toggle. (SDR March 5, 2022)
+*/
 .fullWid {
   width: 930px;
 }
 
+/*
+    Sets the size of the text box for the blog. (SDR March 5, 2022)
+*/
 .blogSize {
   height: 300px;
   padding: 10px;
