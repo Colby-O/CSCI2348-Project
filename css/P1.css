@@ -27,5 +27,5 @@
     Used for spacing between keys. (SDR March 5, 2022)
 */
 .keySpacing {
-  width: auto;
+  width: 5px;
 }
