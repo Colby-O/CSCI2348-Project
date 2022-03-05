@@ -11,15 +11,19 @@
 */
 
 /*
-    Used to center a <div> (SDR March 5, 2022)
+    Used to center a <div>. (SDR March 5, 2022)
 */
 .centerBox {
   margin: auto;
   width: 68%;
 }
 
+.blogSize {
+  width: auto;
+}
+
 /*
-    Used for spacing between keys (SDR March 5, 2022)
+    Used for spacing between keys. (SDR March 5, 2022)
 */
 .keySpacing {
   width: auto;
