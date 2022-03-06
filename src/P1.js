@@ -16,6 +16,7 @@ function setup() {}
  * This function checks to see if any of the edit toggles are checked and retrieves the keyboard
  * if any of them are.
  *
+ * Status: In-progress
  * SDR March 5, 2022
  */
 function getKbd() {
