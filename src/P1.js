@@ -28,3 +28,12 @@ function getKbd() {
   if (edit1) {
   }
 }
+
+/**
+ * This function saves whatever is in the textbox to local storage.
+ *
+ * SDR March 6, 2022
+ */
+function save() {
+  localStorage.setItem("entry", document.getElementById("textbox").value);
+}
