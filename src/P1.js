@@ -2,7 +2,7 @@
     Author: Sebastian Duque Rivera (A00441528)
     Author: Felipe Duque Rivera (A00446745)
     Author: Mo ()
-    Author: Colby ()
+    Author: Colby (A00428974)
 
     This file will be used throughout our project for the three phases of our service learning
     assignment for Northwood Care. This is our javascript file.
@@ -33,7 +33,7 @@ function getKbd() {
 /**
  * This function saves whatever is in the textbox to local storage.
  *
- * SDR March 6, 2022
+ * SDR March 6, 2022 + Colby O'Keefe (A00428974)
  */
 function save() {
   if(Storage !== void(0)) localStorage.setItem("entry", document.getElementById("textbox").value);
