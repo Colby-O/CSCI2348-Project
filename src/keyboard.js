@@ -31,8 +31,7 @@ const Keyboard = {
     this.elements.keysContainer.classList.add("keyboardKeys");
     this.elements.keysContainer.appendChild(this._createKeys());
 
-    this.elements.keys =
-      this.elements.keysContainer.querySelectorAll(".keyboardKey");
+    this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard-key");
     this.elements.main.appendChild(this.elements.keysContainer);
     $(this.elements.main).appendTo(".keyboard-container");
   },
@@ -40,10 +39,10 @@ const Keyboard = {
   _createKeys() {
     const fragment = document.createDocumentFragment();
     const keyLayout = [
-      "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "shift", "q",
-      "w", "e", "r", "t", "y", "u", "i", "o", "p", "backspace", "a",
-      "s", "d", "f", "g", "h", "j", "k", "l", "enter", '"', "z", "x",
-      "c", "v", "b", "n", "m", "space", ".", "?", ",",
+      "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "shift",
+      "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "backspace",
+      "a", "s", "d", "f", "g", "h", "j", "k", "l", "enter", '"', "z",
+      "x", "c", "v", "b", "n", "m", "space", ".", "?", ","
     ];
 
     const createIcon = (icon_name) => {
@@ -62,7 +61,7 @@ const Keyboard = {
 
       keyElement.setAttribute("type", "button");
       // ADD BOOTSTRAP CLAESS FOR ALL BUTTONS TYPES
-      keyElement.classList.add("keyboardKey");
+      keyElement.classList.add("keyboard-key");
 
       switch (key) {
         case "shift":
@@ -163,7 +162,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // Inits the keyboard
   Keyboard.init();
   // adds the keyboard for element with the class useKeyboard
-  document.querySelectorAll(".useKeyboard").forEach((element) => {
+  document.querySelectorAll(".use-keyboard").forEach((element) => {
     Keyboard.startup($(element).val(), (currentValue) => {
       $(element).val(currentValue);
     });
