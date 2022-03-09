@@ -4,6 +4,8 @@
  * Author(s): Colby O'Keefe (A00428974),
  */
 
+let lastFocused = null;
+
 const Keyboard = {
   elements: {
     main: null,
@@ -31,7 +33,8 @@ const Keyboard = {
     this.elements.keysContainer.classList.add("keyboardKeys");
     this.elements.keysContainer.appendChild(this._createKeys());
 
-    this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard-key");
+    this.elements.keys =
+      this.elements.keysContainer.querySelectorAll(".keyboard-key");
     this.elements.main.appendChild(this.elements.keysContainer);
     $(this.elements.main).appendTo(".keyboard-container");
   },
@@ -39,12 +42,59 @@ const Keyboard = {
   _createKeys() {
     const fragment = document.createDocumentFragment();
     const keyLayout = [
-      "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "shift",
-      "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "backspace",
-      "a", "s", "d", "f", "g", "h", "j", "k", "l", "enter", '"', "z",
-      "x", "c", "v", "b", "n", "m", "space", ".", "?", ","
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "0",
+      "shift",
+      "--",
+      "q",
+      "w",
+      "e",
+      "r",
+      "t",
+      "y",
+      "u",
+      "i",
+      "o",
+      "p",
+      "backspace",
+      "--",
+      "a",
+      "s",
+      "d",
+      "f",
+      "g",
+      "h",
+      "j",
+      "k",
+      "l",
+      "enter",
+      '"',
+      "--",
+      "z",
+      "x",
+      "c",
+      "v",
+      "b",
+      "n",
+      "m",
+      "space",
+      ".",
+      "?",
+      ",",
+      "--",
+      "Word",
+      "Word",
+      "--",
     ];
-
+    // word {icon, text, save}
     const createIcon = (icon_name) => {
       return `<i class="${icon_name}"></i>`;
     };
@@ -57,16 +107,18 @@ const Keyboard = {
     keyLayout.forEach((key) => {
       const keyElement = document.createElement("a");
       keyElement.setAttribute("data-role", "button");
-      const breakLine = ["shift", "backspace", '"', ","].indexOf(key) !== -1;
+      const breakLine = ["--"].indexOf(key) !== -1;
 
       keyElement.setAttribute("type", "button");
       // ADD BOOTSTRAP CLAESS FOR ALL BUTTONS TYPES
       keyElement.classList.add("keyboard-key");
 
       switch (key) {
+        case "--":
+          break;
         case "shift":
           // ADD BOOTSTRAP CLAESS FOR SHIFT KEY
-          keyElement.classList.add("btn", "btn-dark");
+          keyElement.classList.add("btn", "btn-dark", "black-key");
           keyElement.innerHTML = createIcon("bi-arrow-up");
 
           keyElement.addEventListener("click", () => {
@@ -77,9 +129,34 @@ const Keyboard = {
             );
           });
           break;
+
+        case "Word":
+          // ADD BOOTSTRAP CLAESS FOR WordBank KEY
+
+          // create bank button
+          let bankBtn = document.createElement("a");
+          bankBtn.classList.add("word-bank");
+          bankBtn.innerHTML = "Word";
+          bankBtn.innerHTML += createIcon("bi bi-piggy-bank");
+          bankBtn.setAttribute("data-role", "button");
+          // create textbox
+          let textbox = document.createElement("input");
+          textbox.setAttribute("type", "text");
+
+          // create save button
+          let saveBtn = document.createElement("a");
+          saveBtn.classList.add("save-btn");
+          saveBtn.innerHTML = createIcon("bi bi-star");
+          saveBtn.setAttribute("data-role", "button");
+          // append each element to keyElement
+          keyElement.append(bankBtn);
+          keyElement.append(textbox);
+          keyElement.append(saveBtn);
+          break;
+
         case "backspace":
           // ADD BOOTSTRAP CLAESS FOR BACKSPACE KEY
-          keyElement.classList.add("btn", "btn-dark");
+          keyElement.classList.add("btn", "btn-dark", "black-key");
           keyElement.innerHTML = createIcon("bi-arrow-left");
 
           keyElement.addEventListener("click", () => {
@@ -92,7 +169,7 @@ const Keyboard = {
           break;
         case "enter":
           // ADD BOOTSTRAP CLAESS FOR ENTER KEY
-          keyElement.classList.add("btn", "btn-dark");
+          keyElement.classList.add("btn", "btn-dark", "black-key");
           keyElement.innerHTML = "Enter";
 
           keyElement.addEventListener("click", () => {
@@ -102,7 +179,7 @@ const Keyboard = {
           break;
         case "space":
           // ADD BOOTSTRAP CLAESS FOR SPACE KEY
-          keyElement.classList.add("btn", "btn-dark");
+          keyElement.classList.add("btn", "btn-dark", "black-key");
           keyElement.innerHTML = "Space";
 
           keyElement.addEventListener("click", () => {
@@ -112,7 +189,7 @@ const Keyboard = {
           break;
         default:
           // ADD BOOTSTRAP CLAESS FOR ALL OTHER KEYS
-          keyElement.classList.add("btn", "btn-danger");
+          keyElement.classList.add("btn", "btn-danger", "red-key");
           keyElement.innerHTML = key.toLowerCase();
 
           keyElement.addEventListener("click", () => {
@@ -123,7 +200,7 @@ const Keyboard = {
           });
           break;
       }
-
+      if (key == "Word") console.log(keyElement);
       currentRow.append(keyElement);
 
       if (breakLine) {
@@ -161,6 +238,11 @@ const Keyboard = {
 window.addEventListener("DOMContentLoaded", () => {
   // Inits the keyboard
   Keyboard.init();
+
+  $("#btnradio2").on("foucs", (element) => {
+    lastFocused = element;
+  });
+
   // adds the keyboard for element with the class useKeyboard
   document.querySelectorAll(".use-keyboard").forEach((element) => {
     Keyboard.startup($(element).val(), (currentValue) => {

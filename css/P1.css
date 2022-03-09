@@ -66,3 +66,29 @@
 .key-spacing {
   width: 5px;
 }
+
+/* keyboard style */
+.black-key {
+  width: 100px;
+  height: 50px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+/* red keys */
+.red-key {
+  width: 50px;
+  height: 50px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+/* word bank button */
+.word-bank {
+  height: 50px;
+  width: 150px;
+}
+
+/* save button */
+.save-btn {
+}
