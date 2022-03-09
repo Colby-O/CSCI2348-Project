@@ -32,9 +32,16 @@
 /*
     Used to center a <div>. (SDR March 5, 2022)
 */
-.center-box {
+/* .center-box {
   margin: auto;
   width: 68%;
+  padding: 10px;
+} */
+
+/*
+  This will quickly pad around <div>'s for spacing. (SDR March 9, 2022)
+*/
+.pad-div {
   padding: 10px;
 }
 
@@ -42,7 +49,7 @@
     The width remaining to reach end of publish toggle. (SDR March 5, 2022)
 */
 .full-width {
-  width: 930px;
+  width: 1050px;
 }
 
 /*
