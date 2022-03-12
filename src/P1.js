@@ -1,13 +1,13 @@
 /*
-    Author: Sebastian Duque Rivera (A00441528)
-    Author: Felipe Duque Rivera (A00446745)
-    Author: Mo ()
-    Author: Colby (A00428974)
+  Author: Sebastian Duque Rivera (A00441528)
+  Author: Felipe Duque Rivera (A00446745)
+  Author: Mo ()
+  Author: Colby (A00428974)
 
-    This file will be used throughout our project for the three phases of our service learning
-    assignment for Northwood Care. This is our javascript file.
+  This file will be used throughout our project for the three phases of our service learning
+  assignment for Northwood Care. This is our javascript file.
     
-    Current Phase: 1 , Date created: March 3, 2022.
+  Current Phase: 1 , Date created: March 3, 2022.
 */
 
 function setup() {}
@@ -36,6 +36,7 @@ function getKbd() {
  * SDR March 6, 2022 + Colby O'Keefe (A00428974)
  */
 function save() {
-  if (Storage !== void(0)) localStorage.setItem("entry", document.getElementById("textbox").value);
+  if (Storage !== void 0)
+    localStorage.setItem("entry", document.getElementById("textbox").value);
   else console.log("Browser doesn't support Web Storage...");
 }

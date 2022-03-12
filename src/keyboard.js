@@ -1,7 +1,9 @@
 /*
- * This file contains the code for the keyboard.
+ *  This file contains the code for the keyboard.
  *
- * Author(s): Colby O'Keefe (A00428974),
+ *  Author: Colby O'Keefe (A00428974)
+ *  Author: Mo (A00391502)
+ *  Author: Sebastian Duque Rivera (A00441528) or SDR
  */
 
 let lastFocused = null;
@@ -134,17 +136,18 @@ const Keyboard = {
           // ADD BOOTSTRAP CLAESS FOR WordBank KEY
           // create bank button
           let bankBtn = document.createElement("a");
-          bankBtn.classList.add("word-bank");
+          bankBtn.classList.add("btn", "btn-secondary", "word-bank");
           bankBtn.innerHTML = "Word";
           bankBtn.innerHTML += createIcon("bi bi-piggy-bank");
           bankBtn.setAttribute("data-role", "button");
           // create textbox
           let textbox = document.createElement("input");
           textbox.setAttribute("type", "text");
+          textbox.classList.add("word-bank"); // Same size as word bank btn
 
-          // create save button
+          // create star button
           let saveBtn = document.createElement("a");
-          saveBtn.classList.add("save-btn");
+          saveBtn.classList.add("btn", "btn-secondary", "star-btn");
           saveBtn.innerHTML = createIcon("bi bi-star");
           saveBtn.setAttribute("data-role", "button");
 
