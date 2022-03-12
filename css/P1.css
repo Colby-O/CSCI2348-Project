@@ -50,11 +50,11 @@
   The width remaining to reach end of publish toggle. (SDR March 5, 2022)
 */
 .full-width {
-  width: 1050px;
+  width: 1170px;
 }
 
 /*
-  Sets the size of the text box for the blog. (SDR March 5, 2022)
+  Sets the size of the text box for the blog list. (SDR March 5, 2022)
 */
 .blog-size {
   height: 300px;
@@ -62,7 +62,7 @@
 }
 
 /* 
-  keyboard style
+  Keyboard Style
   Modified: March 12, 2022 (SDR) 
 */
 .black-key {
@@ -111,12 +111,26 @@
 
 /* 
   Text-box for the Word Bank (wb)
-  Modified: March 12, 2022 (SDR)
+  March 12, 2022 (SDR)
 */
 .wb-textbox {
-  width: 235px;
+  width: 245px;
   height: 94px;
   margin-left: 2px;
   margin-right: 2px;
   font-size: 20px;
+  padding: 25px;
+}
+
+/* 
+  Save and Cancel button
+  March 12, 2022 (SDR)
+*/
+.snc-btn {
+  width: 150px;
+  height: 94px;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-size: 30px;
+  padding: 20px;
 }

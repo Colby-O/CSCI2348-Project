@@ -133,7 +133,7 @@ const Keyboard = {
           break;
 
         case "Word":
-          // ADD BOOTSTRAP CLAESS FOR WordBank KEY
+          // ADD BOOTSTRAP CLASS FOR WordBank KEY
           // create bank button
           let bankBtn = document.createElement("a");
           bankBtn.classList.add("btn", "btn-secondary", "word-bank");
