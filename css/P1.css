@@ -19,6 +19,14 @@
 /* blog name text boxes */
 .box-width {
   width: 300px !important;
+  height: 40px;
+}
+
+/*
+  For <type name> font size. (SDR March 12, 2022)
+*/
+.box-text-size {
+  font-size: 180%;
 }
 
 /* Mohammed Al-Bashiri March 7, 2022 */
@@ -29,14 +37,6 @@
   height: 40px !important;
   width: 300px !important;
 }
-/*
-    Used to center a <div>. (SDR March 5, 2022)
-*/
-/* .center-box {
-  margin: auto;
-  width: 68%;
-  padding: 10px;
-} */
 
 /*
   This will quickly pad around <div>'s for spacing. (SDR March 9, 2022)
@@ -60,35 +60,44 @@
   padding: 10px;
 }
 
-/*
-    Used for spacing between keys. (SDR March 5, 2022)
+/* 
+  keyboard style
+  Modified: March 12, 2022 (SDR) 
 */
-.key-spacing {
-  width: 5px;
-}
-
-/* keyboard style */
 .black-key {
-  width: 100px;
-  height: 50px;
+  width: 188px;
+  height: 94px;
   margin-left: 2px;
   margin-right: 2px;
+  font-size: 300%;
 }
 
-/* red keys */
+/* 
+  Red keys
+  Modified: March 12, 2022 (SDR) 
+*/
 .red-key {
-  width: 50px;
-  height: 50px;
+  width: 94px;
+  height: 94px;
   margin-left: 2px;
   margin-right: 2px;
+  font-size: 300%;
 }
 
-/* word bank button */
+/* 
+  Word Bank Button 
+  Modified: March 12, 2022 (SDR)
+*/
 .word-bank {
+  height: 200px;
+  width: 300px;
+}
+
+/* 
+  Save Button 
+  Modified: March 12, 2022 (SDR)
+*/
+.save-btn {
   height: 50px;
   width: 150px;
-}
-
-/* save button */
-.save-btn {
 }

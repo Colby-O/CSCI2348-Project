@@ -132,7 +132,6 @@ const Keyboard = {
 
         case "Word":
           // ADD BOOTSTRAP CLAESS FOR WordBank KEY
-
           // create bank button
           let bankBtn = document.createElement("a");
           bankBtn.classList.add("word-bank");
@@ -148,6 +147,7 @@ const Keyboard = {
           saveBtn.classList.add("save-btn");
           saveBtn.innerHTML = createIcon("bi bi-star");
           saveBtn.setAttribute("data-role", "button");
+
           // append each element to keyElement
           keyElement.append(bankBtn);
           keyElement.append(textbox);

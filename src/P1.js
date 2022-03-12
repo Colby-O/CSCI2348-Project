@@ -36,6 +36,7 @@ function getKbd() {
  * SDR March 6, 2022 + Colby O'Keefe (A00428974)
  */
 function save() {
-  if(Storage !== void(0)) localStorage.setItem("entry", document.getElementById("textbox").value);
+  if (Storage !== void 0)
+    localStorage.setItem("entry", document.getElementById("textbox").value);
   else console.log("Browser doesn't support Web Storage...");
 }
