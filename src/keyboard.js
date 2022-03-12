@@ -140,10 +140,11 @@ const Keyboard = {
           bankBtn.innerHTML = "Word";
           bankBtn.innerHTML += createIcon("bi bi-piggy-bank");
           bankBtn.setAttribute("data-role", "button");
+
           // create textbox
           let textbox = document.createElement("input");
           textbox.setAttribute("type", "text");
-          textbox.classList.add("word-bank"); // Same size as word bank btn
+          textbox.classList.add("wb-textbox");
 
           // create star button
           let saveBtn = document.createElement("a");

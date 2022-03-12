@@ -27,7 +27,7 @@
 */
 .box-text-size {
   padding: 25px;
-  font-size: 250%;
+  font-size: 20px;
 }
 
 /* Mohammed Al-Bashiri March 7, 2022 */
@@ -107,4 +107,16 @@
   margin-left: 2px;
   margin-right: 2px;
   font-size: 300%;
+}
+
+/* 
+  Text-box for the Word Bank (wb)
+  Modified: March 12, 2022 (SDR)
+*/
+.wb-textbox {
+  width: 235px;
+  height: 94px;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-size: 20px;
 }
