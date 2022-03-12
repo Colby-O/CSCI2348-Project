@@ -26,7 +26,8 @@
   For <type name> font size. (SDR March 12, 2022)
 */
 .box-text-size {
-  font-size: 180%;
+  padding: 25px;
+  font-size: 250%;
 }
 
 /* Mohammed Al-Bashiri March 7, 2022 */
