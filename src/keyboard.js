@@ -145,6 +145,11 @@ const Keyboard = {
           let textbox = document.createElement("input");
           textbox.setAttribute("type", "text");
           textbox.classList.add("wb-textbox");
+          $(textbox).focus(() => {
+            this.startup($(textbox).val(), (currentValue) => {
+            $(textbox).val(currentValue);
+          });
+        });
 
           // create star button
           let saveBtn = document.createElement("a");
