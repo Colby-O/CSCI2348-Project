@@ -32,7 +32,7 @@ function getKbd() {
   let edit2 = document.getElementById("edit2");
   let edit3 = document.getElementById("edit3");
 
-  let isBlogVisable = edit1.checked || edit2.checked ||edit3.checked;
+  let isBlogVisable = edit1.checked || edit2.checked || edit3.checked;
   let allBlogsUnchecked =  !edit1.checked && !edit2.checked && !edit3.checked;
   
   blog.style.visibility = keyboard.style.visibility = (isBlogVisable) ? "visible" : "hidden";
