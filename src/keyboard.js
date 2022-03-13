@@ -232,25 +232,26 @@ const Keyboard = {
       }
     }
   },
-
+  swapTextfield(id, initalValue, oninput) {
+    this.properties.value = initalValue || "";
+    this.eventHandlers.oninput = oninput;
+  },  
   startup(initalValue, oninput) {
     this.properties.value = initalValue || "";
     this.eventHandlers.oninput = oninput;
-  },
+  }
 };
 
 window.addEventListener("DOMContentLoaded", () => {
   // Inits the keyboard
   Keyboard.init();
 
-  $("#btnradio2").on("foucs", (element) => {
-    lastFocused = element;
-  });
-
-  // adds the keyboard for element with the class useKeyboard
+  // adds the keyboard for element with the class use-keyboard
   document.querySelectorAll(".use-keyboard").forEach((element) => {
-    Keyboard.startup($(element).val(), (currentValue) => {
-      $(element).val(currentValue);
+    $(element).focus(() => {
+      Keyboard.startup($(element).val(), (currentValue) => {
+        $(element).val(currentValue);
+      });
     });
   });
 });
