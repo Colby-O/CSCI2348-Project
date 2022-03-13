@@ -26,35 +26,19 @@ function setup() {
  * Modified: SDR March 12, 2022
  */
 function getKbd() {
-  var keyboard = document.getElementById("kbd");
-  var blog = document.getElementById("blogArea");
-  var edit1 = document.getElementById("edit1");
-  var edit2 = document.getElementById("edit2");
-  var edit3 = document.getElementById("edit3");
+  let keyboard = document.getElementById("kbd");
+  let blog = document.getElementById("blogArea");
+  let edit1 = document.getElementById("edit1");
+  let edit2 = document.getElementById("edit2");
+  let edit3 = document.getElementById("edit3");
 
-  //Checks if edit 1, 2 or 3 is checked
-  if (edit1.checked == true) {
-    keyboard.style.visibility = "visible";
-    blog.style.visibility = "visible";
-    edit2.style.visibility = "hidden";
-    edit3.style.visibility = "hidden";
-  } else if (edit2.checked == true) {
-    keyboard.style.visibility = "visible";
-    blog.style.visibility = "visible";
-    edit1.style.visibility = "hidden";
-    edit3.style.visibility = "hidden";
-  } else if (edit3.checked == true) {
-    keyboard.style.visibility = "visible";
-    blog.style.visibility = "visible";
-    edit1.style.visibility = "hidden";
-    edit2.style.visibility = "hidden";
-  } else {
-    keyboard.style.visibility = "hidden";
-    blog.style.visibility = "hidden";
-    edit1.style.visibility = "visible";
-    edit2.style.visibility = "visible";
-    edit3.style.visibility = "visible";
-  }
+  let isBlogVisable = edit1.checked || edit2.checked ||edit3.checked;
+  let allBlogsUnchecked =  !edit1.checked && !edit2.checked && !edit3.checked;
+  
+  blog.style.visibility = keyboard.style.visibility = (isBlogVisable) ? "visible" : "hidden";
+  edit1.style.visibility = (edit1.checked || allBlogsUnchecked) ? "visible" : "hidden";
+  edit2.style.visibility = (edit2.checked || allBlogsUnchecked) ? "visible" : "hidden";
+  edit3.style.visibility = (edit3.checked || allBlogsUnchecked) ? "visible" : "hidden";
 }
 
 /**
@@ -63,7 +47,6 @@ function getKbd() {
  * SDR March 6, 2022 + Colby O'Keefe (A00428974)
  */
 function save() {
-  if (Storage !== void 0)
-    localStorage.setItem("entry", document.getElementById("textbox").value);
+  if (Storage !== void(0)) localStorage.setItem("entry", document.getElementById("textbox").value);
   else console.log("Browser doesn't support Web Storage...");
 }
