@@ -44,7 +44,7 @@
     <script src="src/keyboard.js"></script>
   </head>
 
-  <body>
+  <body onload="setup()">
     <!-- Colby O'Keefe (A00428974) added some style-->
     <div class="container" id="blog-option-container">
     <!--   Mohammed Al-Bashiri (A00391502) March 3 2022 -->
@@ -90,6 +90,7 @@
             class="form-check-input btn-lg toggle-style"
             type="checkbox"
             id="edit1"
+            onclick="getKbd()"
           />
           <label class="form-check-label" for="flexSwitchCheckDefault"></label>
         </div>
@@ -107,6 +108,7 @@
     <!--
         Mohammed Al-Bashiri (A00391502)  March 3, 2022 
         Modified: March 5, 2022 (SDR - Fixed placeholder & aria-label)
+        Modified: March 12, 2022 (SDR - Added edit switch functionality)
     -->
     <!--   this is the container for the text box and the switches   -->
     <div class="row flex-nowrap mb-3 ">
@@ -133,6 +135,7 @@
             class="form-check-input btn-lg toggle-style"
             type="checkbox"
             id="edit2"
+            onclick="getKbd()"
           />
           <label class="form-check-label" for="flexSwitchCheckDefault"></label>
         </div>
@@ -176,6 +179,7 @@
             class="form-check-input btn-lg toggle-style"
             type="checkbox"
             id="edit3"
+            onclick="getKbd()"
           />
           <label class="form-check-label" for="flexSwitchCheckDefault"></label>
         </div>
@@ -227,28 +231,29 @@
       </div> 
     </div> -->
 
-    <!-- 
+    <!-- Blog Area -->
+    <div class="container pad-div" id="blogArea">
+      <!-- 
       Save and cancel buttons before blog (SDR March 5, 2022)
       Modified: March 9, 2022
-    -->
-    <div class="container pad-div">
+      -->
       <div class="input-group">
         <a data-role="button" class="btn btn-danger snc-btn" onclick="save()">Save</a>
         <a data-role="button" class="btn btn-warning snc-btn" onclick="cancel()">Cancel</a>
       </div>
-    </div>
-
-    <!-- Blog text box -->
-    <div class="container">
-      <textarea row="20" id="textbox" class="use-keyboard blog-size full-width">
-      </textarea>
-    </div>
-
-    <!-- 
-      Save and cancel buttons after blog (SDR March 5, 2022)
-      Modified: March 9, 2022
-    -->
-    <div class="container pad-div">
+    
+      <!-- 
+        Blog text box 
+        Modified: March 12, 2022 (SDR)
+      -->
+      <div class="container pad-div">
+        <textarea row="20" id="textbox" class="use-keyboard blog-size"></textarea>
+      </div>
+      
+      <!-- 
+        Save and cancel buttons after blog (SDR March 5, 2022)
+        Modified: March 9, 2022
+      -->
       <div class="input-group">
         <a data-role="button" class="btn btn-danger snc-btn" onclick="save()"> Save </a>
         <a data-role="button" class="btn btn-warning snc-btn" onclick="cancel()">

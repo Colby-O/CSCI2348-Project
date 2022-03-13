@@ -10,23 +10,35 @@
   Current Phase: 1 , Date created: March 3, 2022.
 */
 
-function setup() {}
+/*
+  Sets up the keyboard and blog list to be hidden.
+*/
+function setup() {
+  document.getElementById("kbd").style.visibility = "hidden";
+  document.getElementById("blogArea").style.visibility = "hidden";
+}
 
 /**
- * This function checks to see if any of the edit toggles are checked and retrieves the keyboard
- * if any of them are.
+ * This function checks to see if any of the edit toggles are checked. If they are, this function
+ * will retrieve the keyboard, as well as the blog area.
  *
- * Status: In-progress
- * SDR March 5, 2022
+ * Created: SDR March 5, 2022
+ * Modified: SDR March 12, 2022
  */
 function getKbd() {
-  let keyboard = document.getElementById("kbd");
-  let edit1 = document.getElementById("edit1");
-  let edit2 = document.getElementById("edit2");
-  let edit3 = document.getElementById("edit3");
+  var keyboard = document.getElementById("kbd");
+  var blog = document.getElementById("blogArea");
+  var edit1 = document.getElementById("edit1");
+  var edit2 = document.getElementById("edit2");
+  var edit3 = document.getElementById("edit3");
 
   //Checks if edit 1, 2 or 3 is checked
-  if (edit1) {
+  if (edit1.checked == true || edit2.checked == true || edit3.checked == true) {
+    keyboard.style.visibility = "visible";
+    blog.style.visibility = "visible";
+  } else {
+    keyboard.style.visibility = "hidden";
+    blog.style.visibility = "hidden";
   }
 }
 
