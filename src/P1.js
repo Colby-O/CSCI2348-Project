@@ -33,12 +33,27 @@ function getKbd() {
   var edit3 = document.getElementById("edit3");
 
   //Checks if edit 1, 2 or 3 is checked
-  if (edit1.checked == true || edit2.checked == true || edit3.checked == true) {
+  if (edit1.checked == true) {
     keyboard.style.visibility = "visible";
     blog.style.visibility = "visible";
+    edit2.style.visibility = "hidden";
+    edit3.style.visibility = "hidden";
+  } else if (edit2.checked == true) {
+    keyboard.style.visibility = "visible";
+    blog.style.visibility = "visible";
+    edit1.style.visibility = "hidden";
+    edit3.style.visibility = "hidden";
+  } else if (edit3.checked == true) {
+    keyboard.style.visibility = "visible";
+    blog.style.visibility = "visible";
+    edit1.style.visibility = "hidden";
+    edit2.style.visibility = "hidden";
   } else {
     keyboard.style.visibility = "hidden";
     blog.style.visibility = "hidden";
+    edit1.style.visibility = "visible";
+    edit2.style.visibility = "visible";
+    edit3.style.visibility = "visible";
   }
 }
 
