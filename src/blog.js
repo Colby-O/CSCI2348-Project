@@ -198,3 +198,16 @@ function cancel() {
   // Reset blogs title
   updateBlogTitles();
 }
+
+/*
+  Creates the clear button that erases the latest word in the current blog edit.
+
+  Author(s): Felipe Duque Rivera (A00446745)
+*/
+function clear() {
+  // Deletes the lastest chain of letter (word)
+  $("#textbox").val("");
+  $("#textbox").focus();
+
+  console.log("hi");
+}
