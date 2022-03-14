@@ -254,6 +254,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // adds the keyboard for element with the class use-keyboard
   document.querySelectorAll(".use-keyboard").forEach((element) => {
     $(element).focus(() => {
+      if ($(element).hasClass("keyboard-disable")) return;
       Keyboard.startup($(element).val(), (currentValue) => {
         $(element).val(currentValue);
       });
