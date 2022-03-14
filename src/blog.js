@@ -126,17 +126,17 @@ function setup() {
 
   $("#publish1").change(() => {
     // Prevents publishing unless in edit mode
-    if(!$("#edit1").is(":checked")) $("#publish1").prop("checked", false);
+    if(!$("#edit1").is(":checked")) $("#publish1").prop("checked", !$("#publish1").is(":checked"));
   });
 
   $("#publish2").change(() => {
     // Prevents publishing unless in edit mode
-    if(!$("#edit2").is(":checked")) $("#publish2").prop("checked", false);
+    if(!$("#edit2").is(":checked")) $("#publish2").prop("checked", !$("#publish2").is(":checked"));
   });
 
   $("#publish3").change(() => {
     // Prevents publishing unless in edit mode
-    if(!$("#edit3").is(":checked")) $("#publish3").prop("checked", false);
+    if(!$("#edit3").is(":checked")) $("#publish3").prop("checked", !$("#publish3").is(":checked"));
   });
 }
 
