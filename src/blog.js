@@ -31,7 +31,7 @@ let title3 = null;
   Author(s): Colby O'Keefe(A00428974)
 */
 function updateBlogTitles() {
-  if (Storage !== void(0)) {
+  if (Storage !== void 0) {
     $("#title1").val(window.localStorage.getItem("title1"));
     $("#title2").val(window.localStorage.getItem("title2"));
     $("#title3").val(window.localStorage.getItem("title3"));
@@ -60,9 +60,9 @@ function setup() {
   // hides the blog + keybaord
   blog.style.visibility = keyboard.style.visibility = "hidden";
 
-  $("#edit1").change(()=> {
-    // Check if switch is checked 
-    if(!$("#edit1").is(":checked")) {
+  $("#edit1").change(() => {
+    // Check if switch is checked
+    if (!$("#edit1").is(":checked")) {
       // disables the keyboard on the title textfield
       $("#title1").addClass("keyboard-disable");
       return;
@@ -75,16 +75,17 @@ function setup() {
     currentBlogID = "blog1";
 
     // Gets saved value from local storage if its supported by the browser
-    if (Storage !== void(0)) $("#textbox").val(window.localStorage.getItem(currentBlogID));
+    if (Storage !== void 0)
+      $("#textbox").val(window.localStorage.getItem(currentBlogID));
     else $("#textbox").val("");
 
     // focus the blog textarea so the keybaord will update
     $("#textbox").focus();
   });
 
-  $("#edit2").change(()=> {
+  $("#edit2").change(() => {
     // Check if switch is checked
-    if(!$("#edit2").is(":checked")) {
+    if (!$("#edit2").is(":checked")) {
       // disables the keyboard on the title textfield
       $("#title2").addClass("keyboard-disable");
       return;
@@ -95,16 +96,17 @@ function setup() {
 
     // Gets saved value from local storage if its supported by the browser
     currentBlogID = "blog2";
-    if (Storage !== void(0)) $("#textbox").val(window.localStorage.getItem(currentBlogID));
+    if (Storage !== void 0)
+      $("#textbox").val(window.localStorage.getItem(currentBlogID));
     else $("#textbox").val("");
 
     // focus the blog textarea so the keybaord will update
     $("#textbox").focus();
   });
 
-  $("#edit3").change(()=> {
+  $("#edit3").change(() => {
     // Check if switch is checked
-    if(!$("#edit3").is(":checked")) {
+    if (!$("#edit3").is(":checked")) {
       // disables the keyboard on the title textfield
       $("#title3").addClass("keyboard-disable");
       return;
@@ -117,7 +119,8 @@ function setup() {
     currentBlogID = "blog3";
 
     // Gets saved value from local storage if its supported by the browser
-    if (Storage !== void(0)) $("#textbox").val(window.localStorage.getItem(currentBlogID));
+    if (Storage !== void 0)
+      $("#textbox").val(window.localStorage.getItem(currentBlogID));
     else $("#textbox").val("");
 
     // focus the blog textarea so the keybaord will update
@@ -126,17 +129,20 @@ function setup() {
 
   $("#publish1").change(() => {
     // Prevents publishing unless in edit mode
-    if(!$("#edit1").is(":checked")) $("#publish1").prop("checked", !$("#publish1").is(":checked"));
+    if (!$("#edit1").is(":checked"))
+      $("#publish1").prop("checked", !$("#publish1").is(":checked"));
   });
 
   $("#publish2").change(() => {
     // Prevents publishing unless in edit mode
-    if(!$("#edit2").is(":checked")) $("#publish2").prop("checked", !$("#publish2").is(":checked"));
+    if (!$("#edit2").is(":checked"))
+      $("#publish2").prop("checked", !$("#publish2").is(":checked"));
   });
 
   $("#publish3").change(() => {
     // Prevents publishing unless in edit mode
-    if(!$("#edit3").is(":checked")) $("#publish3").prop("checked", !$("#publish3").is(":checked"));
+    if (!$("#edit3").is(":checked"))
+      $("#publish3").prop("checked", !$("#publish3").is(":checked"));
   });
 }
 
@@ -149,12 +155,17 @@ function setup() {
  */
 function getKbd() {
   let isBlogVisable = edit1.checked || edit2.checked || edit3.checked;
-  let allBlogsUnchecked =  !edit1.checked && !edit2.checked && !edit3.checked;
-  
-  blog.style.visibility = keyboard.style.visibility = (isBlogVisable) ? "visible" : "hidden";
-  edit1.style.visibility = (edit1.checked || allBlogsUnchecked) ? "visible" : "hidden";
-  edit2.style.visibility = (edit2.checked || allBlogsUnchecked) ? "visible" : "hidden";
-  edit3.style.visibility = (edit3.checked || allBlogsUnchecked) ? "visible" : "hidden";
+  let allBlogsUnchecked = !edit1.checked && !edit2.checked && !edit3.checked;
+
+  blog.style.visibility = keyboard.style.visibility = isBlogVisable
+    ? "visible"
+    : "hidden";
+  edit1.style.visibility =
+    edit1.checked || allBlogsUnchecked ? "visible" : "hidden";
+  edit2.style.visibility =
+    edit2.checked || allBlogsUnchecked ? "visible" : "hidden";
+  edit3.style.visibility =
+    edit3.checked || allBlogsUnchecked ? "visible" : "hidden";
 }
 
 /**
@@ -163,13 +174,15 @@ function getKbd() {
  * SDR March 6, 2022 + Colby O'Keefe (A00428974)
  */
 function save() {
-  if (Storage !== void(0)) {
+  if (Storage !== void 0) {
     // Saves the blogs content
     localStorage.setItem(currentBlogID, $("#textbox").val());
     // Saves the blogs title
-    localStorage.setItem(currentBlogID.replace(/blog/i, 'title'), $("#" + currentBlogID.replace(/blog/i, 'title')).val());
-  }
-  else console.log("Browser doesn't support Web Storage...");
+    localStorage.setItem(
+      currentBlogID.replace(/blog/i, "title"),
+      $("#" + currentBlogID.replace(/blog/i, "title")).val()
+    );
+  } else console.log("Browser doesn't support Web Storage...");
 }
 
 /*

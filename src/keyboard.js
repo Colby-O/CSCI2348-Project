@@ -35,7 +35,8 @@ const Keyboard = {
     this.elements.keysContainer.appendChild(this._createKeys());
 
     // Stores the keybaord keys elements
-    this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard-key");
+    this.elements.keys =
+      this.elements.keysContainer.querySelectorAll(".keyboard-key");
 
     // Appends the keys to the main page
     this.elements.main.appendChild(this.elements.keysContainer);
@@ -48,14 +49,60 @@ const Keyboard = {
 
     // Keybaord layout
     const keyLayout = [
-      "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "shift", "--",
-      "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "backspace", "--", 
-      "a", "s", "d", "f", "g", "h", "j", "k", "l", "enter", '"', "--", 
-      "z", "x", "c", "v", "b", "n", "m", "space", ".", "?", ",", "--",
-      "Word", "Word", "--"
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "0",
+      "shift",
+      "--",
+      "q",
+      "w",
+      "e",
+      "r",
+      "t",
+      "y",
+      "u",
+      "i",
+      "o",
+      "p",
+      "backspace",
+      "--",
+      "a",
+      "s",
+      "d",
+      "f",
+      "g",
+      "h",
+      "j",
+      "k",
+      "l",
+      "enter",
+      '"',
+      "--",
+      "z",
+      "x",
+      "c",
+      "v",
+      "b",
+      "n",
+      "m",
+      "space",
+      ".",
+      "?",
+      ",",
+      "--",
+      "Word",
+      "Word",
+      "--",
     ];
 
-    // Function to set icon for a key given 
+    // Function to set icon for a key given
     const createIcon = (icon_name) => {
       return `<i class="${icon_name}"></i>`;
     };
@@ -113,9 +160,9 @@ const Keyboard = {
           // Adds the ability to use the keybaord on the textbox
           $(textbox).focus(() => {
             this.startup($(textbox).val(), (currentValue) => {
-            $(textbox).val(currentValue);
+              $(textbox).val(currentValue);
+            });
           });
-        });
 
           // create star button
           let saveBtn = document.createElement("a");
@@ -192,14 +239,14 @@ const Keyboard = {
     // return key fragment
     return fragment;
   },
-   /*Colby O'Keefe (A00428974)*/
+  /*Colby O'Keefe (A00428974)*/
   _triggerEvent(handlerName) {
     /* Handles a trigger evenet */
     if (typeof this.eventHandlers[handlerName] == "function") {
       this.eventHandlers[handlerName](this.properties.value);
     }
   },
-   /*Colby O'Keefe (A00428974)*/
+  /*Colby O'Keefe (A00428974)*/
   _toggleCaps() {
     // Toggle capslock
     this.properties.capsLock = !this.properties.capsLock;
@@ -213,12 +260,12 @@ const Keyboard = {
           : key.textContent.toLowerCase();
       }
     }
-  }, 
-   /*Colby O'Keefe (A00428974)*/
+  },
+  /*Colby O'Keefe (A00428974)*/
   startup(initalValue, oninput) {
     this.properties.value = initalValue || "";
     this.eventHandlers.oninput = oninput;
-  }
+  },
 };
 
 /*Colby O'Keefe (A00428974)*/
