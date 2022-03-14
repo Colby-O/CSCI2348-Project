@@ -6,8 +6,6 @@
  *  Author: Sebastian Duque Rivera (A00441528) or SDR
  */
 
-let lastFocused = null;
-
 const Keyboard = {
   elements: {
     main: null,
