@@ -167,4 +167,6 @@ function cancel() {
   edit1.checked = edit2.checked = edit3.checked = false;
   // Updates the visibility of the page elements
   getKbd();
+  // Reset blogs title
+  updateBlogTitles();
 }
