@@ -50,9 +50,9 @@ const Keyboard = {
     // Keybaord layout
     const keyLayout = [
       "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "shift", "--",
-      "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "backspace", "--",
-      "z", "x", "a", "s", "d", "f", "g", "h", "j", "k", "l", "enter", '"', "--",
-      "c", "v", "b", "n", "m", "space",  ".", "?", ",", "--",
+      "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "backspace", "--", 
+      "a", "s", "d", "f", "g", "h", "j", "k", "l", "enter", '"', "--", 
+      "z", "x", "c", "v", "b", "n", "m", "space", ".", "?", ",", "--",
       "Word", "Word", "--"
     ];
 
