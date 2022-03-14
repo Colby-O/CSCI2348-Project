@@ -123,6 +123,21 @@ function setup() {
     // focus the blog textarea so the keybaord will update
     $("#textbox").focus();
   });
+
+  $("#publish1").change(() => {
+    // Prevents publishing unless in edit mode
+    if(!$("#edit1").is(":checked")) $("#publish1").prop("checked", false);
+  });
+
+  $("#publish2").change(() => {
+    // Prevents publishing unless in edit mode
+    if(!$("#edit2").is(":checked")) $("#publish2").prop("checked", false);
+  });
+
+  $("#publish3").change(() => {
+    // Prevents publishing unless in edit mode
+    if(!$("#edit3").is(":checked")) $("#publish3").prop("checked", false);
+  });
 }
 
 /**
