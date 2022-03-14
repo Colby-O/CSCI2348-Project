@@ -204,10 +204,8 @@ function cancel() {
 
   Author(s): Felipe Duque Rivera (A00446745)
 */
-function clear() {
-  // Deletes the lastest chain of letter (word)
+function erase() {
+  // Completely clears the textbox 
   $("#textbox").val("");
   $("#textbox").focus();
-
-  console.log("hi");
 }
