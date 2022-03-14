@@ -2,8 +2,9 @@
  *  This file contains the code for the keyboard.
  *
  *  Author: Colby O'Keefe (A00428974)
- *  Author: Mo (A00391502)
+ *  Author: Mohammed Al-Bashiri (A00391502)
  *  Author: Sebastian Duque Rivera (A00441528) or SDR
+ *  Author: Felipe Duque Rivera (A00446745) or FDR
  */
 
 const Keyboard = {
@@ -49,11 +50,57 @@ const Keyboard = {
 
     // Keybaord layout
     const keyLayout = [
-      "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "shift", "--",
-      "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "backspace", "--", 
-      "a", "s", "d", "f", "g", "h", "j", "k", "l", "enter", '"', "--", 
-      "z", "x", "c", "v", "b", "n", "m", "space", ".", "?", ",", "--",
-      "Word", "Word", "--"
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "0",
+      "shift",
+      "--",
+      "q",
+      "w",
+      "e",
+      "r",
+      "t",
+      "y",
+      "u",
+      "i",
+      "o",
+      "p",
+      "backspace",
+      "--",
+      "a",
+      "s",
+      "d",
+      "f",
+      "g",
+      "h",
+      "j",
+      "k",
+      "l",
+      "enter",
+      '"',
+      "--",
+      "z",
+      "x",
+      "c",
+      "v",
+      "b",
+      "n",
+      "m",
+      "space",
+      ".",
+      "?",
+      ",",
+      "--",
+      "Word",
+      "Word",
+      "--",
     ];
 
     // Function to set icon for a key given
@@ -98,8 +145,11 @@ const Keyboard = {
           break;
 
         case "Word":
-          /*Word bank button group*/
-
+          /*
+            Word bank button group
+            Mohammed Al-Bashiri (A00391502)
+            Colby O'Keefe (A00428974) + SDR + FDR
+          */
           // creates bank button
           let bankBtn = document.createElement("a");
           bankBtn.classList.add("btn", "btn-secondary", "word-bank");
@@ -111,6 +161,7 @@ const Keyboard = {
           let textbox = document.createElement("input");
           textbox.setAttribute("type", "text");
           textbox.classList.add("wb-textbox");
+
           // Adds the ability to use the keybaord on the textbox
           $(textbox).focus(() => {
             this.startup($(textbox).val(), (currentValue) => {
