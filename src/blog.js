@@ -1,7 +1,7 @@
 /*
   Author: Sebastian Duque Rivera (A00441528)
   Author: Felipe Duque Rivera (A00446745)
-  Author: Mo ()
+  Author: Mohammed Al-Bashiri (A00391502)
   Author: Colby (A00428974)
 
   This file will be used throughout our project for the three phases of our service learning
@@ -41,7 +41,7 @@ function updateBlogTitles() {
 /*
   Sets up the keyboard and blog list to be hidden.
 
-  Author(s): Colby O'Keefe(A00428974) + Unknown
+  Author(s): Colby O'Keefe(A00428974) + SDR
 */
 function setup() {
   // Gets page elements
@@ -57,7 +57,7 @@ function setup() {
   // Sets the save blog titles
   updateBlogTitles();
 
-  // hides the blog + keybaord
+  // hides the blog + keyboard
   blog.style.visibility = keyboard.style.visibility = "hidden";
 
   $("#edit1").change(() => {
