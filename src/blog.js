@@ -191,11 +191,11 @@ function save() {
   Author(s): Colby O'Keefe(A00428974)
 */
 function cancel() {
-  // Unchecks each of the edit switches
-  edit1.checked = edit2.checked = edit3.checked = false;
-  // Updates the visibility of the page elements
-  getKbd();
-  // Reset blogs title
+  // Restores saved blog
+  $("#textbox").val(window.localStorage.getItem(currentBlogID));
+  // Updates keybaord
+  $("#textbox").focus();
+  // Restores saved blogs title
   updateBlogTitles();
 }
 
