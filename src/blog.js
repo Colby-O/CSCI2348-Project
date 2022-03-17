@@ -1,8 +1,8 @@
 /*
-  Author: Sebastian Duque Rivera (A00441528)
-  Author: Felipe Duque Rivera (A00446745)
+  Author: Sebastian Duque Rivera (A00441528) or SDR
+  Author: Felipe Duque Rivera (A00446745) or FDR
   Author: Mohammed Al-Bashiri (A00391502)
-  Author: Colby (A00428974)
+  Author: Colby O'Keefe (A00428974)
 
   This file will be used throughout our project for the three phases of our service learning
   assignment for Northwood Care. This is our javascript file.
@@ -205,7 +205,7 @@ function cancel() {
   Author(s): Felipe Duque Rivera (A00446745)
 */
 function erase() {
-  // Completely clears the textbox 
+  // Completely clears the textbox
   $("#textbox").val("");
   $("#textbox").focus();
 }

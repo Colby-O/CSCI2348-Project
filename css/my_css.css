@@ -2,7 +2,7 @@
   Author: Sebastian Duque Rivera (A00441528) or SDR
   Author: Mohammed Al-Bashiri (A00391502)
   Author: Felipe Duque Rivera (A00446745) or FDR
-  Author: Colby (A00428974)
+  Author: Colby O'Keefe (A00428974)
 
   This file will be used throughout our project for the three phases of our service learning
   assignment for Northwood Care. This is our formatting sheet.
@@ -42,6 +42,13 @@
 }
 
 /*
+  For the width of a <div> (SDR, March 16, 2022)
+*/
+.div-width {
+  width: 1000px;
+}
+
+/*
   This will quickly pad around <div>'s for spacing. (SDR March 9, 2022)
 */
 .pad-div {
@@ -52,7 +59,7 @@
   Sets the size of the text box for the blog list. (SDR March 5, 2022)
 */
 .blog-size {
-  width: 1050px;
+  width: 950px;
   height: 400px;
   margin-left: 2px;
   margin-right: 2px;
@@ -65,11 +72,11 @@
   Modified: March 12, 2022 (SDR) 
 */
 .black-key {
-  width: 168px;
-  height: 84px;
+  width: 150px;
+  height: 75px;
   margin-left: 2px;
   margin-right: 2px;
-  font-size: 300%;
+  font-size: 200%;
 }
 
 /* 
@@ -77,11 +84,11 @@
   Modified: March 12, 2022 (SDR) 
 */
 .red-key {
-  width: 84px;
-  height: 84px;
+  width: 75px;
+  height: 75px;
   margin-left: 2px;
   margin-right: 2px;
-  font-size: 300%;
+  font-size: 200%;
 }
 
 /* 
@@ -89,11 +96,11 @@
   Modified: March 12, 2022 (SDR)
 */
 .word-bank {
-  width: 175px;
-  height: 84px;
+  width: 150px;
+  height: 75px;
   margin-left: 2px;
   margin-right: 2px;
-  font-size: 250%;
+  font-size: 200%;
 }
 
 /* 
@@ -101,11 +108,11 @@
   Modified: March 12, 2022 (SDR)
 */
 .star-btn {
-  width: 94px;
-  height: 94px;
+  width: 75px;
+  height: 75px;
   margin-left: 2px;
   margin-right: 2px;
-  font-size: 300%;
+  font-size: 200%;
 }
 
 /* 
@@ -113,12 +120,12 @@
   March 12, 2022 (SDR)
 */
 .wb-textbox {
-  width: 245px;
-  height: 94px;
+  width: 235px;
+  height: 54px;
   margin-left: 2px;
   margin-right: 2px;
-  font-size: 20px;
-  padding: 25px;
+  font-size: 200%;
+  padding: 10px;
 }
 
 /* 
@@ -127,9 +134,8 @@
 */
 .snc-btn {
   width: 150px;
-  height: 94px;
+  height: 75px;
   margin-left: 2px;
   margin-right: 2px;
-  font-size: 30px;
-  padding: 20px;
+  font-size: 200%;
 }
