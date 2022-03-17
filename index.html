@@ -50,23 +50,17 @@
       <!-- Mohammed Al-Bashiri (A00391502) March 3 2022 -->
       <!-- this div is for the categories names -->
       <div class="row flex-nowrap mb-3 name-style">
-        <span class="col" >
-          Blog Name
-        </span>
-        <span class="col" >
-          Edit
-        </span>
-        <span class="col " >
-          Publish
-        </span>
-    </div>
+        <span class="col"> Blog Name </span>
+        <span class="col"> Edit </span>
+        <span class="col"> Publish </span>
+      </div>
 
-    <!--   
+      <!--   
       Mohammed Al-Bashiri (A00391502)  March 3, 2022 
       Modified: March 5, 2022 (SDR - Fixed placeholder & aria-label)
     -->
-    <!-- this is the container for the text box and the switches -->
-    <div class="row flex-nowrap mb-3 ">
+      <!-- this is the container for the text box and the switches -->
+      <div class="row flex-nowrap mb-3">
         <!-- Mohammed Al-Bashiri (A00391502) March 2, 2022 -->
         <!-- this is for the text boxes -->
         <div
@@ -78,7 +72,7 @@
             class="form-control box-width box-text-size use-keyboard keyboard-disable"
             id="title1"
             type="text"
-            placeholder="&#60Type Name&#62"
+            placeholder="&#60;Type Name&#62;"
             aria-label="First blog name"
           />
         </div>
@@ -86,14 +80,14 @@
         <!-- Mohammed Al-Bashiri (A00391502) March 3, 2022 -->
         <!-- this is for the switch toggles -->
         <!-- Rounded switch -->
-        <div class="form-check form-switch col toggle-style" >
+        <div class="form-check form-switch col toggle-style">
           <input
             class="form-check-input btn-lg toggle-style"
             type="checkbox"
             id="edit1"
             onclick="getKbd()"
           />
-          <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+          <label class="form-check-label" for="edit1"></label>
         </div>
 
         <div class="form-check form-switch col toggle-style">
@@ -102,17 +96,17 @@
             type="checkbox"
             id="publish1"
           />
-          <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+          <label class="form-check-label" for="publish1"></label>
         </div>
-    </div>
+      </div>
 
-    <!--
+      <!--
       Mohammed Al-Bashiri (A00391502)  March 3, 2022 
       Modified: March 5, 2022 (SDR - Fixed placeholder & aria-label)
       Modified: March 12, 2022 (SDR - Added edit switch functionality)
     -->
-    <!-- this is the container for the text box and the switches -->
-    <div class="row flex-nowrap mb-3 ">
+      <!-- this is the container for the text box and the switches -->
+      <div class="row flex-nowrap mb-3">
         <!-- Mohammed Al-Bashiri (A00391502) March 2, 2022 -->
         <!-- this is for the text boxes -->
         <div
@@ -124,7 +118,7 @@
             class="form-control box-width box-text-size use-keyboard keyboard-disable"
             id="title2"
             type="text"
-            placeholder="&#60Type Name&#62"
+            placeholder="&#60;Type Name&#62;"
             aria-label="Second blog name"
           />
         </div>
@@ -132,14 +126,14 @@
         <!-- Mohammed Al-Bashiri (A00391502) March 3, 2022 -->
         <!-- this is for the switch toggles -->
         <!-- Rounded switch -->
-        <div class="form-check form-switch col toggle-style" >
+        <div class="form-check form-switch col toggle-style">
           <input
             class="form-check-input btn-lg toggle-style"
             type="checkbox"
             id="edit2"
             onclick="getKbd()"
           />
-          <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+          <label class="form-check-label" for="edit2"></label>
         </div>
 
         <div class="form-check form-switch col toggle-style">
@@ -148,16 +142,16 @@
             type="checkbox"
             id="publish2"
           />
-          <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+          <label class="form-check-label" for="publish2"></label>
         </div>
-    </div>
+      </div>
 
-    <!--   
+      <!--   
       Mohammed Al-Bashiri (A00391502)  March 3, 2022 
       Modified: March 5, 2022 (SDR - Fixed placeholder & aria-label)
     -->
-    <!-- this is the container for the text box and the switches -->
-    <div class="row flex-nowrap mb-3 ">
+      <!-- this is the container for the text box and the switches -->
+      <div class="row flex-nowrap mb-3">
         <!-- Mohammed Al-Bashiri (A00391502) March 2, 2022 -->
         <!-- this is for the text boxes -->
         <div
@@ -169,7 +163,7 @@
             class="form-control box-width box-text-size use-keyboard keyboard-disable"
             id="title3"
             type="text"
-            placeholder="&#60Type Name&#62"
+            placeholder="&#60;Type Name&#62;"
             aria-label="Third blog name"
           />
         </div>
@@ -177,14 +171,14 @@
         <!-- Mohammed Al-Bashiri (A00391502) March 3, 2022 -->
         <!-- this is for the switch toggles -->
         <!-- Rounded switch -->
-        <div class="form-check form-switch col toggle-style" >
+        <div class="form-check form-switch col toggle-style">
           <input
             class="form-check-input btn-lg toggle-style"
             type="checkbox"
             id="edit3"
             onclick="getKbd()"
           />
-          <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+          <label class="form-check-label" for="edit3"></label>
         </div>
 
         <div class="form-check form-switch col toggle-style">
@@ -193,9 +187,9 @@
             type="checkbox"
             id="publish3"
           />
-          <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+          <label class="form-check-label" for="publish3"></label>
         </div>
-    </div>
+      </div>
     </div>
     <!-- Keyboard -->
     <div class="keyboard-container container pad-div div-width" id="kbd"></div>
@@ -244,28 +238,44 @@
         Modified: March 9, 2022 (SDR)
       -->
       <div class="input-group">
-        <a data-role="button" class="btn btn-danger snc-btn" onclick="save()">Save</a>
-        <a data-role="button" class="btn btn-warning snc-btn" onclick="cancel()">Cancel</a>
-        <a data-role="button" class="btn btn-info snc-btn" onclick="erase()">Clear</a>
+        <a data-role="button" class="btn btn-danger snc-btn" onclick="save()"
+          >Save</a
+        >
+        <a data-role="button" class="btn btn-warning snc-btn" onclick="cancel()"
+          >Cancel</a
+        >
+        <a data-role="button" class="btn btn-info snc-btn" onclick="erase()"
+          >Clear</a
+        >
       </div>
-    
+
       <!-- 
         Blog text box 
         Modified: March 12, 2022 (SDR)
       -->
       <div class="container pad-div">
-        <textarea row="20" id="textbox" class="use-keyboard blog-size"></textarea>
+        <textarea
+          rows="20"
+          id="textbox"
+          class="use-keyboard blog-size"
+        ></textarea>
       </div>
-      
+
       <!-- 
         Save and cancel buttons after blog (SDR March 5, 2022)
         Modified: March 9, 2022 (SDR)
       -->
       <div class="input-group">
-        <a data-role="button" class="btn btn-danger snc-btn" onclick="save()"> Save </a>
-        <a data-role="button" class="btn btn-warning snc-btn" onclick="cancel()">Cancel</a>
-        <a data-role="button" class="btn btn-info snc-btn" onclick="erase()">Clear</a>
-      </div> 
+        <a data-role="button" class="btn btn-danger snc-btn" onclick="save()">
+          Save
+        </a>
+        <a data-role="button" class="btn btn-warning snc-btn" onclick="cancel()"
+          >Cancel</a
+        >
+        <a data-role="button" class="btn btn-info snc-btn" onclick="erase()"
+          >Clear</a
+        >
+      </div>
     </div>
   </body>
 </html>
