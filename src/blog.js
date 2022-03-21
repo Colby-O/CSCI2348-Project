@@ -79,8 +79,10 @@ function setup() {
       $("#textbox").val(window.localStorage.getItem(currentBlogID));
     else $("#textbox").val("");
 
-    // focus the blog textarea so the keybaord will update
-    $("#textbox").focus();
+    // focus the blog textarea so the keyboard will update
+    $("#textbox").focus((e) => {
+      e.target.focus({ preventScroll: true });
+    });
   });
 
   $("#edit2").change(() => {

@@ -72,11 +72,16 @@
   Modified: March 12, 2022 (SDR) 
 */
 .black-key {
-  width: 150px;
-  height: 75px;
+  width: 120px;
+  height: 60px;
   margin-left: 2px;
   margin-right: 2px;
   font-size: 200%;
+}
+
+#kbd {
+  max-width: 900px;
+  min-width: 700px;
 }
 
 /* 
@@ -84,11 +89,20 @@
   Modified: March 12, 2022 (SDR) 
 */
 .red-key {
-  width: 75px;
-  height: 75px;
-  margin-left: 2px;
-  margin-right: 2px;
+  width: 60px;
+  height: 60px;
+  margin-left: 0px;
+  margin-right: 20px;
+  margin-bottom: 20px;
   font-size: 200%;
+  z-index: 200;
+  display: inline-block;
+}
+
+.red-key:hover {
+  width: 100px;
+  height: 100px;
+  padding: 20px;
 }
 
 /* 
@@ -133,8 +147,8 @@
   March 12, 2022 (SDR)
 */
 .snc-btn {
-  width: 150px;
-  height: 75px;
+  width: 120px;
+  height: 60px;
   margin-left: 2px;
   margin-right: 2px;
   font-size: 200%;

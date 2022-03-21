@@ -191,6 +191,37 @@
         </div>
       </div>
     </div>
+    <!-- Blog Area -->
+    <div class="container pad-div div-width" id="blogArea">
+      <!-- 
+            Save, cancel, and clear buttons before blog (SDR March 5, 2022) & FDR
+            Modified: March 9, 2022 (SDR)
+          -->
+      <div class="input-group">
+        <a data-role="button" class="btn btn-danger snc-btn" onclick="save()"
+          >Save</a
+        >
+        <a data-role="button" class="btn btn-warning snc-btn" onclick="cancel()"
+          >Cancel</a
+        >
+        <a data-role="button" class="btn btn-info snc-btn" onclick="erase()"
+          >Clear</a
+        >
+      </div>
+
+      <!-- 
+            Blog text box 
+            Modified: March 12, 2022 (SDR)
+          -->
+      <div class="container pad-div">
+        <textarea
+          rows="20"
+          id="textbox"
+          class="use-keyboard blog-size"
+        ></textarea>
+      </div>
+    </div>
+
     <!-- Keyboard -->
     <div class="keyboard-container container pad-div div-width" id="kbd"></div>
 
@@ -232,12 +263,12 @@
     </div> -->
 
     <!-- Blog Area -->
-    <div class="container pad-div div-width" id="blogArea">
-      <!-- 
+    <!-- <div class="container pad-div div-width" id="blogArea"> -->
+    <!-- 
         Save, cancel, and clear buttons before blog (SDR March 5, 2022) & FDR
         Modified: March 9, 2022 (SDR)
       -->
-      <div class="input-group">
+    <!-- <div class="input-group">
         <a data-role="button" class="btn btn-danger snc-btn" onclick="save()"
           >Save</a
         >
@@ -247,35 +278,19 @@
         <a data-role="button" class="btn btn-info snc-btn" onclick="erase()"
           >Clear</a
         >
-      </div>
+      </div> -->
 
-      <!-- 
+    <!-- 
         Blog text box 
         Modified: March 12, 2022 (SDR)
       -->
-      <div class="container pad-div">
+    <!-- <div class="container pad-div">
         <textarea
           rows="20"
           id="textbox"
           class="use-keyboard blog-size"
         ></textarea>
       </div>
-
-      <!-- 
-        Save and cancel buttons after blog (SDR March 5, 2022)
-        Modified: March 9, 2022 (SDR)
-      -->
-      <div class="input-group">
-        <a data-role="button" class="btn btn-danger snc-btn" onclick="save()">
-          Save
-        </a>
-        <a data-role="button" class="btn btn-warning snc-btn" onclick="cancel()"
-          >Cancel</a
-        >
-        <a data-role="button" class="btn btn-info snc-btn" onclick="erase()"
-          >Clear</a
-        >
-      </div>
-    </div>
+    </div> -->
   </body>
 </html>
