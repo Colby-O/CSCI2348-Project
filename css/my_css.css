@@ -77,6 +77,8 @@
   margin-left: 2px;
   margin-right: 2px;
   font-size: 200%;
+  z-index: 200;
+  display: inline-block;
 }
 
 #kbd {
