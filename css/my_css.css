@@ -75,10 +75,10 @@
   Modified: March 12, 2022 (SDR) 
 */
 .black-key {
-  width: 100px;
+  width: 95px;
   height: 50px;
-  margin-top: 25px;
-  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+  margin-bottom: 25px;
   margin-left: 0px !important;
   margin-right: 25px;
   font-size: 1.5em;
@@ -98,8 +98,8 @@
 .red-key {
   width: 50px;
   height: 50px;
-  margin-top: 25px;
-  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+  margin-bottom: 25px;
   margin-left: 0px !important;
   margin-right: 25px;
   font-size: 1.5em;
@@ -122,8 +122,8 @@
   Modified: March 12, 2022 (SDR)
 */
 .word-bank {
-  width: 100px;
-  height: 50px;
+  width: 120px;
+  height: 60px;
   margin-left: 0px !important;
   margin-right: 2px;
   font-size: 1.5em;
@@ -134,8 +134,8 @@
   Modified: March 12, 2022 (SDR)
 */
 .star-btn {
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
   margin-left: 2px;
   margin-right: 2px;
   font-size: 1.5em;
