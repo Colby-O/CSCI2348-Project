@@ -109,13 +109,13 @@
 /*
   This will allow the red keys to temporarily grow in size 
   when hovered over with the cursor.
-*/
+
 .red-key:hover {
   width: 100px;
   height: 100px;
   padding: 25px;
 }
-
+*/
 /* 
   Word Bank Button 
   Modified: March 12, 2022 (SDR)
