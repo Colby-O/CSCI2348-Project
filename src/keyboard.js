@@ -50,7 +50,7 @@ const Keyboard = {
     const fragment = document.createDocumentFragment();
 
     // Keybaord layout
-    const keyLayout = [
+    const keyLayout = [ //Modified by FDR (2022-03-23)
       "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace", "--",
       "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "enter", "--",
       "a", "s", "d", "f", "g", "h", "j", "k", "l", '"', "shift", "--",
@@ -105,7 +105,7 @@ const Keyboard = {
           });
           break;
 
-        case "caps":
+        case "caps": //Added by FDR (2022-03-23)
           // Adds classes to the caps key
           keyElement.classList.add("btn", "btn-primary", "blue-key");
           keyElement.innerHTML = "CAPS";
@@ -184,7 +184,7 @@ const Keyboard = {
         
         case "space":
           // Adds classes + icon to the space key
-          keyElement.classList.add("btn", "btn-primary", "space-key");
+          keyElement.classList.add("btn", "btn-primary", "space-key"); //Modified by FDR (2022-03-23)
           keyElement.innerHTML = "Space";
 
           // Adds the functionaility for the space key
