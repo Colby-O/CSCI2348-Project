@@ -43,63 +43,20 @@ const Keyboard = {
     this.elements.main.appendChild(this.elements.keysContainer);
     $(this.elements.main).appendTo(".keyboard-container");
   },
-  /*Colby O'Keefe (A00428974) + Mo (A00391502) + Sebastian Duque Rivera (A00441528)*/
+  /*Colby O'Keefe (A00428974) + Mo (A00391502) 
+  + Sebastian Duque Rivera (A00441528) + Felipe Duque Rivera (A00446745)*/
   _createKeys() {
     // Create a fragment for the keys
     const fragment = document.createDocumentFragment();
 
     // Keybaord layout
     const keyLayout = [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "0",
-      "shift",
-      "--",
-      "q",
-      "w",
-      "e",
-      "r",
-      "t",
-      "y",
-      "u",
-      "i",
-      "o",
-      "p",
-      "backspace",
-      "--",
-      "a",
-      "s",
-      "d",
-      "f",
-      "g",
-      "h",
-      "j",
-      "k",
-      "l",
-      "enter",
-      '"',
-      "--",
-      "z",
-      "x",
-      "c",
-      "v",
-      "b",
-      "n",
-      "m",
-      "space",
-      ".",
-      "?",
-      ",",
-      "--",
-      "Word",
-      "--",
+      "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace", "--",
+      "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "enter", "--",
+      "a", "s", "d", "f", "g", "h", "j", "k", "l", '"', "shift", "--",
+      "z", "x", "c", "v", "b", "n", "m", ".", ",", "?", "caps", "--",
+      "space", "<",  "[", "-", "+", ";", "/", "--",
+      "Word", "--",
     ];
 
     // Function to set icon for a key given
@@ -128,12 +85,32 @@ const Keyboard = {
         case "--":
           /*line break*/
           break;
+        
+        /*
+        README: Needs to be changed to capitalize only one character
+        */ 
         case "shift":
           // Adds classes + icon to the shift key
           keyElement.classList.add("btn", "btn-primary", "blue-key");
           keyElement.innerHTML = createIcon("bi-arrow-up");
 
           // Adds shift key functionality
+          keyElement.addEventListener("click", () => {
+            this._toggleCaps();
+            keyElement.classList.toggle(
+              "keyboardKey--active",
+              this.properties.capsLock
+            );
+            
+          });
+          break;
+
+        case "caps":
+          // Adds classes to the caps key
+          keyElement.classList.add("btn", "btn-primary", "blue-key");
+          keyElement.innerHTML = "CAPS";
+
+          // Adds caps key functionality
           keyElement.addEventListener("click", () => {
             this._toggleCaps();
             keyElement.classList.toggle(
@@ -192,6 +169,7 @@ const Keyboard = {
             this._triggerEvent("oninput");
           });
           break;
+        
         case "enter":
           // Adds classes + icon to the enter key
           keyElement.classList.add("btn", "btn-primary", "blue-key");
@@ -203,9 +181,10 @@ const Keyboard = {
             this._triggerEvent("oninput");
           });
           break;
+        
         case "space":
           // Adds classes + icon to the space key
-          keyElement.classList.add("btn", "btn-primary", "blue-key");
+          keyElement.classList.add("btn", "btn-primary", "space-key");
           keyElement.innerHTML = "Space";
 
           // Adds the functionaility for the space key
@@ -214,6 +193,7 @@ const Keyboard = {
             this._triggerEvent("oninput");
           });
           break;
+        
         default:
           // Adds classes + icon to a genertic key
           keyElement.classList.add("btn", "btn-danger", "red-key");

@@ -76,7 +76,22 @@
   Modified: March 12, 2022 (SDR) 
 */
 .blue-key {
-  width: 95px;
+  width: 97px;
+  height: 50px;
+  margin-top: 0px !important;
+  margin: 25px;
+  margin-left: 0px !important;
+  font-size: 1.5em;
+  z-index: 200;
+  display: inline-block;
+}
+
+/* 
+  Space key
+  (FDR) 
+*/
+.space-key {
+  width: 397px;
   height: 50px;
   margin-top: 0px !important;
   margin: 25px;
@@ -88,7 +103,7 @@
 
 #kbd {
   max-width: 900px;
-  min-width: 700px;
+  /*min-width: 700px;*/
 }
 
 /* 
