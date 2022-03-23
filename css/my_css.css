@@ -86,6 +86,15 @@
   display: inline-block;
 }
 
+/*
+  This will allow the blue keys to temporarily grow in size 
+  when hovered over with the cursor and shows a color change
+  indication.
+*/
+.blue-key:hover {
+  background-color: green;
+}
+
 /* 
   Space key
   (FDR) 
@@ -123,7 +132,8 @@
 
 /*
   This will allow the red keys to temporarily grow in size 
-  when hovered over with the cursor.
+  when hovered over with the cursor and shows a color change
+  indication.
 */
 .red-key:hover {
   background-color: orange;
