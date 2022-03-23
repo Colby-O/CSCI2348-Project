@@ -130,7 +130,7 @@ const Keyboard = {
           break;
         case "shift":
           // Adds classes + icon to the shift key
-          keyElement.classList.add("btn", "btn-dark", "black-key");
+          keyElement.classList.add("btn", "btn-primary", "blue-key");
           keyElement.innerHTML = createIcon("bi-arrow-up");
 
           // Adds shift key functionality
@@ -151,7 +151,7 @@ const Keyboard = {
           */
           // creates bank button
           let bankBtn = document.createElement("a");
-          bankBtn.classList.add("btn", "btn-secondary", "word-bank");
+          bankBtn.classList.add("btn", "btn-success", "word-bank");
           bankBtn.innerHTML = "Word";
           bankBtn.innerHTML += createIcon("bi bi-piggy-bank");
           bankBtn.setAttribute("data-role", "button");
@@ -170,7 +170,7 @@ const Keyboard = {
 
           // create star button
           let saveBtn = document.createElement("a");
-          saveBtn.classList.add("btn", "btn-secondary", "star-btn");
+          saveBtn.classList.add("btn", "btn-success", "star-btn");
           saveBtn.innerHTML = createIcon("bi bi-star");
           saveBtn.setAttribute("data-role", "button");
 
@@ -180,7 +180,7 @@ const Keyboard = {
 
         case "backspace":
           // Adds classes + icon to the backspace key
-          keyElement.classList.add("btn", "btn-dark", "black-key");
+          keyElement.classList.add("btn", "btn-primary", "blue-key");
           keyElement.innerHTML = createIcon("bi-arrow-left");
 
           // Adds the functionaility for the backspace key
@@ -194,7 +194,7 @@ const Keyboard = {
           break;
         case "enter":
           // Adds classes + icon to the enter key
-          keyElement.classList.add("btn", "btn-dark", "black-key");
+          keyElement.classList.add("btn", "btn-primary", "blue-key");
           keyElement.innerHTML = "Enter";
 
           // Adds the functionaility for the enter key
@@ -205,7 +205,7 @@ const Keyboard = {
           break;
         case "space":
           // Adds classes + icon to the space key
-          keyElement.classList.add("btn", "btn-dark", "black-key");
+          keyElement.classList.add("btn", "btn-primary", "blue-key");
           keyElement.innerHTML = "Space";
 
           // Adds the functionaility for the space key
