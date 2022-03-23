@@ -50,7 +50,7 @@
       <!-- Mohammed Al-Bashiri (A00391502) March 3 2022 -->
       <!-- this div is for the categories names -->
       <div class="row flex-nowrap mb-3 name-style">
-        <span class="col"> Blog Name </span>
+        <span class="col"> Blog </span>
         <span class="col"> Edit </span>
         <span class="col"> Publish </span>
       </div>
@@ -58,23 +58,22 @@
       <!--   
       Mohammed Al-Bashiri (A00391502)  March 3, 2022 
       Modified: March 5, 2022 (SDR - Fixed placeholder & aria-label)
-    -->
+      Remodel: March 23, 2022 (SDR - Changed to number value.)
+      -->
       <!-- this is the container for the text box and the switches -->
       <div class="row flex-nowrap mb-3">
         <!-- Mohammed Al-Bashiri (A00391502) March 2, 2022 -->
-        <!-- this is for the text boxes -->
-        <div
-          class="col btn-group box-width"
-          role="group"
-          aria-label="Textbox one"
-        >
-          <input
-            class="form-control box-width box-text-size use-keyboard keyboard-disable"
+        <!-- this is for the blog numbers -->
+        <div class="col" role="group" aria-label="blog one">
+          <p
+            class="name-style use-keyboard keyboard-disable"
             id="title1"
             type="text"
-            placeholder="&#60;Type Name&#62;"
-            aria-label="First blog name"
-          />
+            readonly
+            aria-label="First blog"
+          >
+            1.
+          </p>
         </div>
 
         <!-- Mohammed Al-Bashiri (A00391502) March 3, 2022 -->
@@ -101,26 +100,26 @@
       </div>
 
       <!--
-      Mohammed Al-Bashiri (A00391502)  March 3, 2022 
-      Modified: March 5, 2022 (SDR - Fixed placeholder & aria-label)
-      Modified: March 12, 2022 (SDR - Added edit switch functionality)
-    -->
+        Mohammed Al-Bashiri (A00391502)  March 3, 2022 
+
+        Modified: March 5, 2022 (SDR - Fixed placeholder & aria-label)
+        Modified: March 12, 2022 (SDR - Added edit switch functionality)
+        Remodel: March 23, 2022 (SDR - Changed to number value.)
+      -->
       <!-- this is the container for the text box and the switches -->
       <div class="row flex-nowrap mb-3">
         <!-- Mohammed Al-Bashiri (A00391502) March 2, 2022 -->
-        <!-- this is for the text boxes -->
-        <div
-          class="col btn-group box-width"
-          role="group"
-          aria-label="Textbox two"
-        >
-          <input
-            class="form-control box-width box-text-size use-keyboard keyboard-disable"
+        <!-- this is for the blog numbers -->
+        <div class="col" role="group" aria-label="blog two">
+          <p
+            class="name-style use-keyboard keyboard-disable"
             id="title2"
             type="text"
-            placeholder="&#60;Type Name&#62;"
-            aria-label="Second blog name"
-          />
+            readonly
+            aria-label="Second blog"
+          >
+            2.
+          </p>
         </div>
 
         <!-- Mohammed Al-Bashiri (A00391502) March 3, 2022 -->
@@ -147,25 +146,24 @@
       </div>
 
       <!--   
-      Mohammed Al-Bashiri (A00391502)  March 3, 2022 
-      Modified: March 5, 2022 (SDR - Fixed placeholder & aria-label)
-    -->
+        Mohammed Al-Bashiri (A00391502)  March 3, 2022 
+        Modified: March 5, 2022 (SDR - Fixed placeholder & aria-label)
+        Remodel: March 23, 2022 (SDR - Changed to number value.)
+      -->
       <!-- this is the container for the text box and the switches -->
       <div class="row flex-nowrap mb-3">
         <!-- Mohammed Al-Bashiri (A00391502) March 2, 2022 -->
-        <!-- this is for the text boxes -->
-        <div
-          class="col btn-group box-width"
-          role="group"
-          aria-label="Textbox three"
-        >
-          <input
-            class="form-control box-width box-text-size use-keyboard keyboard-disable"
+        <!-- this is for the blog numbers -->
+        <div class="col" role="group" aria-label="blog three">
+          <p
+            class="name-style use-keyboard keyboard-disable"
             id="title3"
             type="text"
-            placeholder="&#60;Type Name&#62;"
-            aria-label="Third blog name"
-          />
+            readonly
+            aria-label="Third blog"
+          >
+            3.
+          </p>
         </div>
 
         <!-- Mohammed Al-Bashiri (A00391502) March 3, 2022 -->
@@ -191,28 +189,33 @@
         </div>
       </div>
     </div>
+
     <!-- Blog Area -->
     <div class="container pad-div div-width" id="blogArea">
       <!-- 
-            Save, cancel, and clear buttons before blog (SDR March 5, 2022) & FDR
-            Modified: March 9, 2022 (SDR)
-          -->
+        Save, cancel, and clear buttons before blog (SDR March 5, 2022) & FDR
+        Modified: March 9, 2022 (SDR)
+      -->
       <div class="input-group">
-        <a data-role="button" class="btn btn-danger snc-btn" onclick="save()"
-          >Save</a
+        <a data-role="button" class="btn btn-danger snc-btn" onclick="save()">
+          Save
+        </a>
+        <a
+          data-role="button"
+          class="btn btn-warning snc-btn"
+          onclick="cancel()"
         >
-        <a data-role="button" class="btn btn-warning snc-btn" onclick="cancel()"
-          >Cancel</a
-        >
-        <a data-role="button" class="btn btn-info snc-btn" onclick="erase()"
-          >Clear</a
-        >
+          Cancel
+        </a>
+        <a data-role="button" class="btn btn-info snc-btn" onclick="erase()">
+          Clear
+        </a>
       </div>
 
       <!-- 
-            Blog text box 
-            Modified: March 12, 2022 (SDR)
-          -->
+        Blog text box 
+        Modified: March 12, 2022 (SDR)
+      -->
       <div class="container pad-div">
         <textarea
           rows="20"
