@@ -14,12 +14,12 @@
 /* blog name, edit and publish font and colour*/
 .name-style {
   color: blue;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 /* 
   Mohammed Al-Bashiri March 7, 2022
-  might not need this anymore - SDR
+  might not need this anymore (SDR March 23, 2022)
 /* blog name input text boxes */
 .box-width {
   width: 300px !important;
@@ -28,16 +28,18 @@
 
 /*
   For <type name> font size. (SDR March 12, 2022)
+  might not need this anymore (SDR March 23, 2022)
 */
 .box-text-size {
   padding: 25px;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 /* Mohammed Al-Bashiri March 7, 2022 */
 /* switches */
 .toggle-style {
   margin-left: 0px !important;
+  margin-right: 25px;
   padding-left: 5px !important;
   height: 40px !important;
   width: 300px !important;
@@ -61,11 +63,10 @@
   Sets the size of the text box for the blog list. (SDR March 5, 2022)
 */
 .blog-size {
-  max-width: 900px;
-  min-width: 700px;
-  height: 400px;
+  width: 850px;
+  height: 300px;
   margin-left: 0px !important;
-  font-size: 2em;
+  font-size: 1.5em;
   padding: 10px;
 }
 
@@ -80,7 +81,7 @@
   margin-bottom: 0px !important;
   margin-left: 0px !important;
   margin-right: 25px;
-  font-size: 2em;
+  font-size: 1.5em;
   z-index: 200;
   display: inline-block;
 }
@@ -101,7 +102,7 @@
   margin-bottom: 0px !important;
   margin-left: 0px !important;
   margin-right: 25px;
-  font-size: 2em;
+  font-size: 1.5em;
   z-index: 200;
   display: inline-block;
 }
@@ -121,11 +122,11 @@
   Modified: March 12, 2022 (SDR)
 */
 .word-bank {
-  width: 150px;
-  height: 75px;
-  margin-left: 2px;
+  width: 100px;
+  height: 50px;
+  margin-left: 0px !important;
   margin-right: 2px;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 /* 
@@ -137,7 +138,7 @@
   height: 75px;
   margin-left: 2px;
   margin-right: 2px;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 /* 
@@ -149,7 +150,7 @@
   height: 54px;
   margin-left: 2px;
   margin-right: 2px;
-  font-size: 2em;
+  font-size: 1.5em;
   padding: 10px;
 }
 
@@ -163,5 +164,5 @@
   margin-left: 0px !important;
   margin-right: 25px;
   padding: 10px;
-  font-size: 2em;
+  font-size: 1.5em;
 }
