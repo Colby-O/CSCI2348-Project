@@ -248,16 +248,15 @@ function cancel(req) {
 function erase() {
   // Completely clears the textbox
   //let formate = /^[!@#$%^&()_+-=[]{};':"|,.<>/?]$/;
-
   let text = $("#textbox").val();
   let lastindex = text.lastIndexOf(" ");
-  let lastword = text.substring(0, lastindex);
-  var regEx = new RegExp("[ `!@#$%^&*()_+-=[]{};':\"|,.<>/?~]");
-  if (regEx.test(lastword)) {
-    console.log(lastword);
-  }
-  // if (lastindex === -1) $("#textbox").val("");
-  // else $("#textbox").val(text.substring(0, lastindex));
+  // let lastword = text.substring(lastindex, text.length);
+  // var regEx = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+  // if (regEx.test(lastword)) {
+
+  // }
+  if (lastindex === -1) $("#textbox").val("");
+  else $("#textbox").val(text.substring(0, lastindex));
   $("#textbox").focus();
 }
 

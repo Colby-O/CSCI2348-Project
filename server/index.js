@@ -1,5 +1,5 @@
 /**
- * this code has functions that post and get data 
+ * this code has functions that post and get data
  * form the server from the server side
  *
  * Mohammed Al-Bashiri (A00391502)
@@ -26,7 +26,11 @@ server.listen(port, function () {
 // ---------------------------------------------------------------------------------
 
 // blog array
-const blog = [{title: "", content: ""}, {title: "", content: ""}, {title: "", content: ""}];
+const blog = [
+  { title: "", content: "" },
+  { title: "", content: "" },
+  { title: "", content: "" },
+];
 
 // Upon receiving a post at this url execute callback function
 server.post("/saveBlog", function (req, res) {
@@ -35,11 +39,11 @@ server.post("/saveBlog", function (req, res) {
   blog[req.body.blogIndex - 1].title = req.body.blogTitle;
   blog[req.body.blogIndex - 1].content = req.body.blogContent;
 
-  return res.status(200)
+  return res.status(200);
 });
 
 // Upon receiving a post at this url execute callback function
 server.get("/getBlog", function (req, res) {
-  console.log(req.query.blogIndex)
+  console.log(req.query.blogIndex);
   return res.status(200).send(blog[req.query.blogIndex - 1]);
 });
