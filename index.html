@@ -47,7 +47,7 @@
   <body onload="setup()">
     <!-- Colby O'Keefe (A00428974) added some style-->
     <div class="container div-width" id="blog-option-container">
-      <!-- Mohammed Al-Bashiri (A00391502) March 3 2022 -->
+      <!-- Created: Mohammed Al-Bashiri March 3 2022 -->
       <!-- this div is for the categories names -->
       <div class="row flex-nowrap mb-3 name-style">
         <span class="col"> Blog </span>
@@ -56,13 +56,13 @@
       </div>
 
       <!--   
-      Mohammed Al-Bashiri (A00391502)  March 3, 2022 
+      Created: Mohammed Al-Bashiri  March 3, 2022 
       Modified: March 5, 2022 (SDR - Fixed placeholder & aria-label)
       Remodel: March 23, 2022 (SDR - Changed to number value.)
       -->
       <!-- this is the container for the text box and the switches -->
       <div class="row flex-nowrap mb-3">
-        <!-- Mohammed Al-Bashiri (A00391502) March 2, 2022 -->
+        <!-- Created: Mohammed Al-Bashiri March 2, 2022 -->
         <!-- this is for the blog numbers -->
         <div class="col" role="group" aria-label="blog one">
           <p
@@ -76,7 +76,7 @@
           </p>
         </div>
 
-        <!-- Mohammed Al-Bashiri (A00391502) March 3, 2022 -->
+        <!-- Created: Mohammed Al-Bashiri March 3, 2022 -->
         <!-- this is for the switch toggles -->
         <!-- Rounded switch -->
         <div class="form-check form-switch col toggle-style">
@@ -100,7 +100,7 @@
       </div>
 
       <!--
-        Mohammed Al-Bashiri (A00391502)  March 3, 2022 
+        Created: Mohammed Al-Bashiri March 3, 2022 
 
         Modified: March 5, 2022 (SDR - Fixed placeholder & aria-label)
         Modified: March 12, 2022 (SDR - Added edit switch functionality)
@@ -122,7 +122,7 @@
           </p>
         </div>
 
-        <!-- Mohammed Al-Bashiri (A00391502) March 3, 2022 -->
+        <!-- Created: Mohammed Al-Bashiri March 3, 2022 -->
         <!-- this is for the switch toggles -->
         <!-- Rounded switch -->
         <div class="form-check form-switch col toggle-style">
@@ -146,13 +146,13 @@
       </div>
 
       <!--   
-        Mohammed Al-Bashiri (A00391502)  March 3, 2022 
+        Created: Mohammed Al-Bashiri  March 3, 2022 
         Modified: March 5, 2022 (SDR - Fixed placeholder & aria-label)
         Remodel: March 23, 2022 (SDR - Changed to number value.)
       -->
       <!-- this is the container for the text box and the switches -->
       <div class="row flex-nowrap mb-3">
-        <!-- Mohammed Al-Bashiri (A00391502) March 2, 2022 -->
+        <!-- Mohammed Al-Bashiri March 2, 2022 -->
         <!-- this is for the blog numbers -->
         <div class="col" role="group" aria-label="blog three">
           <p
@@ -166,7 +166,7 @@
           </p>
         </div>
 
-        <!-- Mohammed Al-Bashiri (A00391502) March 3, 2022 -->
+        <!-- Created: Mohammed Al-Bashiri March 3, 2022 -->
         <!-- this is for the switch toggles -->
         <!-- Rounded switch -->
         <div class="form-check form-switch col toggle-style">
@@ -197,14 +197,10 @@
         Modified: March 9, 2022 (SDR)
       -->
       <div class="input-group">
-        <a data-role="button" class="btn btn-danger snc-btn" onclick="save()">
+        <a data-role="button" class="btn btn-danger snc-btn" id="save">
           Save
         </a>
-        <a
-          data-role="button"
-          class="btn btn-warning snc-btn"
-          onclick="cancel()"
-        >
+        <a data-role="button" class="btn btn-warning snc-btn" id="cancel">
           Cancel
         </a>
         <a data-role="button" class="btn btn-info snc-btn" onclick="erase()">
@@ -215,11 +211,26 @@
       <!-- 
         Blog text box 
         Modified: March 12, 2022 (SDR)
+        Modified: March 26, 2022 Mohammed Al-Bashiri (added different textboxes)
       -->
       <div class="container pad-div">
         <textarea
           rows="20"
-          id="textbox"
+          id="textbox1"
+          class="use-keyboard blog-size"
+        ></textarea>
+      </div>
+      <div class="container pad-div">
+        <textarea
+          rows="20"
+          id="textbox2"
+          class="use-keyboard blog-size"
+        ></textarea>
+      </div>
+      <div class="container pad-div">
+        <textarea
+          rows="20"
+          id="textbox3"
           class="use-keyboard blog-size"
         ></textarea>
       </div>

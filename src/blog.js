@@ -146,6 +146,44 @@ function setup() {
     if (!$("#edit3").is(":checked"))
       $("#publish3").prop("checked", !$("#publish3").is(":checked"));
   });
+
+  /**
+   * this code has functions that handles
+   * post and get data form the server
+   *
+   * Created: Mohammed Al-Bashiri March 25, 2022
+   * Modified: Mohammed Al-Bashiri March 26, 2022
+   */
+
+  const SERVER_URL = "http://140.184.230.209:3033";
+
+  // Saves to the server when clicking the save button
+  // using Post functions
+  $("#save").on("click", function () {
+    if ($("#edit1").is(":checked")) {
+      let x = { name: $("#textbox1").val() };
+      $.post(SERVER_URL + "/myPost1", x, callback1).fail(errorCallback1);
+    } else if ($("#edit2").is(":checked")) {
+      let x = { name: $("#textbox2").val() };
+
+      $.post(SERVER_URL + "/myPost2", x, callback1).fail(errorCallback1);
+    } else if ($("#edit3").is(":checked")) {
+      let x = { name: $("#textbox3").val() };
+      $.post(SERVER_URL + "/myPost3", x, callback1).fail(errorCallback1);
+    }
+  });
+
+  /**
+   * cancel button deletes new unsaves data and get
+   * saved data from the server and refresh the page
+   */
+  $("#cancel").on("click", function () {
+    $.get(SERVER_URL + "/myGet", callback2).fail(errorCallback1);
+    window.location.href = window.location.href;
+  });
+
+  // get functions gets data from the server after refreshing the page
+  $.get(SERVER_URL + "/myGet", callback2).fail(errorCallback1);
 }
 
 /**
@@ -175,31 +213,31 @@ function getKbd() {
  *
  * SDR March 6, 2022 + Colby O'Keefe (A00428974)
  */
-function save() {
-  if (Storage !== void 0) {
-    // Saves the blogs content
-    localStorage.setItem(currentBlogID, $("#textbox").val());
-    // Saves the blogs title
-    localStorage.setItem(
-      currentBlogID.replace(/blog/i, "title"),
-      $("#" + currentBlogID.replace(/blog/i, "title")).val()
-    );
-  } else console.log("Browser doesn't support Web Storage...");
-}
+// function save() {
+//   if (Storage !== void 0) {
+//     // Saves the blogs content
+//     localStorage.setItem(currentBlogID, $("#textbox").val());
+//     // Saves the blogs title
+//     localStorage.setItem(
+//       currentBlogID.replace(/blog/i, "title"),
+//       $("#" + currentBlogID.replace(/blog/i, "title")).val()
+//     );
+//   } else console.log("Browser doesn't support Web Storage...");
+// }
 
 /*
   Cancels the current blog edit
 
   Author(s): Colby O'Keefe(A00428974)
 */
-function cancel() {
-  // Restores saved blog
-  $("#textbox").val(window.localStorage.getItem(currentBlogID));
-  // Updates keybaord
-  $("#textbox").focus();
-  // Restores saved blogs title
-  updateBlogTitles();
-}
+// function cancel() {
+//   // Restores saved blog
+//   $("#textbox").val(window.localStorage.getItem(currentBlogID));
+//   // Updates keybaord
+//   $("#textbox").focus();
+//   // Restores saved blogs title
+//   updateBlogTitles();
+// }
 
 /*
   Creates the clear button that erases the latest word in the current blog edit.
@@ -210,4 +248,26 @@ function erase() {
   // Completely clears the textbox
   $("#textbox").val("");
   $("#textbox").focus();
+}
+
+/**
+ * console log callback functions, errors and
+ * callback function to get data from the server
+ *
+ * Created: Mohammed Al-Bashiri March 25, 2022
+ * Modified: Mohammed Al-Bashiri March 26, 2022
+ */
+// console log the callback1
+function callback1(returnedData) {
+  console.log(returnedData);
+}
+// console log errors
+function errorCallback1(err) {
+  console.log(err.responseText);
+}
+// callback fumctions to retrieve data from the server
+function callback2(res) {
+  $("#textbox1").val(res[0]);
+  $("#textbox2").val(res[1]);
+  $("#textbox3").val(res[2]);
 }
