@@ -157,19 +157,25 @@ function setup() {
 
   const SERVER_URL = "http://140.184.230.209:3033";
 
+  // when clicking save button the user is asked twice if he/she want to save
   // Saves to the server when clicking the save button
   // using Post functions
   $("#save").on("click", function () {
-    if ($("#edit1").is(":checked")) {
-      let x = { name: $("#textbox1").val() };
-      $.post(SERVER_URL + "/myPost1", x, callback1).fail(errorCallback1);
-    } else if ($("#edit2").is(":checked")) {
-      let x = { name: $("#textbox2").val() };
-
-      $.post(SERVER_URL + "/myPost2", x, callback1).fail(errorCallback1);
-    } else if ($("#edit3").is(":checked")) {
-      let x = { name: $("#textbox3").val() };
-      $.post(SERVER_URL + "/myPost3", x, callback1).fail(errorCallback1);
+    let text = "Do you want to save?";
+    if (confirm(text) == true) {
+      let text = "Are you sure you want to save?";
+      if (confirm(text) == true) {
+        if ($("#edit1").is(":checked")) {
+          let x = { name: $("#textbox1").val() };
+          $.post(SERVER_URL + "/myPost1", x, callback1).fail(errorCallback1);
+        } else if ($("#edit2").is(":checked")) {
+          let x = { name: $("#textbox2").val() };
+          $.post(SERVER_URL + "/myPost2", x, callback1).fail(errorCallback1);
+        } else if ($("#edit3").is(":checked")) {
+          let x = { name: $("#textbox3").val() };
+          $.post(SERVER_URL + "/myPost3", x, callback1).fail(errorCallback1);
+        }
+      }
     }
   });
 
@@ -178,8 +184,14 @@ function setup() {
    * saved data from the server and refresh the page
    */
   $("#cancel").on("click", function () {
-    $.get(SERVER_URL + "/myGet", callback2).fail(errorCallback1);
-    window.location.href = window.location.href;
+    let text = "Do you want to Cancel?";
+    if (confirm(text) == true) {
+      let text = "Are you sure you want to Cancel?";
+      if (confirm(text) == true) {
+        $.get(SERVER_URL + "/myGet", callback2).fail(errorCallback1);
+        window.location.href = window.location.href;
+      }
+    }
   });
 
   // get functions gets data from the server after refreshing the page
