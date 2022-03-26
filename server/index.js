@@ -26,38 +26,20 @@ server.listen(port, function () {
 // ---------------------------------------------------------------------------------
 
 // blog array
-const blog = ["", "", ""];
+const blog = [{title: "", content: ""}, {title: "", content: ""}, {title: "", content: ""}];
 
 // Upon receiving a post at this url execute callback function
-server.post("/myPost1", function (req, res) {
-  console.log("name:" + req.body.name);
+server.post("/saveBlog", function (req, res) {
+  console.log("name:" + req.body.blogContent);
 
-  blog[0] = req.body.name;
+  blog[req.body.blogIndex - 1].title = req.body.blogTitle;
+  blog[req.body.blogIndex - 1].content = req.body.blogContent;
 
-  return res.status(200).send(blog[0]);
+  return res.status(200)
 });
 
 // Upon receiving a post at this url execute callback function
-server.post("/myPost2", function (req, res) {
-  console.log("name:" + req.body.name);
-
-  blog[1] = req.body.name;
-
-  return res.status(200).send(blog[1]);
-});
-
-// Upon receiving a post at this url execute callback function
-server.post("/myPost3", function (req, res) {
-  console.log("name:" + req.body.name);
-
-  blog[2] = req.body.name;
-
-  return res.status(200).send(blog[2]);
-});
-
-// Upon receiving a post at this url execute callback function
-server.get("/myGet", function (req, res) {
-  console.log(req.url);
-
-  return res.status(200).send(blog);
+server.get("/getBlog", function (req, res) {
+  console.log(req.query.blogIndex)
+  return res.status(200).send(blog[req.query.blogIndex - 1]);
 });
