@@ -11,7 +11,8 @@
 */
 
 // Server URL
-const SERVER_URL = "http://127.0.0.1:3033";
+//const SERVER_URL = "http://127.0.0.1:3033";
+const SERVER_URL = "http://140.184.230.209:3033";
 
 // Stores last blog ID selected
 let currentBlogID = null;
@@ -78,7 +79,7 @@ function setup() {
     currentBlogID = "blog1";
 
     // Gets saved value from local storage if its supported by the browser
-    $.get(SERVER_URL + "/getBlog", {"blogIndex": 1}).done(setBlog); 
+    $.get(SERVER_URL + "/getBlog", { blogIndex: 1 }).done(setBlog);
 
     // focus the blog textarea so the keyboard will update
     $("#textbox").focus((e) => {
@@ -99,7 +100,7 @@ function setup() {
 
     // Gets saved value from local storage if its supported by the browser
     currentBlogID = "blog2";
-    $.get(SERVER_URL + "/getBlog", {"blogIndex": 2}).done(setBlog); 
+    $.get(SERVER_URL + "/getBlog", { blogIndex: 2 }).done(setBlog);
 
     // focus the blog textarea so the keybaord will update
     $("#textbox").focus();
@@ -120,7 +121,7 @@ function setup() {
     currentBlogID = "blog3";
 
     // Gets saved value from local storage if its supported by the browser
-    $.get(SERVER_URL + "/getBlog", {"blogIndex": 3}).done(setBlog); 
+    $.get(SERVER_URL + "/getBlog", { blogIndex: 3 }).done(setBlog);
 
     // focus the blog textarea so the keybaord will update
     $("#textbox").focus();
@@ -200,52 +201,65 @@ function getKbd() {
 
 function setBlog(req) {
   console.log(req);
-   $("#textbox").val(req.content);
-   // Updates keybaord
-   $("#textbox").focus();
+  $("#textbox").val(req.content);
+  // Updates keybaord
+  $("#textbox").focus();
 }
 
 /**
  * This function saves whatever is in the textbox to local storage.
  *
  * SDR March 6, 2022 + Colby O'Keefe (A00428974)
+ * Created: Mohammed Al-Bashiri March 25, 2022
+ * Modified: Colby O'Keefe(A00428974)
  */
- function save() {
-    const packet = {
-      "blogIndex": parseInt(currentBlogID.replace(/blog/i, "")),
-      "blogContent": $("#textbox").val(),
-      "blogTitle": $("#" + currentBlogID.replace(/blog/i, "title")).val()
-    }
-    
-   $.post(SERVER_URL + "/saveBlog", packet);
- }
+function save() {
+  const packet = {
+    blogIndex: parseInt(currentBlogID.replace(/blog/i, "")),
+    blogContent: $("#textbox").val(),
+    blogTitle: $("#" + currentBlogID.replace(/blog/i, "title")).val(),
+  };
+
+  $.post(SERVER_URL + "/saveBlog", packet);
+}
 
 /*
   Cancels the current blog edit
-
-  Author(s): Colby O'Keefe(A00428974)
+  Created: Mohammed Al-Bashiri March 25, 2022
+  Modified: Colby O'Keefe(A00428974)
 */
- function cancel(req) {
-   let text = "Do you want to Cancel?";
+function cancel(req) {
+  let text = "Do you want to Cancel?";
+  if (confirm(text) == true) {
+    let text = "Are you sure you want to Cancel?";
     if (confirm(text) == true) {
-      let text = "Are you sure you want to Cancel?";
-      if (confirm(text) == true) {
-       $.get(SERVER_URL + "/getBlog", {"blogIndex": parseInt(currentBlogID.replace(/blog/i, ""))}).done(setBlog); 
-      }
-   }
- }
+      edit1.checked = edit2.checked = edit3.checked = false;
+      getKbd();
+    }
+  }
+}
 
 /*
   Creates the clear button that erases the latest word in the current blog edit.
 
   Author(s): Felipe Duque Rivera (A00446745)
+  Modfified: March 26, 2022 Colby & Mohammed
 */
 function erase() {
   // Completely clears the textbox
-  $("#textbox").val("");
+  //let formate = /^[!@#$%^&()_+-=[]{};':"|,.<>/?]$/;
+
+  let text = $("#textbox").val();
+  let lastindex = text.lastIndexOf(" ");
+  let lastword = text.substring(0, lastindex);
+  var regEx = new RegExp("[ `!@#$%^&*()_+-=[]{};':\"|,.<>/?~]");
+  if (regEx.test(lastword)) {
+    console.log(lastword);
+  }
+  // if (lastindex === -1) $("#textbox").val("");
+  // else $("#textbox").val(text.substring(0, lastindex));
   $("#textbox").focus();
 }
-
 
 /**
  * console log callback functions, errors and
