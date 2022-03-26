@@ -1,0 +1,18 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "A cool blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./index.js",
+    "start": "sh -c 'while [ 1 -eq 1 ]; do node ./index.js; done' &"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
