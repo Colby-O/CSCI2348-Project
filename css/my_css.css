@@ -115,6 +115,13 @@
   display: inline-block;
 }
 
+.space-key:hover {
+  background-color: green;
+  transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+}
+
 #kbd {
   max-width: 900px;
   /*min-width: 700px;*/
