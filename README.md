@@ -11,3 +11,4 @@
 6. Add blinking line to tell you what line you are currently editing
    (currently disappears after you start typing).
 7. Allow editing of previous words. Currently when you select where you want to edit, it adds that change to the last word or space you typed, instead of where you wanted to edit.
+8. TEST 

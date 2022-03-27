@@ -12,7 +12,7 @@
 
 // Server URL
 //const SERVER_URL = "http://127.0.0.1:3033";
-const SERVER_URL = "http://140.184.230.209:3033";
+const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
 
 // Stores last blog ID selected
 let currentBlogID = null;
