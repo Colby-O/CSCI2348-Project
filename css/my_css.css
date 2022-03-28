@@ -10,6 +10,13 @@
   Current Phase: 1 , Date created: March 3, 2022.
 */
 
+/* Colby O'Keefe (A00428974) */
+body {
+  background-image: url(../images/background.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
 /* Mohammed Al-Bashiri March 7, 2022 */
 /* blog name, edit and publish font and colour*/
 .name-style {
