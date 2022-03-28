@@ -20,7 +20,7 @@ body {
 /* Mohammed Al-Bashiri March 7, 2022 */
 /* blog name, edit and publish font and colour*/
 .name-style {
-  color: royalblue;
+  color: rgb(111, 209, 255);
   font-size: 1.5em;
 }
 
@@ -218,7 +218,7 @@ body {
 */
 .swal-modal {
   background-color: royalblue;
-  border: 3px solid white;
+  border: 3px solid rgba(255, 0, 0, 0.527);
 }
 
 /*
@@ -235,4 +235,12 @@ body {
 */
 .swal-title {
   color: white;
+}
+
+/*
+  For the position of the buttons.
+  Created: March 28, 2022 (SDR + FDR)
+*/
+.swal-buttons {
+  position: center !important;
 }
