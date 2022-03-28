@@ -29,6 +29,8 @@ let title1 = null;
 let title2 = null;
 let title3 = null;
 
+let checkedContainer = null;
+
 /*
   Displays the saved blog titles
 
@@ -57,6 +59,7 @@ function setup() {
   title1 = $("#title1").get(0);
   title2 = $("#title2").get(0);
   title3 = $("#title3").get(0);
+  checkedContainer = $("#blog-option-container").get(0);
 
   // Sets the save blog titles
   updateBlogTitles();
@@ -191,12 +194,16 @@ function getKbd() {
   blog.style.visibility = keyboard.style.visibility = isBlogVisable
     ? "visible"
     : "hidden";
-  edit1.style.visibility =
-    edit1.checked || allBlogsUnchecked ? "visible" : "hidden";
-  edit2.style.visibility =
-    edit2.checked || allBlogsUnchecked ? "visible" : "hidden";
-  edit3.style.visibility =
-    edit3.checked || allBlogsUnchecked ? "visible" : "hidden";
+
+  checkedContainer.style.display = allBlogsUnchecked ? "block" : "none";
+  // edit1.style.visibility =
+  //   edit1.checked || allBlogsUnchecked ? "visible" : "hidden";
+
+  // edit2.style.visibility =
+  //   edit2.checked || allBlogsUnchecked ? "visible" : "hidden";
+
+  // edit3.style.visibility =
+  //   edit3.checked || allBlogsUnchecked ? "visible" : "hidden";
 }
 
 function setBlog(req) {
@@ -214,13 +221,31 @@ function setBlog(req) {
  * Modified: Colby O'Keefe(A00428974)
  */
 function save() {
-  const packet = {
-    blogIndex: parseInt(currentBlogID.replace(/blog/i, "")),
-    blogContent: $("#textbox").val(),
-    blogTitle: $("#" + currentBlogID.replace(/blog/i, "title")).val(),
-  };
+  swal({
+    title: "Are you sure you want to save?",
+    text: "Once you save, you will not be able to go back!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willSave) => {
+    if (willSave) {
+      swal("ARE YOU SURE?!", {
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((confirmSave) => {
+        const packet = {
+          blogIndex: parseInt(currentBlogID.replace(/blog/i, "")),
+          blogContent: $("#textbox").val(),
+          blogTitle: $("#" + currentBlogID.replace(/blog/i, "title")).val(),
+        };
 
-  $.post(SERVER_URL + "/saveBlog", packet);
+        $.post(SERVER_URL + "/saveBlog", packet);
+      });
+    } else {
+      swal("No changes were saved.");
+    }
+  });
 }
 
 /*
@@ -230,14 +255,6 @@ function save() {
   Modified: March 28, 2022 (SDR + FDR)
 */
 function cancel(req) {
-  // let text = "Do you want to Cancel?";
-  // if (confirm(text) == true) {
-  //   let text = "Are you sure you want to Cancel?";
-  //   if (confirm(text) == true) {
-  //     edit1.checked = edit2.checked = edit3.checked = false;
-  //     getKbd();
-  //   }
-  // }
   swal({
     title: "Are you sure you want to cancel?",
     text: "Once you cancel, you will not be able to go back!",
@@ -255,7 +272,7 @@ function cancel(req) {
         getKbd();
       });
     } else {
-      swal("Your changes remained.");
+      swal("No changes were made.");
     }
   });
 }

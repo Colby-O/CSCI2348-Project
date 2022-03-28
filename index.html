@@ -198,10 +198,20 @@
         Modified: March 9, 2022 (SDR)
       -->
       <div class="input-group">
-        <a data-role="button" class="btn btn-danger snc-btn" id="save" onclick="save()">
+        <a
+          data-role="button"
+          class="btn btn-danger snc-btn"
+          id="save"
+          onclick="save()"
+        >
           Save
         </a>
-        <a data-role="button" class="btn btn-warning snc-btn" id="cancel" onclick="cancel()">
+        <a
+          data-role="button"
+          class="btn btn-warning snc-btn"
+          id="cancel"
+          onclick="cancel()"
+        >
           Cancel
         </a>
         <a data-role="button" class="btn btn-info snc-btn" onclick="erase()">
@@ -220,12 +230,13 @@
           id="textbox"
           class="use-keyboard blog-size"
         ></textarea>
-      </div>
+
+        <!-- Keyboard -->
+        <div
+          class="keyboard-container container pad-div div-width"
+          id="kbd"
+        ></div>
       </div>
     </div>
-
-    <!-- Keyboard -->
-    <div class="keyboard-container container pad-div div-width" id="kbd"></div>
-
   </body>
 </html>

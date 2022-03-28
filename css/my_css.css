@@ -55,9 +55,9 @@ body {
 /*
   For the width of a <div> (SDR, March 16, 2022)
 */
-.div-width {
+/* .div-width {
   width: 900px;
-}
+} */
 
 /*
   This will quickly pad around <div>'s for spacing. (SDR March 9, 2022)
@@ -129,10 +129,10 @@ body {
   -moz-transform: scale(1.1, 1.1);
 }
 
-#kbd {
+/* #kbd {
   max-width: 900px;
-  /*min-width: 700px;*/
-}
+  min-width: 700px;
+} */
 
 /* 
   Red keys
