@@ -227,16 +227,37 @@ function save() {
   Cancels the current blog edit
   Created: Mohammed Al-Bashiri March 25, 2022
   Modified: Colby O'Keefe(A00428974)
+  Modified: March 28, 2022 (SDR + FDR)
 */
 function cancel(req) {
-  let text = "Do you want to Cancel?";
-  if (confirm(text) == true) {
-    let text = "Are you sure you want to Cancel?";
-    if (confirm(text) == true) {
-      edit1.checked = edit2.checked = edit3.checked = false;
-      getKbd();
+  // let text = "Do you want to Cancel?";
+  // if (confirm(text) == true) {
+  //   let text = "Are you sure you want to Cancel?";
+  //   if (confirm(text) == true) {
+  //     edit1.checked = edit2.checked = edit3.checked = false;
+  //     getKbd();
+  //   }
+  // }
+  swal({
+    title: "Are you sure you want to cancel?",
+    text: "Once you cancel, you will not be able to go back!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willCancel) => {
+    if (willCancel) {
+      swal("ARE YOU SURE?!", {
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((confirmCancel) => {
+        edit1.checked = edit2.checked = edit3.checked = false;
+        getKbd();
+      });
+    } else {
+      swal("Your changes remained.");
     }
-  }
+  });
 }
 
 /*

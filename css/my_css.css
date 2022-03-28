@@ -20,7 +20,7 @@ body {
 /* Mohammed Al-Bashiri March 7, 2022 */
 /* blog name, edit and publish font and colour*/
 .name-style {
-  color: blue;
+  color: royalblue;
   font-size: 1.5em;
 }
 
@@ -210,4 +210,29 @@ body {
   margin-right: 25px;
   padding: 10px;
   font-size: 1.5em;
+}
+
+/*
+  The moddelling for modal notification.
+  Created: March 28, 2022 (SDR + FDR)
+*/
+.swal-modal {
+  background-color: royalblue;
+  border: 3px solid white;
+}
+
+/*
+  For the text font colour.
+  Created: March 28, 2022 (SDR + FDR)
+*/
+.swal-text {
+  color: white;
+}
+
+/*
+  For the title font colour.
+  Created: March 28, 2022 (SDR + FDR)
+*/
+.swal-title {
+  color: white;
 }
