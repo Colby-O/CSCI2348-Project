@@ -97,7 +97,7 @@ const Keyboard = {
 
           // Adds shift key functionality
           keyElement.addEventListener("click", () => {
-            this.shiftPressed = true;
+            this.shiftPressed = !this.shiftPressed;
             this._toggleCaps();
             keyElement.classList.toggle(
               "keyboardKey--active",
@@ -114,7 +114,7 @@ const Keyboard = {
           // Adds caps key functionality
           keyElement.addEventListener("click", () => {
             if (this.shiftPressed) {
-              this.shiftPressed = false;
+              this.shiftPressed = !this.shiftPressed;
               return;  
             }
 
@@ -175,7 +175,7 @@ const Keyboard = {
             this._triggerEvent("oninput");
 
             if (this.shiftPressed) {
-              this.shiftPressed = false;
+              this.shiftPressed = !this.shiftPressed;
               this._toggleCaps();
               keyElement.classList.toggle(
                 "keyboardKey--active",
@@ -196,7 +196,7 @@ const Keyboard = {
             this._triggerEvent("oninput");
 
             if (this.shiftPressed) {
-              this.shiftPressed = false;
+              this.shiftPressed = !this.shiftPressed;
               this._toggleCaps();
               keyElement.classList.toggle(
                 "keyboardKey--active",
@@ -217,7 +217,7 @@ const Keyboard = {
             this._triggerEvent("oninput");
 
             if (this.shiftPressed) {
-              this.shiftPressed = false;
+              this.shiftPressed = !this.shiftPressed;
               this._toggleCaps();
               keyElement.classList.toggle(
                 "keyboardKey--active",
