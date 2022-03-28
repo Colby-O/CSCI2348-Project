@@ -5,8 +5,8 @@
 1. Add indicator for what blog we are editing,
    since the blogs, edits, and publish are supposed to disappear.
 2. Remove opening screen when editing blogs.
-3. Fix Cancel button (currently an Undo button) _Depends on what it is supposed to do_
-~~4. Change shift key so it capitalizes ONE character
+3. Fix Cancel button (currently an Undo button) _Depends on what it is supposed to do_ 
+4. ~~Change shift key so it capitalizes ONE character~~
 5. Add special characters after capitalizing
 6. Add blinking line to tell you what line you are currently editing
    (currently disappears after you start typing).
