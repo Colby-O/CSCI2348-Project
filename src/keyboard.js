@@ -51,12 +51,12 @@ const Keyboard = {
     const fragment = document.createDocumentFragment();
 
     // Keybaord layout
-    const keyLayout = [ //Modified by FDR (2022-03-23)
+    const keyLayout = [ //Modified by FDR (2022-03-28)
       "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace", "--",
       "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "enter", "--",
       "a", "s", "d", "f", "g", "h", "j", "k", "l", '"', "shift", "--",
-      "z", "x", "c", "v", "b", "n", "m", ".", ",", "?", "caps", "--",
-      "space", "<",  "[", "-", "+", ";", "/", "--",
+      "z", "x", "c", "v", "b", "n", "m", ",", ".", "?", "caps", "--",
+      "space", "[",  "]", ";", ":", "/", "_", "--",
       "Word", "--",
     ];
 
@@ -134,7 +134,7 @@ const Keyboard = {
           */
           // creates bank button
           let bankBtn = document.createElement("a");
-          bankBtn.classList.add("btn", "btn-success", "word-bank");
+          bankBtn.classList.add("btn", "btn-primary", "word-bank");
           bankBtn.innerHTML = "Word";
           bankBtn.innerHTML += createIcon("bi bi-piggy-bank");
           bankBtn.setAttribute("data-role", "button");
@@ -153,7 +153,7 @@ const Keyboard = {
 
           // create star button
           let saveBtn = document.createElement("a");
-          saveBtn.classList.add("btn", "btn-success", "star-btn");
+          saveBtn.classList.add("btn", "btn-primary", "star-btn");
           saveBtn.innerHTML = createIcon("bi bi-star");
           saveBtn.setAttribute("data-role", "button");
 
@@ -286,7 +286,11 @@ const Keyboard = {
         if (key.textContent.length > 1) continue;
         if (/[0-9!@#$%^&*()]/.test(key.textContent)) {
           key.textContent = this._swapDigitsAndSpecial(key.textContent);
-        } else {
+        } 
+        /*else if (/[;",.?:'<>/]/.test(key.textContent)) {
+          key.textContent = this._swapDigitsAndSpecial(key.textContent);
+        }*/
+        else {
           // Swap the caps on the letter in the innerHTML
           key.textContent = this.properties.capsLock
             ? key.textContent.toUpperCase()
@@ -298,7 +302,9 @@ const Keyboard = {
   /*Colby O'Keefe (A00428974)*/
   _swapDigitsAndSpecial(char) {
     let special = [')', '!', '@', '#', '$', '%', '^', '&', '*', '('];
+    let special2 = [':', "'", '<', '>', '/'];
     if (/[0-9]/.test(char)) return special[parseInt(char)];
+    //else if(/[;",.?]/.test(char)) return special2[parseInt(char)];
     else return (special.findIndex((e) => {return e == char})).toString();
   },
   /*Colby O'Keefe (A00428974)*/
