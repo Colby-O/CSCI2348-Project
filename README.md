@@ -16,7 +16,7 @@
 [C-05] A full keyboard shall be implemented meaning !@#$%^&\*()-\_=+;:'"<>,.? and all the digits and all the uppercase and lowercase letters will be included.
 ~[C-06] Each key will expand to 2 times its dimensions when hovered.~
 ~[C-07] The keyboard shall initially display lowercase keys.~
-[C-08] A space will automatically be inserted after a word.
+[C-08] A space will automatically be inserted after a word in the wordbank.
 ~[C-09] A shift key shall be present.~
 [C-10] When the shift key is pressed, the whole keyboard will change to uppercase letters.
 [C-11] Numeric and symbol keys may be organized so they are useable in one of the two uppercase or lowercase modes.
