@@ -221,13 +221,31 @@ function setBlog(req) {
  * Modified: Colby O'Keefe(A00428974)
  */
 function save() {
-  const packet = {
-    blogIndex: parseInt(currentBlogID.replace(/blog/i, "")),
-    blogContent: $("#textbox").val(),
-    blogTitle: $("#" + currentBlogID.replace(/blog/i, "title")).val(),
-  };
+  swal({
+    title: "Are you sure you want to save?",
+    text: "Once you save, you will not be able to go back!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willSave) => {
+    if (willSave) {
+      swal("ARE YOU SURE?!", {
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((confirmSave) => {
+        const packet = {
+          blogIndex: parseInt(currentBlogID.replace(/blog/i, "")),
+          blogContent: $("#textbox").val(),
+          blogTitle: $("#" + currentBlogID.replace(/blog/i, "title")).val(),
+        };
 
-  $.post(SERVER_URL + "/saveBlog", packet);
+        $.post(SERVER_URL + "/saveBlog", packet);
+      });
+    } else {
+      swal("No changes were saved.");
+    }
+  });
 }
 
 /*
@@ -254,7 +272,7 @@ function cancel(req) {
         getKbd();
       });
     } else {
-      swal("Your changes remained.");
+      swal("No changes were made.");
     }
   });
 }
