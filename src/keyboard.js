@@ -21,6 +21,7 @@ const Keyboard = {
   properties: {
     values: "",
     capsLock: false,
+    shiftPressed: false
   },
   /*Colby O'Keefe (A00428974)*/
   init() {
@@ -96,12 +97,12 @@ const Keyboard = {
 
           // Adds shift key functionality
           keyElement.addEventListener("click", () => {
+            this.shiftPressed = true;
             this._toggleCaps();
             keyElement.classList.toggle(
               "keyboardKey--active",
               this.properties.capsLock
             );
-            
           });
           break;
 
@@ -112,6 +113,11 @@ const Keyboard = {
 
           // Adds caps key functionality
           keyElement.addEventListener("click", () => {
+            if (this.shiftPressed) {
+              this.shiftPressed = false;
+              return;  
+            }
+
             this._toggleCaps();
             keyElement.classList.toggle(
               "keyboardKey--active",
@@ -167,6 +173,15 @@ const Keyboard = {
               this.properties.value.length - 1
             );
             this._triggerEvent("oninput");
+
+            if (this.shiftPressed) {
+              this.shiftPressed = false;
+              this._toggleCaps();
+              keyElement.classList.toggle(
+                "keyboardKey--active",
+                this.properties.capsLock
+              );
+            }            
           });
           break;
         
@@ -179,6 +194,15 @@ const Keyboard = {
           keyElement.addEventListener("click", () => {
             this.properties.value += "\n";
             this._triggerEvent("oninput");
+
+            if (this.shiftPressed) {
+              this.shiftPressed = false;
+              this._toggleCaps();
+              keyElement.classList.toggle(
+                "keyboardKey--active",
+                this.properties.capsLock
+              ); 
+            }              
           });
           break;
         
@@ -191,6 +215,15 @@ const Keyboard = {
           keyElement.addEventListener("click", () => {
             this.properties.value += " ";
             this._triggerEvent("oninput");
+
+            if (this.shiftPressed) {
+              this.shiftPressed = false;
+              this._toggleCaps();
+              keyElement.classList.toggle(
+                "keyboardKey--active",
+                this.properties.capsLock
+              );  
+            }             
           });
           break;
         
@@ -201,10 +234,23 @@ const Keyboard = {
 
           // Adds the functionaility for a genertic key
           keyElement.addEventListener("click", () => {
-            this.properties.value += this.properties.capsLock
-              ? key.toUpperCase()
-              : key.toLowerCase();
+            if (/[0-9]/.test(key)) {
+              this.properties.value += this.properties.capsLock ? this._swapDigitsAndSpecial(key) : key;
+            } else {
+              this.properties.value += this.properties.capsLock
+                ? key.toUpperCase()
+                : key.toLowerCase();
+            }
             this._triggerEvent("oninput");
+
+            if (this.shiftPressed) {
+              this.shiftPressed = !this.shiftPressed;
+              this._toggleCaps();
+              keyElement.classList.toggle(
+                "keyboardKey--active",
+                this.properties.capsLock
+              );
+            }             
           });
           break;
       }
@@ -238,12 +284,22 @@ const Keyboard = {
     for (let key of this.elements.keys) {
       if (key.childElementCount === 0) {
         if (key.textContent.length > 1) continue;
-        // Swap the caps on the letter in the innerHTML
-        key.textContent = this.properties.capsLock
-          ? key.textContent.toUpperCase()
-          : key.textContent.toLowerCase();
+        if (/[0-9!@#$%^&*()]/.test(key.textContent)) {
+          key.textContent = this._swapDigitsAndSpecial(key.textContent);
+        } else {
+          // Swap the caps on the letter in the innerHTML
+          key.textContent = this.properties.capsLock
+            ? key.textContent.toUpperCase()
+            : key.textContent.toLowerCase();
+        }
       }
     }
+  },
+  /*Colby O'Keefe (A00428974)*/
+  _swapDigitsAndSpecial(char) {
+    let special = [')', '!', '@', '#', '$', '%', '^', '&', '*', '('];
+    if (/[0-9]/.test(char)) return special[parseInt(char)];
+    else return (special.findIndex((e) => {return e == char})).toString();
   },
   /*Colby O'Keefe (A00428974)*/
   startup(initalValue, oninput) {
