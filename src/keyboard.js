@@ -54,9 +54,9 @@ const Keyboard = {
     const keyLayout = [ //Modified by FDR (2022-03-28)
       "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace", "--",
       "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "enter", "--",
-      "a", "s", "d", "f", "g", "h", "j", "k", "l", '"', "shift", "--",
-      "z", "x", "c", "v", "b", "n", "m", ",", ".", "?", "caps", "--",
-      "space", "[",  "]", ";", ":", "/", "_", "--",
+      "a", "s", "d", "f", "g", "h", "j", "k", "l", '\'', "shift", "--",
+      "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", "caps", "--",
+      "space", "[",  "]", ";", "?", "-", "=", "--",
       "Word", "--",
     ];
 
@@ -284,12 +284,9 @@ const Keyboard = {
     for (let key of this.elements.keys) {
       if (key.childElementCount === 0) {
         if (key.textContent.length > 1) continue;
-        if (/[0-9!@#$%^&*()]/.test(key.textContent)) {
+        if (/[0-9!@#$%^&*(){};:'",<.>]/.test(key.textContent)) {
           key.textContent = this._swapDigitsAndSpecial(key.textContent);
         } 
-        /*else if (/[;",.?:'<>/]/.test(key.textContent)) {
-          key.textContent = this._swapDigitsAndSpecial(key.textContent);
-        }*/
         else {
           // Swap the caps on the letter in the innerHTML
           key.textContent = this.properties.capsLock
@@ -299,13 +296,15 @@ const Keyboard = {
       }
     }
   },
-  /*Colby O'Keefe (A00428974)*/
+  /*Colby O'Keefe (A00428974) & FDR*/
   _swapDigitsAndSpecial(char) {
-    let special = [')', '!', '@', '#', '$', '%', '^', '&', '*', '('];
-    let special2 = [':', "'", '<', '>', '/'];
-    if (/[0-9]/.test(char)) return special[parseInt(char)];
-    //else if(/[;",.?]/.test(char)) return special2[parseInt(char)];
-    else return (special.findIndex((e) => {return e == char})).toString();
+    let special = {'1' : '!', '2' : '@', '3' : '#', '4' : '$', '5' : '%', '6' : '^', '7' : '&', '8' : '*',
+    '9' : '(', '0' : ')', '[' : '{', ']' : '}', ';' : ":", '\'' : '"', ',' : '<', '.' : '>', '?' : '/'};
+    console.log(char);
+    if (/[0-9;',.]/.test(char)) return special[char];
+    else return Object.keys(special).find((key) => {
+      return special[key] === char;
+    });
   },
   /*Colby O'Keefe (A00428974)*/
   startup(initalValue, oninput) {

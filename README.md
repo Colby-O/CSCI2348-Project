@@ -45,10 +45,10 @@
 [S-02] The server shall maintain storage for the status of each publish toggle.
 [S-03] The blogs and publish buttons status shall be lost when the server program stops.
 
-# Special Additions:
+# Particular Additions:
 
-1. Add indicator for what blog we are editing,
-   since the blogs, edits, and publish are supposed to disappear.
-2. Add blinking line to tell you what line you are currently editing
-   (currently disappears after you start typing).
-3. Allow editing of previous words. Currently when you select where you want to edit, it adds that change to the last word or space you typed, instead of where you wanted to edit.
+[P-01] Add indicator for what blog we are editing,
+since the blogs, edits, and publish are supposed to disappear.
+[P-02] Add blinking line to tell you what line you are currently editing
+(currently disappears after you start typing).
+[P-03] Allow editing of previous words. Currently when you select where you want to edit, it adds that change to the last word or space you typed, instead of where you wanted to edit.
