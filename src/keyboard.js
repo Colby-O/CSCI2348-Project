@@ -299,7 +299,7 @@ const Keyboard = {
   /*Colby O'Keefe (A00428974) & FDR*/
   _swapDigitsAndSpecial(char) {
     let special = {'1' : '!', '2' : '@', '3' : '#', '4' : '$', '5' : '%', '6' : '^', '7' : '&', '8' : '*',
-    '9' : '(', '0' : ')', '[' : '{', ']' : '}', ';' : ":", '\'' : '"', ',' : '<', '.' : '>', '?' : '/'};
+    '9' : '(', '0' : ')', '[' : '{', ']' : '}', ';' : ":", '\'' : '"', ',' : '<', '.' : '>', '?' : '/', '-' : '_', '=' : '+'};
     console.log(char);
     if (/[0-9;',.]/.test(char)) return special[char];
     else return Object.keys(special).find((key) => {
