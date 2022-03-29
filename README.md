@@ -1,13 +1,35 @@
 # CSCI2356-Project
 
-# Interface Software Requirements:
+# Installation
+
+The software can be installed and setup as follows:
+```
+git clone https://github.com/Colby-O/CSCI2356-Project
+```
+```
+cd project-folder/server
+```
+```
+npm install 
+```
+```
+npm start
+```
+The software is now ready to be used. <br>
+NOTE: npm start is setup to run the server as a background process that automatically restart upon a crash. To run a single instance of the server the following command can be ran:
+```
+npm test
+```
+# TODO
+
+## Interface Software Requirements:
 
 ~[I-01] P2 shall operate in the Chrome browser.~ <br>
 ~[I-02] P2 shall communicate with the server using the http protocol.~ <br>
 ~[I-03] P2 shall include Node.js server software.~ <br>
 ~[I-04] P2 shall not include any database software.~ <br>
 
-# Client-Side Software Requirements:
+## Client-Side Software Requirements:
 
 ~[C-01] One square key on the keyboard shall be 50px by 50px.~ <br>
 ~[C-02] The space around each key (above, below, left, and right) shall be 25px.~ <br>
@@ -39,13 +61,13 @@
 ~[C-28] When the cancel button [C-24] is clicked a first warning shall enable the user to cancel or continue.~ <br>
 ~[C-29] When the first warning's continue option [C-28] is selected, a second warning shall enable the user to cancel or continue.~ <br>
 
-# Server-Side Software Requirements:
+## Server-Side Software Requirements:
 
 ~[S-01] The server shall maintain storage for each blog corresponding to [C-23].~ <br>
 ~[S-02] The server shall maintain storage for the status of each publish toggle.~ <br>
 ~[S-03] The blogs and publish buttons status shall be lost when the server program stops.~ <br>
 
-# Particular Additions:
+## Particular Additions:
  
 ~[P-01] Add indicator for what blog we are editing, since the blogs, edits, and publish are supposed to disappear.~ <br>
 [P-02] Add blinking line to tell you what line you are currently editing (currently disappears after you start typing). <br>
