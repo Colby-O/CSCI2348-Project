@@ -239,7 +239,6 @@ function save() {
           blogContent: $("#textbox").val(),
           blogTitle: $("#" + currentBlogID.replace(/blog/i, "title")).val(),
         };
-
         $.post(SERVER_URL + "/saveBlog", packet);
       });
     } else {
