@@ -2,10 +2,10 @@
 
 # Interface Software Requirements:
 
-~[I-01] P2 shall operate in the Chrome browser.~
-~[I-02] P2 shall communicate with the server using the http protocol.~
-~[I-03] P2 shall include Node.js server software.~
-~[I-04] P2 shall not include any database software.~
+~[I-01] P2 shall operate in the Chrome browser.~ <br>
+~[I-02] P2 shall communicate with the server using the http protocol.~ <br>
+~[I-03] P2 shall include Node.js server software.~ <br>
+~[I-04] P2 shall not include any database software.~ <br>
 
 # Client-Side Software Requirements:
 
