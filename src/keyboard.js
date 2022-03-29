@@ -105,21 +105,21 @@ const Keyboard = {
           keyElement.addEventListener("click", () => {
             this.shiftPressed = !this.shiftPressed;
             this._toggleCaps();
-            keyElement.classList.toggle(
-              "keyboardKey--active",
-              this.properties.capsLock
-            );
           });
           break;
 
         case "caps": //Added by FDR (2022-03-23)
           // Adds classes to the caps key
-          keyElement.classList.add("btn", "btn-primary", "blue-key");
+          keyElement.classList.add("btn", "btn-primary", "blue-key", "keyboardKey--activatable");
           keyElement.innerHTML = "CAPS";
 
           // Adds caps key functionality
           keyElement.addEventListener("click", () => {
             if (this.shiftPressed) {
+              keyElement.classList.toggle(
+                "keyboardKey--active",
+                this.properties.capsLock
+              );
               this.shiftPressed = !this.shiftPressed;
               return;  
             }
