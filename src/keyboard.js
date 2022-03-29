@@ -276,7 +276,7 @@ const Keyboard = {
       this.eventHandlers[handlerName](this.properties.value);
     }
   },
-  /*Colby O'Keefe (A00428974)*/
+  /*Colby O'Keefe (A00428974) & FDR*/
   _toggleCaps() {
     // Toggle capslock
     this.properties.capsLock = !this.properties.capsLock;
