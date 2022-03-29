@@ -23,6 +23,12 @@ const Keyboard = {
     capsLock: false,
     shiftPressed: false
   },
+  constants: {
+    shiftKeyMap: {'1' : '!', '2' : '@', '3' : '#', '4' : '$', '5' : '%', '6' : '^', '7' : '&', '8' : '*',
+    '9' : '(', '0' : ')', '[' : '{', ']' : '}', ';' : ":", '\'' : '"', ',' : '<', '.' : '>', '?' : '/', '-' : '_', '=' : '+'},
+    unshiftedKeys: /[0-9;',.]/,
+    allShiftedCharacters: /[0-9!@#$%^&*(){};:'",<.>]/
+  },
   /*Colby O'Keefe (A00428974)*/
   init() {
     // Creates keyboard containers
@@ -234,7 +240,7 @@ const Keyboard = {
 
           // Adds the functionaility for a genertic key
           keyElement.addEventListener("click", () => {
-            if (/[0-9]/.test(key)) {
+            if (this.constants.unshiftedKeys.test(key)) {
               this.properties.value += this.properties.capsLock ? this._swapDigitsAndSpecial(key) : key;
             } else {
               this.properties.value += this.properties.capsLock
@@ -284,7 +290,7 @@ const Keyboard = {
     for (let key of this.elements.keys) {
       if (key.childElementCount === 0) {
         if (key.textContent.length > 1) continue;
-        if (/[0-9!@#$%^&*(){};:'",<.>]/.test(key.textContent)) {
+        if (this.constants.allShiftedCharacters.test(key.textContent)) {
           key.textContent = this._swapDigitsAndSpecial(key.textContent);
         } 
         else {
@@ -298,12 +304,10 @@ const Keyboard = {
   },
   /*Colby O'Keefe (A00428974) & FDR*/
   _swapDigitsAndSpecial(char) {
-    let special = {'1' : '!', '2' : '@', '3' : '#', '4' : '$', '5' : '%', '6' : '^', '7' : '&', '8' : '*',
-    '9' : '(', '0' : ')', '[' : '{', ']' : '}', ';' : ":", '\'' : '"', ',' : '<', '.' : '>', '?' : '/', '-' : '_', '=' : '+'};
     console.log(char);
-    if (/[0-9;',.]/.test(char)) return special[char];
-    else return Object.keys(special).find((key) => {
-      return special[key] === char;
+    if (this.constants.unshiftedKeys.test(char)) return this.constants.shiftKeyMap[char];
+    else return Object.keys(this.constants.shiftKeyMap).find((key) => {
+      return this.constants.shiftKeyMap[key] === char;
     });
   },
   /*Colby O'Keefe (A00428974)*/
