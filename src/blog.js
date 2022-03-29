@@ -178,7 +178,7 @@ function setBlog(req) {
 function save() {
   swal({
     title: "Are you sure you want to save?",
-    text: "Once you save, all changes will be saved. You will not be able to go back!",
+    text: "Once you save, all changes will be saved.",
     icon: "warning",
     buttons: true,
     dangerMode: true,
@@ -187,7 +187,7 @@ function save() {
       swal("No changes were saved.");
       return;
     }
-      swal("ARE YOU SURE?!", {
+      swal("ARE YOU SURE?!\nYou will not be able to go back!", {
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -214,7 +214,7 @@ function save() {
 function cancel(req) {
   swal({
     title: "Are you sure you want to cancel?",
-    text: "Once you cancel, all unsaved work will be lost. You will not be able to go back!",
+    text: "Once you cancel, all unsaved work will be lost.",
     icon: "warning",
     buttons: true,
     dangerMode: true,
@@ -223,7 +223,7 @@ function cancel(req) {
       swal("No changes were made.");
       return;
     }
-      swal("ARE YOU SURE?!", {
+      swal("ARE YOU SURE?!\nYou will not be able to go back!", {
         icon: "warning",
         buttons: true,
         dangerMode: true,
