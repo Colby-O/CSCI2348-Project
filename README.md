@@ -9,15 +9,15 @@
 
 # Client-Side Software Requirements:
 
-~[C-01] One square key on the keyboard shall be 50px by 50px.~
-~[C-02] The space around each key (above, below, left, and right) shall be 25px.~
-~[C-03] The font size for all text, including on the keys, is 2 times the default font size.~
-~[C-04] The keyboard width must not go beyond 725px.~
-[C-05] A full keyboard shall be implemented meaning !@#$%^&\*()-\_=+;:'"<>,.? and all the digits and all the uppercase and lowercase letters will be included.
-~[C-06] Each key will expand to 2 times its dimensions when hovered.~
-~[C-07] The keyboard shall initially display lowercase keys.~
-[C-08] A space will automatically be inserted after a word in the wordbank.
-~[C-09] A shift key shall be present.~
+~[C-01] One square key on the keyboard shall be 50px by 50px.~ <br>
+~[C-02] The space around each key (above, below, left, and right) shall be 25px.~ <br>
+~[C-03] The font size for all text, including on the keys, is 2 times the default font size.~ <br>
+~[C-04] The keyboard width must not go beyond 725px.~ <br>
+[C-05] A full keyboard shall be implemented meaning !@#$%^&\*()-\_=+;:'"<>,.? and all the digits and all the uppercase and lowercase letters will be included. <br>
+~[C-06] Each key will expand to 2 times its dimensions when hovered.~ <br>
+~[C-07] The keyboard shall initially display lowercase keys.~ <br>
+[C-08] A space will automatically be inserted after a word in the wordbank. <br>
+~[C-09] A shift key shall be present.~ <br>
 ~[C-10] When the shift key is pressed, the whole keyboard will change to uppercase letters.~
 ~[C-11] Numeric and symbol keys may be organized so they are useable in one of the two uppercase or lowercase modes.~ <br>
 ~[C-12] Once a key is clicked, the effect of the shift key is terminated.~ <br>
