@@ -11,8 +11,8 @@
 */
 
 // Server URL
-//const SERVER_URL = "http://127.0.0.1:3033";
-const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
+const SERVER_URL = "http://127.0.0.1:3033";
+//const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
 
 // Stores last blog ID selected
 let currentBlogID = null;
@@ -32,19 +32,6 @@ let title3 = null;
 let checkedContainer = null;
 
 /*
-  Displays the saved blog titles
-
-  Author(s): Colby O'Keefe(A00428974)
-*/
-function updateBlogTitles() {
-  if (Storage !== void 0) {
-    $("#title1").val(window.localStorage.getItem("title1"));
-    $("#title2").val(window.localStorage.getItem("title2"));
-    $("#title3").val(window.localStorage.getItem("title3"));
-  }
-}
-
-/*
   Sets up the keyboard and blog list to be hidden.
 
   Author(s): Colby O'Keefe(A00428974) + SDR
@@ -61,8 +48,9 @@ function setup() {
   title3 = $("#title3").get(0);
   checkedContainer = $("#blog-option-container").get(0);
 
-  // Sets the save blog titles
-  updateBlogTitles();
+  $.get(SERVER_URL + "/getBlog", { blogIndex: 1 }).done(req => {$("#publish1").prop("checked", req.published);});
+  $.get(SERVER_URL + "/getBlog", { blogIndex: 2 }).done(req => {$("#publish2").prop("checked", req.published);});
+  $.get(SERVER_URL + "/getBlog", { blogIndex: 3 }).done(req => {$("#publish3").prop("checked", req.published);});
 
   // hides the blog + keyboard
   blog.style.visibility = keyboard.style.visibility = "hidden";
@@ -131,53 +119,28 @@ function setup() {
   });
 
   $("#publish1").change(() => {
-    // Prevents publishing unless in edit mode
-    if (!$("#edit1").is(":checked"))
-      $("#publish1").prop("checked", !$("#publish1").is(":checked"));
+    const packet = {
+      blogIndex: 1,
+      published: $("#publish1").is(":checked")
+    }
+    $.post(SERVER_URL + "/publishBlog", packet)
   });
 
   $("#publish2").change(() => {
-    // Prevents publishing unless in edit mode
-    if (!$("#edit2").is(":checked"))
-      $("#publish2").prop("checked", !$("#publish2").is(":checked"));
+    const packet = {
+      blogIndex: 2,
+      published: $("#publish2").is(":checked")
+    }
+    $.post(SERVER_URL + "/publishBlog", packet)
   });
 
   $("#publish3").change(() => {
-    // Prevents publishing unless in edit mode
-    if (!$("#edit3").is(":checked"))
-      $("#publish3").prop("checked", !$("#publish3").is(":checked"));
-  });
-
-  /**
-   * this code has functions that handles
-   * post and get data form the server
-   *
-   * Created: Mohammed Al-Bashiri March 25, 2022
-   * Modified: Mohammed Al-Bashiri March 26, 2022
-   */
-  /**
-  // when clicking save button the user is asked twice if he/she want to save
-  // Saves to the server when clicking the save button
-  // using Post functions
-  $("#save").on("click", function () {
-    let text = "Do you want to save?";
-    if (confirm(text) == true) {
-      let text = "Are you sure you want to save?";
-      if (confirm(text) == true) {
-        if ($("#edit1").is(":checked")) {
-          let x = { name: $("#textbox1").val() };
-          $.post(SERVER_URL + "/myPost1", x, callback1).fail(errorCallback1);
-        } else if ($("#edit2").is(":checked")) {
-          let x = { name: $("#textbox2").val() };
-          $.post(SERVER_URL + "/myPost2", x, callback1).fail(errorCallback1);
-        } else if ($("#edit3").is(":checked")) {
-          let x = { name: $("#textbox3").val() };
-          $.post(SERVER_URL + "/myPost3", x, callback1).fail(errorCallback1);
-        }
-      }
+    const packet = {
+      blogIndex: 3,
+      published: $("#publish3").is(":checked")
     }
+    $.post(SERVER_URL + "/publishBlog", packet)
   });
-  **/
 }
 
 /**
@@ -196,14 +159,6 @@ function getKbd() {
     : "hidden";
 
   checkedContainer.style.display = allBlogsUnchecked ? "block" : "none";
-  // edit1.style.visibility =
-  //   edit1.checked || allBlogsUnchecked ? "visible" : "hidden";
-
-  // edit2.style.visibility =
-  //   edit2.checked || allBlogsUnchecked ? "visible" : "hidden";
-
-  // edit3.style.visibility =
-  //   edit3.checked || allBlogsUnchecked ? "visible" : "hidden";
 }
 
 function setBlog(req) {
@@ -228,22 +183,25 @@ function save() {
     buttons: true,
     dangerMode: true,
   }).then((willSave) => {
-    if (willSave) {
+    if (!willSave) {
+      swal("No changes were saved.");
+      return;
+    }
       swal("ARE YOU SURE?!", {
         icon: "warning",
         buttons: true,
         dangerMode: true,
       }).then((confirmSave) => {
+        if (!confirmSave) {
+          swal("No changes were saved.");
+          return;
+        }
         const packet = {
           blogIndex: parseInt(currentBlogID.replace(/blog/i, "")),
-          blogContent: $("#textbox").val(),
-          blogTitle: $("#" + currentBlogID.replace(/blog/i, "title")).val(),
+          blogContent: $("#textbox").val()
         };
         $.post(SERVER_URL + "/saveBlog", packet);
       });
-    } else {
-      swal("No changes were saved.");
-    }
   });
 }
 
@@ -261,18 +219,22 @@ function cancel(req) {
     buttons: true,
     dangerMode: true,
   }).then((willCancel) => {
-    if (willCancel) {
+    if (!willCancel) {
+      swal("No changes were made.");
+      return;
+    }
       swal("ARE YOU SURE?!", {
         icon: "warning",
         buttons: true,
         dangerMode: true,
       }).then((confirmCancel) => {
+        if (!confirmCancel) {
+          swal("No changes were made.");
+          return;
+        }
         edit1.checked = edit2.checked = edit3.checked = false;
         getKbd();
       });
-    } else {
-      swal("No changes were made.");
-    }
   });
 }
 
@@ -283,39 +245,9 @@ function cancel(req) {
   Modfified: March 26, 2022 Colby & Mohammed
 */
 function erase() {
-  // Completely clears the textbox
-  //let formate = /^[!@#$%^&()_+-=[]{};':"|,.<>/?]$/;
   let text = $("#textbox").val();
   let lastindex = text.lastIndexOf(" ");
-  // let lastword = text.substring(lastindex, text.length);
-  // var regEx = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-  // if (regEx.test(lastword)) {
-
-  // }
   if (lastindex === -1) $("#textbox").val("");
   else $("#textbox").val(text.substring(0, lastindex));
   $("#textbox").focus();
 }
-
-/**
- * console log callback functions, errors and
- * callback function to get data from the server
- *
- * Created: Mohammed Al-Bashiri March 25, 2022
- * Modified: Mohammed Al-Bashiri March 26, 2022
-
-// console log the callback1
-function callback1(returnedData) {
-  console.log(returnedData);
-}
-// console log errors
-function errorCallback1(err) {
-  console.log(err.responseText);
-}
-// callback fumctions to retrieve data from the server
-function callback2(res) {
-  $("#textbox1").val(res[0]);
-  $("#textbox2").val(res[1]);
-  $("#textbox3").val(res[2]);
-}
-**/
