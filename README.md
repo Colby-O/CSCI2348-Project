@@ -19,36 +19,36 @@
 [C-08] A space will automatically be inserted after a word in the wordbank.
 ~[C-09] A shift key shall be present.~
 ~[C-10] When the shift key is pressed, the whole keyboard will change to uppercase letters.~
-~[C-11] Numeric and symbol keys may be organized so they are useable in one of the two uppercase or lowercase modes.~
-~[C-12] Once a key is clicked, the effect of the shift key is terminated.~
-~[C-13] A caps-lock toggle key shall be present.~
-[C-14] The keyboard shall contain a word bank area.
-[C-15] The client shall be able to enter a word or phrase into the word bank by typing it out.
-[C-16] Every word or phrase in the word bank is visible to the user at the same time.
-~[C-17] The colour scheme shall have a Montreal Canadians theme.~
-~[C-18] P1 shall be modified so that each blog has a noneditable number rather than a name.~
-~[C-19] P1 shall be modified so that when an edit toggle is clicked, all the Blog Number, Edit, and Publish columns disappear.~
-~[C-20] When an edit toggle is clicked, the text entry area and keyboard shall appear.~
-~[C-21] The text entry area shall be 8 lines tall.~
-~[C-22] The text entry area shall be above the keyboard.~
-~[C-23] The text entry area shall have a save button.~
-~[C-24] The text entry area shall have a cancel button.~
-~[C-25] The text entry area shall have a one-time undo button.~
-~[C-26] When the save button [C-23] is clicked a first warning shall enable the user to cancel or continue.~
-~[C-27] When the first warning's continue option [C-26] is selected, a second warning shall enable the user to cancel or continue.~
-~[C-28] When the cancel button [C-24] is clicked a first warning shall enable the user to cancel or continue.~
-~[C-29] When the first warning's continue option [C-28] is selected, a second warning shall enable the user to cancel or continue.~
+~[C-11] Numeric and symbol keys may be organized so they are useable in one of the two uppercase or lowercase modes.~ <br>
+~[C-12] Once a key is clicked, the effect of the shift key is terminated.~ <br>
+~[C-13] A caps-lock toggle key shall be present.~ <br>
+[C-14] The keyboard shall contain a word bank area. <br>
+[C-15] The client shall be able to enter a word or phrase into the word bank by typing it out. <br>
+[C-16] Every word or phrase in the word bank is visible to the user at the same time. <br>
+~[C-17] The colour scheme shall have a Montreal Canadians theme.~ <br>
+~[C-18] P1 shall be modified so that each blog has a noneditable number rather than a name.~ <br>
+~[C-19] P1 shall be modified so that when an edit toggle is clicked, all the Blog Number, Edit, and Publish columns disappear.~ <br>
+~[C-20] When an edit toggle is clicked, the text entry area and keyboard shall appear.~ <br>
+~[C-21] The text entry area shall be 8 lines tall.~ <br>
+~[C-22] The text entry area shall be above the keyboard.~ <br>
+~[C-23] The text entry area shall have a save button.~ <br>
+~[C-24] The text entry area shall have a cancel button.~ <br>
+~[C-25] The text entry area shall have a one-time undo button.~ <br>
+~[C-26] When the save button [C-23] is clicked a first warning shall enable the user to cancel or continue.~ <br>
+~[C-27] When the first warning's continue option [C-26] is selected, a second warning shall enable the user to cancel or continue.~ <br>
+~[C-28] When the cancel button [C-24] is clicked a first warning shall enable the user to cancel or continue.~ <br>
+~[C-29] When the first warning's continue option [C-28] is selected, a second warning shall enable the user to cancel or continue.~ <br>
 
 # Server-Side Software Requirements:
 
-~[S-01] The server shall maintain storage for each blog corresponding to [C-23].~
-[S-02] The server shall maintain storage for the status of each publish toggle.
-~[S-03] The blogs and publish buttons status shall be lost when the server program stops.~
+~[S-01] The server shall maintain storage for each blog corresponding to [C-23].~ <br>
+~[S-02] The server shall maintain storage for the status of each publish toggle.~ <br>
+~[S-03] The blogs and publish buttons status shall be lost when the server program stops.~ <br>
 
 # Particular Additions:
-
-[P-01] Add indicator for what blog we are editing,
-since the blogs, edits, and publish are supposed to disappear.
-[P-02] Add blinking line to tell you what line you are currently editing
-(currently disappears after you start typing).
-[P-03] Allow editing of previous words. Currently when you select where you want to edit, it adds that change to the last word or space you typed, instead of where you wanted to edit.
+ 
+[P-01] Add indicator for what blog we are editing, <br>
+since the blogs, edits, and publish are supposed to disappear. <br>
+[P-02] Add blinking line to tell you what line you are currently editing <br>
+(currently disappears after you start typing). <br>
+[P-03] Allow editing of previous words. Currently when you select where you want to edit, it adds that change to the last word or space you typed, instead of where you wanted to edit. <br>
