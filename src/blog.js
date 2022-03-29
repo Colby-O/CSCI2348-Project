@@ -31,6 +31,8 @@ let title3 = null;
 
 let checkedContainer = null;
 
+let currentEditing = null
+
 /*
   Sets up the keyboard and blog list to be hidden.
 
@@ -47,6 +49,7 @@ function setup() {
   title2 = $("#title2").get(0);
   title3 = $("#title3").get(0);
   checkedContainer = $("#blog-option-container").get(0);
+  currentEditing = $("#currently-editing-blog").get(0);
 
   $.get(SERVER_URL + "/getBlog", { blogIndex: 1 }).done(req => {$("#publish1").prop("checked", req.published);});
   $.get(SERVER_URL + "/getBlog", { blogIndex: 2 }).done(req => {$("#publish2").prop("checked", req.published);});
@@ -68,6 +71,8 @@ function setup() {
 
     // Sets selected blog id
     currentBlogID = "blog1";
+
+    currentEditing.innerHTML = "You are currently editing blog 1";
 
     // Gets saved value from local storage if its supported by the browser
     $.get(SERVER_URL + "/getBlog", { blogIndex: 1 }).done(setBlog);
@@ -91,6 +96,9 @@ function setup() {
 
     // Gets saved value from local storage if its supported by the browser
     currentBlogID = "blog2";
+
+    currentEditing.innerHTML = "You are currently editing blog 2";
+
     $.get(SERVER_URL + "/getBlog", { blogIndex: 2 }).done(setBlog);
 
     // focus the blog textarea so the keybaord will update
@@ -110,6 +118,8 @@ function setup() {
 
     // Sets selected blog id
     currentBlogID = "blog3";
+
+    currentEditing.innerHTML = "You are currently editing blog 3";
 
     // Gets saved value from local storage if its supported by the browser
     $.get(SERVER_URL + "/getBlog", { blogIndex: 3 }).done(setBlog);
@@ -157,7 +167,6 @@ function getKbd() {
   blog.style.visibility = keyboard.style.visibility = isBlogVisable
     ? "visible"
     : "hidden";
-
   checkedContainer.style.display = allBlogsUnchecked ? "block" : "none";
 }
 

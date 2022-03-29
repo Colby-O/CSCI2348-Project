@@ -244,3 +244,13 @@ body {
 .swal-buttons {
   position: center !important;
 }
+
+/* Colby O'Keefe (A00428974) */
+#currently-editing-blog {
+  color: white;
+  text-shadow: -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue,
+    1px 1px 0 blue;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 0.5%;
+}
