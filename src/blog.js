@@ -187,7 +187,9 @@ function save() {
       swal("No changes were saved.");
       return;
     }
-      swal("ARE YOU SURE?!\nYou will not be able to go back!", {
+      swal({
+        title: "ARE YOU SURE?!",
+        text: "You will not be able to go back!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -223,7 +225,9 @@ function cancel(req) {
       swal("No changes were made.");
       return;
     }
-      swal("ARE YOU SURE?!\nYou will not be able to go back!", {
+      swal({
+        title: "ARE YOU SURE?!",
+        text: "You will not be able to go back!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
