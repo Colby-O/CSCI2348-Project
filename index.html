@@ -218,7 +218,7 @@
           Undo
         </a>
         <div class="m-1">
-          <a data-role="button" class="btn btn-primary word-bank">
+          <a data-role="button" class="btn btn-primary word-bank" onclick="toggleWordBank()">
             Word<i class="bi bi-piggy-bank"></i>
           </a>
           <a>
@@ -270,18 +270,11 @@
           </div>
 
           <button
-            onclick="closeWordBank"
+            onclick="toggleWordBank()"
             class="btn btn-warning"
-            style="font-family: fortune"
+            style="font-family: fortune;"
           >
             Close
-          </button>
-          <button
-            onclick="saveWordToBank()"
-            class="btn btn-warning"
-            style="font-family: fortune"
-          >
-            Add New Word
           </button>
         </div>
       </div>

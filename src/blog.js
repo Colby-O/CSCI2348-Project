@@ -32,12 +32,11 @@ let title2 = null;
 let title3 = null;
 
 let checkedContainer = null;
-
 let currentEditing = null;
-
 let savedWordContainer = null;
-
 let wordBankTextbox = null
+let wordBankContainer = null;
+
 
 let savedWords = [];
 
@@ -60,6 +59,9 @@ function setup() {
   checkedContainer = $("#blog-option-container").get(0);
   currentEditing = $("#currently-editing-blog").get(0);
   savedWordContainer = $("#saved-word-container").get(0);
+  wordBankContainer = $("#word-bank-container").get(0);
+
+  wordBankContainer.style.display = "none";
 
   $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
 
@@ -228,6 +230,12 @@ function deleteSavedWord(index, word) {
       $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
     }); 
   }); 
+}
+
+/* Colby O'Keefe (A00428974) */
+function toggleWordBank() {
+  if (wordBankContainer.style.display === "none") wordBankContainer.style.display = "block";
+  else wordBankContainer.style.display = "none";
 }
 
 /* Colby O'Keefe (A00428974) */
