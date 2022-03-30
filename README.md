@@ -35,7 +35,7 @@ npm test
 ~[C-02] The space around each key (above, below, left, and right) shall be 25px.~ <br>
 ~[C-03] The font size for all text, including on the keys, is 2 times the default font size.~ <br>
 ~[C-04] The keyboard width must not go beyond 725px.~ <br>
-[C-05] A full keyboard shall be implemented meaning !@#$%^&\*()-\_=+;:'"<>,.? and all the digits and all the uppercase and lowercase letters will be included. <br>
+~[C-05] A full keyboard shall be implemented meaning !@#$%^&\*()-\_=+;:'"<>,.? and all the digits and all the uppercase and lowercase letters will be included.~ <br>
 ~[C-06] Each key will expand to 2 times its dimensions when hovered.~ <br>
 ~[C-07] The keyboard shall initially display lowercase keys.~ <br>
 [C-08] A space will automatically be inserted after a word in the wordbank. <br>
