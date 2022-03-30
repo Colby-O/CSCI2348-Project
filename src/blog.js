@@ -14,7 +14,7 @@
 const SERVER_URL = "http://127.0.0.1:3033";
 //const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
 
-const MAX_NUM_SVAED_WORDS_PER_ROW = 4;
+const MAX_NUM_SVAED_WORDS_PER_ROW = 2;
 
 // Stores last blog ID selected
 let currentBlogID = null;
