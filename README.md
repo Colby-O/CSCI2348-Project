@@ -38,15 +38,15 @@ npm test
 ~[C-05] A full keyboard shall be implemented meaning !@#$%^&\*()-\_=+;:'"<>,.? and all the digits and all the uppercase and lowercase letters will be included.~ <br>
 ~[C-06] Each key will expand to 2 times its dimensions when hovered.~ <br>
 ~[C-07] The keyboard shall initially display lowercase keys.~ <br>
-[C-08] A space will automatically be inserted after a word in the wordbank. <br>
+~[C-08] A space will automatically be inserted after a word in the wordbank.~ <br>
 ~[C-09] A shift key shall be present.~ <br>
 ~[C-10] When the shift key is pressed, the whole keyboard will change to uppercase letters.~
 ~[C-11] Numeric and symbol keys may be organized so they are useable in one of the two uppercase or lowercase modes.~ <br>
 ~[C-12] Once a key is clicked, the effect of the shift key is terminated.~ <br>
 ~[C-13] A caps-lock toggle key shall be present.~ <br>
 [C-14] The keyboard shall contain a word bank area. <br>
-[C-15] The client shall be able to enter a word or phrase into the word bank by typing it out. <br>
-[C-16] Every word or phrase in the word bank is visible to the user at the same time. <br>
+~[C-15] The client shall be able to enter a word or phrase into the word bank by typing it out.~ <br>
+~[C-16] Every word or phrase in the word bank is visible to the user at the same time.~ <br>
 ~[C-17] The colour scheme shall have a Montreal Canadians theme.~ <br>
 ~[C-18] P1 shall be modified so that each blog has a noneditable number rather than a name.~ <br>
 ~[C-19] P1 shall be modified so that when an edit toggle is clicked, all the Blog Number, Edit, and Publish columns disappear.~ <br>
