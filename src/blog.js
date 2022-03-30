@@ -313,7 +313,7 @@ function cancel(req) {
   Author(s): Felipe Duque Rivera (A00446745)
   Modfified: March 26, 2022 Colby & Mohammed
 */
-function erase() {
+function undo() {
   let text = $("#textbox").val();
   let lastindex = text.lastIndexOf(" ");
   if (lastindex === -1) $("#textbox").val("");

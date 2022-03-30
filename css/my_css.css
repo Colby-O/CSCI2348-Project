@@ -181,6 +181,27 @@ body {
   font-size: 1.5em;
 }
 
+.word-bank:hover {
+  background-color: green;
+  transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+}
+
+.star-btn:hover {
+  background-color: green;
+  transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+}
+
+.snc-btn:hover {
+  background-color: green;
+  transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+}
+
 /* 
   Text-box for the Word Bank (wb)
   March 12, 2022 (SDR)
