@@ -21,13 +21,32 @@ const Keyboard = {
   properties: {
     values: "",
     capsLock: false,
-    shiftPressed: false
+    shiftPressed: false,
   },
   constants: {
-    shiftKeyMap: {'1' : '!', '2' : '@', '3' : '#', '4' : '$', '5' : '%', '6' : '^', '7' : '&', '8' : '*',
-    '9' : '(', '0' : ')', '[' : '{', ']' : '}', ';' : ":", '\'' : '"', ',' : '<', '.' : '>', '?' : '/', '-' : '_', '=' : '+'},
+    shiftKeyMap: {
+      1: "!",
+      2: "@",
+      3: "#",
+      4: "$",
+      5: "%",
+      6: "^",
+      7: "&",
+      8: "*",
+      9: "(",
+      0: ")",
+      "[": "{",
+      "]": "}",
+      ";": ":",
+      "'": '"',
+      ",": "<",
+      ".": ">",
+      "?": "/",
+      "-": "_",
+      "=": "+",
+    },
     unshiftedKeys: /[0-9;',.]/,
-    allShiftedCharacters: /[0-9!@#$%^&*(){};:'",<.>]/
+    allShiftedCharacters: /[0-9!@#$%^&*(){};:'",<.>]/,
   },
   /*Colby O'Keefe (A00428974)*/
   init() {
@@ -57,13 +76,64 @@ const Keyboard = {
     const fragment = document.createDocumentFragment();
 
     // Keybaord layout
-    const keyLayout = [ //Modified by FDR (2022-03-28)
-      "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace", "--",
-      "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "enter", "--",
-      "a", "s", "d", "f", "g", "h", "j", "k", "l", '\'', "shift", "--",
-      "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", "caps", "--",
-      "space", "[",  "]", ";", "?", "-", "=", "--",
-      "Word", "--",
+    const keyLayout = [
+      //Modified by FDR (2022-03-28)
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "0",
+      "backspace",
+      "--",
+      "q",
+      "w",
+      "e",
+      "r",
+      "t",
+      "y",
+      "u",
+      "i",
+      "o",
+      "p",
+      "enter",
+      "--",
+      "a",
+      "s",
+      "d",
+      "f",
+      "g",
+      "h",
+      "j",
+      "k",
+      "l",
+      "'",
+      "shift",
+      "--",
+      "z",
+      "x",
+      "c",
+      "v",
+      "b",
+      "n",
+      "m",
+      ",",
+      ".",
+      "/",
+      "caps",
+      "--",
+      "space",
+      "[",
+      "]",
+      ";",
+      "?",
+      "-",
+      "=",
+      "--",
     ];
 
     // Function to set icon for a key given
@@ -92,10 +162,10 @@ const Keyboard = {
         case "--":
           /*line break*/
           break;
-        
+
         /*
         README: Needs to be changed to capitalize only one character
-        */ 
+        */
         case "shift":
           // Adds classes + icon to the shift key
           keyElement.classList.add("btn", "btn-primary", "blue-key");
@@ -110,7 +180,12 @@ const Keyboard = {
 
         case "caps": //Added by FDR (2022-03-23)
           // Adds classes to the caps key
-          keyElement.classList.add("btn", "btn-primary", "blue-key", "keyboardKey--activatable");
+          keyElement.classList.add(
+            "btn",
+            "btn-primary",
+            "blue-key",
+            "keyboardKey--activatable"
+          );
           keyElement.innerHTML = "CAPS";
 
           // Adds caps key functionality
@@ -121,7 +196,7 @@ const Keyboard = {
                 this.properties.capsLock
               );
               this.shiftPressed = !this.shiftPressed;
-              return;  
+              return;
             }
 
             this._toggleCaps();
@@ -187,10 +262,10 @@ const Keyboard = {
                 "keyboardKey--active",
                 this.properties.capsLock
               );
-            }            
+            }
           });
           break;
-        
+
         case "enter":
           // Adds classes + icon to the enter key
           keyElement.classList.add("btn", "btn-primary", "blue-key");
@@ -207,11 +282,11 @@ const Keyboard = {
               keyElement.classList.toggle(
                 "keyboardKey--active",
                 this.properties.capsLock
-              ); 
-            }              
+              );
+            }
           });
           break;
-        
+
         case "space":
           // Adds classes + icon to the space key
           keyElement.classList.add("btn", "btn-primary", "space-key"); //Modified by FDR (2022-03-23)
@@ -228,11 +303,11 @@ const Keyboard = {
               keyElement.classList.toggle(
                 "keyboardKey--active",
                 this.properties.capsLock
-              );  
-            }             
+              );
+            }
           });
           break;
-        
+
         default:
           // Adds classes + icon to a genertic key
           keyElement.classList.add("btn", "btn-danger", "red-key");
@@ -241,7 +316,9 @@ const Keyboard = {
           // Adds the functionaility for a genertic key
           keyElement.addEventListener("click", () => {
             if (this.constants.unshiftedKeys.test(key)) {
-              this.properties.value += this.properties.capsLock ? this._swapDigitsAndSpecial(key) : key;
+              this.properties.value += this.properties.capsLock
+                ? this._swapDigitsAndSpecial(key)
+                : key;
             } else {
               this.properties.value += this.properties.capsLock
                 ? key.toUpperCase()
@@ -256,7 +333,7 @@ const Keyboard = {
                 "keyboardKey--active",
                 this.properties.capsLock
               );
-            }             
+            }
           });
           break;
       }
@@ -292,8 +369,7 @@ const Keyboard = {
         if (key.textContent.length > 1) continue;
         if (this.constants.allShiftedCharacters.test(key.textContent)) {
           key.textContent = this._swapDigitsAndSpecial(key.textContent);
-        } 
-        else {
+        } else {
           // Swap the caps on the letter in the innerHTML
           key.textContent = this.properties.capsLock
             ? key.textContent.toUpperCase()
@@ -305,10 +381,12 @@ const Keyboard = {
   /*Colby O'Keefe (A00428974) & FDR*/
   _swapDigitsAndSpecial(char) {
     console.log(char);
-    if (this.constants.unshiftedKeys.test(char)) return this.constants.shiftKeyMap[char];
-    else return Object.keys(this.constants.shiftKeyMap).find((key) => {
-      return this.constants.shiftKeyMap[key] === char;
-    });
+    if (this.constants.unshiftedKeys.test(char))
+      return this.constants.shiftKeyMap[char];
+    else
+      return Object.keys(this.constants.shiftKeyMap).find((key) => {
+        return this.constants.shiftKeyMap[key] === char;
+      });
   },
   /*Colby O'Keefe (A00428974)*/
   startup(initalValue, oninput) {

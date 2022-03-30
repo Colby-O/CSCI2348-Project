@@ -217,9 +217,18 @@
         <a data-role="button" class="btn btn-info snc-btn" onclick="erase()">
           Undo
         </a>
-        <span id="currently-editing-blog">
-
-        </span>
+        <div class="m-1">
+          <a data-role="button" class="btn btn-primary word-bank">
+            Word<i class="bi bi-piggy-bank"></i>
+          </a>
+          <a>
+            <input class="width wb-textbox" type="text" id="words" />
+          </a>
+          <a data-role="button" class="btn btn-primary star-btn" id="saveWord">
+            <i class="bi bi-star"></i>
+          </a>
+        </div>
+        <span id="currently-editing-blog"> </span>
       </div>
 
       <!-- 
@@ -239,6 +248,72 @@
           class="keyboard-container container pad-div div-width"
           id="kbd"
         ></div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+      <div
+        class="card bg-dark"
+        style="
+          border-radius: 15px;
+          color: rgb(255, 223, 79);
+          --bs-bg-opacity: 0.8;
+        "
+      >
+        <div class="card-body p-5">
+          <div>
+            <h2 class="text-uppercase text-center mb-5">Create Game</h2>
+          </div>
+          <div class="form-outline mb-4">
+            <button>X</button>
+            <span id="save1" class="saved-word"></span>
+          </div>
+
+          <div class="form-outline mb-4">
+            <button>X</button>
+            <span id="save2" class="save-word"></span>
+          </div>
+
+          <div class="form-outline mb-4">
+            <button>X</button>
+            <span id="save3" class="saved-word"></span>
+          </div>
+          <div class="form-outline mb-4">
+            <button>X</button>
+            <span></span>
+          </div>
+          <div class="form-outline mb-4">
+            <button>X</button>
+            <span></span>
+          </div>
+          <div class="form-outline mb-4">
+            <button>X</button>
+            <span></span>
+          </div>
+          <div class="form-outline mb-4">
+            <button>X</button>
+            <span></span>
+          </div>
+          <div class="form-outline mb-4">
+            <button>X</button>
+            <span></span>
+          </div>
+
+          <button
+            onclick="createGame()"
+            class="btn btn-warning"
+            style="font-family: fortune"
+          >
+            Create
+          </button>
+          <button
+            onclick="closeCreateGame()"
+            class="btn btn-warning"
+            style="font-family: fortune"
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   </body>

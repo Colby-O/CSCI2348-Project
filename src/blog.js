@@ -31,7 +31,9 @@ let title3 = null;
 
 let checkedContainer = null;
 
-let currentEditing = null
+let currentEditing = null;
+
+let savedWords = [];
 
 /*
   Sets up the keyboard and blog list to be hidden.
@@ -39,6 +41,11 @@ let currentEditing = null
   Author(s): Colby O'Keefe(A00428974) + SDR
 */
 function setup() {
+  document.querySelectorAll(".saved-word").forEach((word) => {
+    savedWords.push(word);
+  });
+  fetchSavedWords();
+
   // Gets page elements
   keyboard = $("#kbd").get(0);
   blog = $("#blogArea").get(0);
@@ -51,9 +58,15 @@ function setup() {
   checkedContainer = $("#blog-option-container").get(0);
   currentEditing = $("#currently-editing-blog").get(0);
 
-  $.get(SERVER_URL + "/getBlog", { blogIndex: 1 }).done(req => {$("#publish1").prop("checked", req.published);});
-  $.get(SERVER_URL + "/getBlog", { blogIndex: 2 }).done(req => {$("#publish2").prop("checked", req.published);});
-  $.get(SERVER_URL + "/getBlog", { blogIndex: 3 }).done(req => {$("#publish3").prop("checked", req.published);});
+  $.get(SERVER_URL + "/getBlog", { blogIndex: 1 }).done((req) => {
+    $("#publish1").prop("checked", req.published);
+  });
+  $.get(SERVER_URL + "/getBlog", { blogIndex: 2 }).done((req) => {
+    $("#publish2").prop("checked", req.published);
+  });
+  $.get(SERVER_URL + "/getBlog", { blogIndex: 3 }).done((req) => {
+    $("#publish3").prop("checked", req.published);
+  });
 
   // hides the blog + keyboard
   blog.style.visibility = keyboard.style.visibility = "hidden";
@@ -131,25 +144,34 @@ function setup() {
   $("#publish1").change(() => {
     const packet = {
       blogIndex: 1,
-      published: $("#publish1").is(":checked")
-    }
-    $.post(SERVER_URL + "/publishBlog", packet)
+      published: $("#publish1").is(":checked"),
+    };
+    $.post(SERVER_URL + "/publishBlog", packet);
   });
 
   $("#publish2").change(() => {
     const packet = {
       blogIndex: 2,
-      published: $("#publish2").is(":checked")
-    }
-    $.post(SERVER_URL + "/publishBlog", packet)
+      published: $("#publish2").is(":checked"),
+    };
+    $.post(SERVER_URL + "/publishBlog", packet);
   });
 
   $("#publish3").change(() => {
     const packet = {
       blogIndex: 3,
-      published: $("#publish3").is(":checked")
-    }
-    $.post(SERVER_URL + "/publishBlog", packet)
+      published: $("#publish3").is(":checked"),
+    };
+    $.post(SERVER_URL + "/publishBlog", packet);
+  });
+}
+
+function fetchSavedWords() {
+  savedWords.forEach((word) => {
+    let index = parseInt(word.id.replace(/save/i, ""));
+    $.get(SERVER_URL + "/getSaveWordBank", { saveIndex: index }).done((req) => {
+      $(word.id).html(req);
+    });
   });
 }
 
@@ -196,23 +218,23 @@ function save() {
       swal("No changes were saved.");
       return;
     }
-      swal({
-        title: "ARE YOU SURE?!",
-        text: "You will not be able to go back!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      }).then((confirmSave) => {
-        if (!confirmSave) {
-          swal("No changes were saved.");
-          return;
-        }
-        const packet = {
-          blogIndex: parseInt(currentBlogID.replace(/blog/i, "")),
-          blogContent: $("#textbox").val()
-        };
-        $.post(SERVER_URL + "/saveBlog", packet);
-      });
+    swal({
+      title: "ARE YOU SURE?!",
+      text: "You will not be able to go back!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((confirmSave) => {
+      if (!confirmSave) {
+        swal("No changes were saved.");
+        return;
+      }
+      const packet = {
+        blogIndex: parseInt(currentBlogID.replace(/blog/i, "")),
+        blogContent: $("#textbox").val(),
+      };
+      $.post(SERVER_URL + "/saveBlog", packet);
+    });
   });
 }
 
@@ -234,20 +256,20 @@ function cancel(req) {
       swal("No changes were made.");
       return;
     }
-      swal({
-        title: "ARE YOU SURE?!",
-        text: "You will not be able to go back!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      }).then((confirmCancel) => {
-        if (!confirmCancel) {
-          swal("No changes were made.");
-          return;
-        }
-        edit1.checked = edit2.checked = edit3.checked = false;
-        getKbd();
-      });
+    swal({
+      title: "ARE YOU SURE?!",
+      text: "You will not be able to go back!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((confirmCancel) => {
+      if (!confirmCancel) {
+        swal("No changes were made.");
+        return;
+      }
+      edit1.checked = edit2.checked = edit3.checked = false;
+      getKbd();
+    });
   });
 }
 

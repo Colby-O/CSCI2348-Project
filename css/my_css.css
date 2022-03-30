@@ -221,6 +221,7 @@ body {
 .swal-modal {
   background-color: royalblue;
   border: 3px solid rgba(255, 0, 0, 0.527);
+  text-align: center;
 }
 
 /*
@@ -229,6 +230,7 @@ body {
 */
 .swal-text {
   color: white;
+  text-align: center;
 }
 
 /*

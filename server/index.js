@@ -25,23 +25,59 @@ server.listen(port, function () {
 });
 // ---------------------------------------------------------------------------------
 
+// word-bank words
+const wordBank = [
+  "hello",
+  "world",
+  "!!!",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+];
+
 // blog array
 const blogs = [
   { content: "", published: false },
-  { content: "", published: false  },
-  { content: "", published: false  },
+  { content: "", published: false },
+  { content: "", published: false },
 ];
 
 server.post("/publishBlog", (req, res) => {
-  blogs[req.body.blogIndex - 1].published = req.body.published === 'true';
-  console.log(((blogs[req.body.blogIndex - 1].published) ? "Publishing" : "Unpublishing") + " Blog " + req.body.blogIndex);
+  blogs[req.body.blogIndex - 1].published = req.body.published === "true";
+  console.log(
+    (blogs[req.body.blogIndex - 1].published ? "Publishing" : "Unpublishing") +
+      " Blog " +
+      req.body.blogIndex
+  );
 
   return res.status(200);
-})
+});
+
+server.post("/saveWordBank", (req, res) => {
+  console.log("Saving WordBank " + req.body.word);
+  wordBank[req.body.saveIndex] = req.body.word;
+  return res.status(200);
+});
 
 // Upon receiving a post at this url execute callback function
 server.post("/saveBlog", (req, res) => {
-  console.log("Saving Blog " + req.body.blogIndex + "'s Content: " + req.body.blogContent);
+  console.log(
+    "Saving Blog " + req.body.blogIndex + "'s Content: " + req.body.blogContent
+  );
 
   blogs[req.body.blogIndex - 1].content = req.body.blogContent;
 
@@ -52,4 +88,10 @@ server.post("/saveBlog", (req, res) => {
 server.get("/getBlog", (req, res) => {
   console.log("Getting Blog " + req.query.blogIndex);
   return res.status(200).send(blogs[req.query.blogIndex - 1]);
+});
+
+// word bank get
+server.get("/getSaveWordBank", (req, res) => {
+  // console.log("Get Word " + req.query.)
+  return res.status(200).send(wordBank[req.query.saveIndex]);
 });
