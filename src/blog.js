@@ -174,6 +174,35 @@ function setup() {
 }
 
 /* Colby O'Keefe (A00428974) */
+function displayWarning(warningTitle, warningText, func) {
+  swal({
+    title: warningTitle,
+    text: warningText,
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((confrim1) => {
+    if (!confrim1) {
+      swal("No changes were saved.");
+      return;
+    }
+    swal({
+      title: "ARE YOU SURE?!",
+      text: "You will not be able to go back!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((confrim2) => {
+      if (!confrim2) {
+        swal("No changes were saved.");
+        return;
+      }
+      func();
+    }); 
+  }); 
+}
+
+/* Colby O'Keefe (A00428974) */
 function fetchSavedWords(bank) {
   savedWordContainer.innerHTML = "";
   let rowDiv = null;
@@ -184,19 +213,17 @@ function fetchSavedWords(bank) {
     deleteButton.innerHTML = "<i class='bi bi-x-square'></i>"
     deleteButton.classList.add("btn", "btn-primary", "delete-word-button");
     deleteButton.setAttribute("data-role", "button");
-    deleteButton.onclick = () => deleteSavedWord(index, word);
+    deleteButton.onclick = () => displayWarning(`Are you sure you want to delete "${word}" from the word bank?`, "", () => deleteSavedWord(index, word));
 
     let wordName = document.createElement("a");
     wordName.innerHTML = word;
     wordName.classList.add("btn", "btn-danger", "saved-word");
-    //wordName.setAttribute("data-role", "button");
-    //wordName.onclick = () => { addWordToBlog(word) };
     
     let addButton = document.createElement("a");
     addButton.innerHTML = "Add";
     addButton.classList.add("btn", "btn-primary", "add-word-button");
     addButton.setAttribute("data-role", "button");
-    addButton.onclick = () => { addWordToBlog(word) };
+    addButton.onclick = () => addWordToBlog(word);
     
     rowDiv.append(deleteButton, wordName, addButton);
     savedWordContainer.append(rowDiv);
@@ -205,31 +232,8 @@ function fetchSavedWords(bank) {
 
 /* Colby O'Keefe (A00428974) */
 function deleteSavedWord(index, word) {
-  swal({
-    title: `Are you sure you want to delete "${word}" from the word bank?`,
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  }).then((willDelete) => {
-    if (!willDelete) {
-      swal("No changes were saved.");
-      return;
-    }
-    swal({
-      title: "ARE YOU SURE?!",
-      text: "You will not be able to go back!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((confirmDelete) => {
-      if (!confirmDelete) {
-        swal("No changes were saved.");
-        return;
-      }
-      $.post(SERVER_URL + "/deleteWord", {"index": index});
-      $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
-    }); 
-  }); 
+  $.post(SERVER_URL + "/deleteWord", {"index": index});
+  $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
 }
 
 /* Colby O'Keefe (A00428974) */
@@ -242,32 +246,9 @@ function toggleWordBank() {
 function addWordToBank() {
   let word = $(wordBankTextbox).val();
   if (word === "") return;
-  swal({
-    title: `Are you sure you want to add "${word}" to the word bank?`,
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  }).then((willAdd) => {
-    if (!willAdd) {
-      swal("No changes were saved.");
-      return;
-    }
-    swal({
-      title: "ARE YOU SURE?!",
-      text: "You will not be able to go back!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((confirmAdd) => {
-      if (!confirmAdd) {
-        swal("No changes were saved.");
-        return;
-      }
-      $.post(SERVER_URL + "/saveWord", {"word": word});
-      $(wordBankTextbox).val("");
-      $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
-    }); 
-  }); 
+  $.post(SERVER_URL + "/saveWord", {"word": word});
+  $(wordBankTextbox).val("");
+  $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
 }
 
 /* Colby O'Keefe (A00428974) */
@@ -293,8 +274,8 @@ function getKbd() {
   checkedContainer.style.display = allBlogsUnchecked ? "block" : "none";
 }
 
+/* Colby O'Keefe (A00428974) */
 function setBlog(req) {
-  console.log(req);
   $("#textbox").val(req.content);
   // Updates keybaord
   $("#textbox").focus();
@@ -308,35 +289,11 @@ function setBlog(req) {
  * Modified: Colby O'Keefe(A00428974)
  */
 function save() {
-  swal({
-    title: "Are you sure you want to save?",
-    text: "Once you save, all changes will be saved.",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  }).then((willSave) => {
-    if (!willSave) {
-      swal("No changes were saved.");
-      return;
+    const packet = {
+      blogIndex: parseInt(currentBlogID.replace(/blog/i, "")),
+      blogContent: $("#textbox").val(),
     }
-    swal({
-      title: "ARE YOU SURE?!",
-      text: "You will not be able to go back!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((confirmSave) => {
-      if (!confirmSave) {
-        swal("No changes were saved.");
-        return;
-      }
-      const packet = {
-        blogIndex: parseInt(currentBlogID.replace(/blog/i, "")),
-        blogContent: $("#textbox").val(),
-      };
-      $.post(SERVER_URL + "/saveBlog", packet);
-    });
-  });
+    $.post(SERVER_URL + "/saveBlog", packet);
 }
 
 /*
@@ -346,32 +303,8 @@ function save() {
   Modified: March 28, 2022 (SDR + FDR)
 */
 function cancel(req) {
-  swal({
-    title: "Are you sure you want to cancel?",
-    text: "Once you cancel, all unsaved work will be lost.",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  }).then((willCancel) => {
-    if (!willCancel) {
-      swal("No changes were made.");
-      return;
-    }
-    swal({
-      title: "ARE YOU SURE?!",
-      text: "You will not be able to go back!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((confirmCancel) => {
-      if (!confirmCancel) {
-        swal("No changes were made.");
-        return;
-      }
-      edit1.checked = edit2.checked = edit3.checked = false;
-      getKbd();
-    });
-  });
+  edit1.checked = edit2.checked = edit3.checked = false;
+  getKbd();
 }
 
 /*
