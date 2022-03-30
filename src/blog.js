@@ -37,6 +37,8 @@ let currentEditing = null;
 
 let savedWordContainer = null;
 
+let wordBankTextbox = null
+
 let savedWords = [];
 
 /*
@@ -54,6 +56,7 @@ function setup() {
   title1 = $("#title1").get(0);
   title2 = $("#title2").get(0);
   title3 = $("#title3").get(0);
+  wordBankTextbox = $("#words").get(0);
   checkedContainer = $("#blog-option-container").get(0);
   currentEditing = $("#currently-editing-blog").get(0);
   savedWordContainer = $("#saved-word-container").get(0);
@@ -168,6 +171,7 @@ function setup() {
   });
 }
 
+/* Colby O'Keefe (A00428974) */
 function fetchSavedWords(bank) {
   savedWordContainer.innerHTML = "";
   let rowDiv = null;
@@ -183,40 +187,59 @@ function fetchSavedWords(bank) {
     let wordName = document.createElement("a");
     wordName.innerHTML = word;
     wordName.classList.add("btn", "btn-danger", "saved-word");
-    wordName.setAttribute("data-role", "button");
-    wordName.onclick = () => { addWordToBlog(word) };
-
-    let editButton = document.createElement("a");
-    editButton.innerHTML = "Edit";
-    editButton.classList.add("btn", "btn-primary", "edit-word-button");
-    editButton.setAttribute("data-role", "button");
-    editButton.onclick = () => { addWordToBank(word, index) };
-
-    rowDiv.append(deleteButton, wordName, editButton);
+    //wordName.setAttribute("data-role", "button");
+    //wordName.onclick = () => { addWordToBlog(word) };
+    
+    let addButton = document.createElement("a");
+    addButton.innerHTML = "Add";
+    addButton.classList.add("btn", "btn-primary", "add-word-button");
+    addButton.setAttribute("data-role", "button");
+    addButton.onclick = () => { addWordToBlog(word) };
+    
+    rowDiv.append(deleteButton, wordName, addButton);
     savedWordContainer.append(rowDiv);
   });
 }
+
+/* Colby O'Keefe (A00428974) */
 function deleteSavedWord(index) {
   $.post(SERVER_URL + "/deleteWord", {"index": index});
   $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
 }
 
-function addWordToBank(initalWord, index) {
+/* Colby O'Keefe (A00428974) */
+function addWordToBank() {
+  let word = $(wordBankTextbox).val();
+  if (word === "") return;
   swal({
-    title: "Enter Word To Save",
-    content: {
-      element: "input",
-      attributes: {
-        defaultValue: initalWord
-      }
+    title: `Are you sure you want to add "${word}" to the word bank?`,
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willAdd) => {
+    if (!willAdd) {
+      swal("No changes were saved.");
+      return;
     }
-  }).then((word) => {
-    if (word === "") word = initalWord;
-    $.post(SERVER_URL + "/saveWord", {"index": index, "word": word});
-    $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
-  });
+    swal({
+      title: "ARE YOU SURE?!",
+      text: "You will not be able to go back!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((confirmAdd) => {
+      if (!confirmAdd) {
+        swal("No changes were saved.");
+        return;
+      }
+      $.post(SERVER_URL + "/saveWord", {"word": word});
+      $(wordBankTextbox).val("");
+      $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
+    }); 
+  }); 
 }
 
+/* Colby O'Keefe (A00428974) */
 function addWordToBlog(word) {
   let currentValue = $("#textbox").val();
   $("#textbox").val(currentValue + `${word} `);

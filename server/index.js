@@ -26,7 +26,7 @@ server.listen(port, function () {
 // ---------------------------------------------------------------------------------
 
 // word-bank words
-const wordBank = ["Test", "Word1", "Yo", "Word1", "Yo", "Word1", "Test2", "Yo", "Word1", "Yo", "Word1", "Yo", "Word1", "Yo", "Word1", "Yo", "Word1", "Yo", "Word1", "Yo", "Word1", "Yo", "Word1", "Yo"];
+const wordBank = [];
 
 // blog array
 const blogs = [
@@ -48,7 +48,7 @@ server.post("/publishBlog", (req, res) => {
 
 server.post("/saveWord", (req, res) => {
   console.log(`Saving ${req.body.word} to the word bank.`);
-  wordBank[req.body.index] = req.body.word;
+  wordBank.push(req.body.word);
   return res.status(200);
 });
 

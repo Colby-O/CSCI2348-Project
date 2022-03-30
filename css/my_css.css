@@ -53,13 +53,6 @@ body {
 }
 
 /*
-  For the width of a <div> (SDR, March 16, 2022)
-*/
-/* .div-width {
-  width: 900px;
-} */
-
-/*
   This will quickly pad around <div>'s for spacing. (SDR March 9, 2022)
 */
 .pad-div {
@@ -233,6 +226,11 @@ body {
   text-align: center;
 }
 
+/* Colby O'Keefe (A00428974) */
+.swal-overlay {
+  z-index: 40;
+}
+
 /*
   For the title font colour.
   Created: March 28, 2022 (SDR + FDR)
@@ -282,12 +280,19 @@ body {
   margin-bottom: 25px;
 }
 
+/* Colby O'Keefe (A00428974) */
 .saved-word {
   margin-right: 10px;
   margin-bottom: 25px;
 }
 
-.edit-word-button {
+/* Colby O'Keefe (A00428974) */
+.add-word-button {
   margin-right: 25px;
   margin-bottom: 25px;
+}
+
+/* Colby O'Keefe (A00428974) */
+.keyboard-container {
+  z-index: 1000;
 }
