@@ -333,7 +333,7 @@ function undo() {
 }
 
 // clicking the star would add then to word bank
-function addWord() {
+function addWordWarning() {
   if ($(wordBankTextbox).val() !== "")
     displayWarning(
       `Are you sure you want to add "${$(
