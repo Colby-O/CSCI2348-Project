@@ -98,9 +98,7 @@ function setup() {
     $.get(SERVER_URL + "/getBlog", { blogIndex: 1 }).done(setBlog);
 
     // focus the blog textarea so the keyboard will update
-    $("#textbox").focus((e) => {
-      e.target.focus({ preventScroll: true });
-    });
+    $("#textbox").focus();
   });
 
   $("#edit2").change(() => {
