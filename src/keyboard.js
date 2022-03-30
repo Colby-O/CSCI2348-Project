@@ -374,7 +374,7 @@ function setSelectionRange(textbox, selectionStart, selectionEnd) {
         textbox.setSelectionRange(selectionStart, selectionEnd);
     }
     else if (textbox.createTextRange) {
-        var range = textbox.createTextRange();
+        let range = textbox.createTextRange();
         range.collapse(true);
         range.moveEnd('character', selectionEnd);
         range.moveStart('character', selectionStart);
