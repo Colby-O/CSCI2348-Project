@@ -211,17 +211,17 @@ function fetchSavedWords(bank) {
 
     let deleteButton =  document.createElement("a");
     deleteButton.innerHTML = "<i class='bi bi-x-square'></i>"
-    deleteButton.classList.add("btn", "btn-primary", "delete-word-button");
+    deleteButton.classList.add("btn", "btn-info", "delete-word-button");
     deleteButton.setAttribute("data-role", "button");
     deleteButton.onclick = () => displayWarning(`Are you sure you want to delete "${word}" from the word bank?`, "", () => deleteSavedWord(index, word));
 
     let wordName = document.createElement("a");
     wordName.innerHTML = word;
-    wordName.classList.add("btn", "btn-danger", "saved-word");
+    wordName.classList.add("btn", "btn-light", "saved-word");
     
     let addButton = document.createElement("a");
     addButton.innerHTML = "Add";
-    addButton.classList.add("btn", "btn-primary", "add-word-button");
+    addButton.classList.add("btn", "btn-info", "add-word-button");
     addButton.setAttribute("data-role", "button");
     addButton.onclick = () => addWordToBlog(word);
     
