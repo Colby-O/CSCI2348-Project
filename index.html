@@ -202,7 +202,7 @@
           data-role="button"
           class="btn btn-danger snc-btn"
           id="save"
-          onclick="displayWarning('Are you sure you want to save?', 'Once you save, all changes will be saved.', save)"
+          onclick=saveWarning()
         >
           Save
         </a>
@@ -210,7 +210,7 @@
           data-role="button"
           class="btn btn-warning snc-btn"
           id="cancel"
-          onclick="displayWarning('Are you sure you want to cancel?', 'Once you cancel, all unsaved work will be lost.', cancel)"
+          onclick=cancelWarning()
         >
           Cancel
         </a>
@@ -224,7 +224,7 @@
           <a>
             <input class="width wb-textbox use-keyboard" type="text" id="words" />
           </a>
-          <a data-role="button" class="btn btn-primary star-btn" id="saveWord" onclick='if($(wordBankTextbox).val() !== "") displayWarning(`Are you sure you want to add "${$(wordBankTextbox).val()}" to the word bank?`, "", addWordToBank)'>
+          <a data-role="button" class="btn btn-primary star-btn" id="saveWord" onclick=addWord()>
             <i class="bi bi-star"></i>
           </a>
         </div>

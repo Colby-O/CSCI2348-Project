@@ -317,3 +317,12 @@ body {
 .keyboard-container {
   z-index: 1000;
 }
+
+/* .word-bank-container{
+  position: fixed; 
+  width: 100vw; 
+  height: 60vh; 
+  margin:0 auto; 
+  top: 20%; 
+  right: 10%;
+} */

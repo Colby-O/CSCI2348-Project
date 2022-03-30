@@ -34,9 +34,8 @@ let title3 = null;
 let checkedContainer = null;
 let currentEditing = null;
 let savedWordContainer = null;
-let wordBankTextbox = null
+let wordBankTextbox = null;
 let wordBankContainer = null;
-
 
 let savedWords = [];
 
@@ -196,8 +195,8 @@ function displayWarning(warningTitle, warningText, callback) {
         return;
       }
       callback();
-    }); 
-  }); 
+    });
+  });
 }
 
 /* Colby O'Keefe (A00428974) */
@@ -205,24 +204,30 @@ function fetchSavedWords(bank) {
   savedWordContainer.innerHTML = "";
   let rowDiv = null;
   bank.forEach((word, index) => {
-    if (index % MAX_NUM_SVAED_WORDS_PER_ROW === 0) rowDiv = document.createElement("div");
+    if (index % MAX_NUM_SVAED_WORDS_PER_ROW === 0)
+      rowDiv = document.createElement("div");
 
-    let deleteButton =  document.createElement("a");
-    deleteButton.innerHTML = "<i class='bi bi-x-square'></i>"
+    let deleteButton = document.createElement("a");
+    deleteButton.innerHTML = "<i class='bi bi-x-square'></i>";
     deleteButton.classList.add("btn", "btn-info", "delete-word-button");
     deleteButton.setAttribute("data-role", "button");
-    deleteButton.onclick = () => displayWarning(`Are you sure you want to delete "${word}" from the word bank?`, "", () => deleteSavedWord(index, word));
+    deleteButton.onclick = () =>
+      displayWarning(
+        `Are you sure you want to delete "${word}" from the word bank?`,
+        "",
+        () => deleteSavedWord(index, word)
+      );
 
     let wordName = document.createElement("a");
     wordName.innerHTML = word;
     wordName.classList.add("btn", "btn-light", "saved-word");
-    
+
     let addButton = document.createElement("a");
     addButton.innerHTML = "Add";
     addButton.classList.add("btn", "btn-info", "add-word-button");
     addButton.setAttribute("data-role", "button");
     addButton.onclick = () => addWordToBlog(word);
-    
+
     rowDiv.append(deleteButton, wordName, addButton);
     savedWordContainer.append(rowDiv);
   });
@@ -230,13 +235,14 @@ function fetchSavedWords(bank) {
 
 /* Colby O'Keefe (A00428974) */
 function deleteSavedWord(index, word) {
-  $.post(SERVER_URL + "/deleteWord", {"index": index});
+  $.post(SERVER_URL + "/deleteWord", { index: index });
   $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
 }
 
 /* Colby O'Keefe (A00428974) */
 function toggleWordBank() {
-  if (wordBankContainer.style.display === "none") wordBankContainer.style.display = "block";
+  if (wordBankContainer.style.display === "none")
+    wordBankContainer.style.display = "block";
   else wordBankContainer.style.display = "none";
 }
 
@@ -244,7 +250,7 @@ function toggleWordBank() {
 function addWordToBank() {
   let word = $(wordBankTextbox).val();
   if (word === "") return;
-  $.post(SERVER_URL + "/saveWord", {"word": word});
+  $.post(SERVER_URL + "/saveWord", { word: word });
   $(wordBankTextbox).val("");
   $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
 }
@@ -256,8 +262,8 @@ function addWordToBlog(word) {
   let oldValue = $("#textbox").val();
 
   $("#textbox").val(oldValue.slice(0, pos) + word + " " + oldValue.slice(pos));
-  
-  setCursorToPos(textbox, pos + word.length + 1)
+
+  setCursorToPos(textbox, pos + word.length + 1);
 }
 
 /**
@@ -293,11 +299,11 @@ function setBlog(req) {
  * Modified: Colby O'Keefe (A00428974) March 30th 2022
  */
 function save() {
-    const packet = {
-      blogIndex: parseInt(currentBlogID.replace(/blog/i, "")),
-      blogContent: $("#textbox").val(),
-    }
-    $.post(SERVER_URL + "/saveBlog", packet);
+  const packet = {
+    blogIndex: parseInt(currentBlogID.replace(/blog/i, "")),
+    blogContent: $("#textbox").val(),
+  };
+  $.post(SERVER_URL + "/saveBlog", packet);
 }
 
 /*
@@ -324,4 +330,34 @@ function undo() {
   if (lastindex === -1) $("#textbox").val("");
   else $("#textbox").val(text.substring(0, lastindex));
   $("#textbox").focus();
+}
+
+// clicking the star would add then to word bank
+function addWord() {
+  if ($(wordBankTextbox).val() !== "")
+    displayWarning(
+      `Are you sure you want to add "${$(
+        wordBankTextbox
+      ).val()}" to the word bank?`,
+      "",
+      addWordToBank
+    );
+}
+
+// save warning
+function saveWarning() {
+  displayWarning(
+    "Are you sure you want to save?",
+    "Once you save, all changes will be saved.",
+    save
+  );
+}
+
+// cancel warning
+function cancelWarning() {
+  displayWarning(
+    "Are you sure you want to cancel?",
+    "Once you cancel, all unsaved work will be lost.",
+    cancel
+  );
 }
