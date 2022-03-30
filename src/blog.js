@@ -174,7 +174,7 @@ function setup() {
 }
 
 /* Colby O'Keefe (A00428974) */
-function displayWarning(warningTitle, warningText, func) {
+function displayWarning(warningTitle, warningText, callback) {
   swal({
     title: warningTitle,
     text: warningText,
@@ -197,7 +197,7 @@ function displayWarning(warningTitle, warningText, func) {
         swal("No changes were saved.");
         return;
       }
-      func();
+      callback();
     }); 
   }); 
 }
