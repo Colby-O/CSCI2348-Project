@@ -251,8 +251,13 @@ function addWordToBank() {
 
 /* Colby O'Keefe (A00428974) */
 function addWordToBlog(word) {
-  let currentValue = $("#textbox").val();
-  $("#textbox").val(currentValue + `${word} `);
+  let textbox = $("#textbox").get(0);
+  let pos = textbox.selectionEnd;
+  let oldValue = $("#textbox").val();
+
+  $("#textbox").val(oldValue.slice(0, pos) + word + " " + oldValue.slice(pos));
+  
+  setCursorToPos(textbox, pos + word.length + 1)
 }
 
 /**
