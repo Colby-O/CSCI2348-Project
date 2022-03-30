@@ -26,28 +26,7 @@ server.listen(port, function () {
 // ---------------------------------------------------------------------------------
 
 // word-bank words
-const wordBank = [
-  "hello",
-  "world",
-  "!!!",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-];
+const wordBank = ["Test", "Word1", "Yo", "Word1", "Yo", "Word1", "Test2", "Yo", "Word1", "Yo", "Word1", "Yo", "Word1", "Yo", "Word1", "Yo", "Word1", "Yo", "Word1", "Yo", "Word1", "Yo", "Word1", "Yo"];
 
 // blog array
 const blogs = [
@@ -67,16 +46,16 @@ server.post("/publishBlog", (req, res) => {
   return res.status(200);
 });
 
-server.post("/saveWordBank", (req, res) => {
-  console.log("Saving WordBank " + req.body.word);
-  wordBank[req.body.saveIndex] = req.body.word;
+server.post("/saveWord", (req, res) => {
+  console.log(`Saving ${req.body.word} to the word bank.`);
+  wordBank[req.body.index] = req.body.word;
   return res.status(200);
 });
 
 // Upon receiving a post at this url execute callback function
 server.post("/saveBlog", (req, res) => {
   console.log(
-    "Saving Blog " + req.body.blogIndex + "'s Content: " + req.body.blogContent
+    `Saving Blog ${req.body.blogIndex}'s Content: ${req.body.blogContent}`
   );
 
   blogs[req.body.blogIndex - 1].content = req.body.blogContent;
@@ -84,14 +63,21 @@ server.post("/saveBlog", (req, res) => {
   return res.status(200);
 });
 
+server.post("/deleteWord", (req, res) => {
+  let deletedValue = wordBank[req.body.index];
+  console.log(`${deletedValue} was deleted from the word bank.`);
+  wordBank.splice(req.body.index, 1);
+  return res.status(200);
+});
+
 // Upon receiving a post at this url execute callback function
 server.get("/getBlog", (req, res) => {
-  console.log("Getting Blog " + req.query.blogIndex);
+  console.log(`Getting Blog ${req.query.blogIndex}`);
   return res.status(200).send(blogs[req.query.blogIndex - 1]);
 });
 
 // word bank get
-server.get("/getSaveWordBank", (req, res) => {
-  // console.log("Get Word " + req.query.)
-  return res.status(200).send(wordBank[req.query.saveIndex]);
+server.get("/getWordBank", (req, res) => {
+  console.log("Fetching the word bank.");
+  return res.status(200).send(wordBank);
 });

@@ -260,58 +260,28 @@
           --bs-bg-opacity: 0.8;
         "
       >
-        <div class="card-body p-5">
+        <div class="card-body p-5" id="word-bank-container">
           <div>
-            <h2 class="text-uppercase text-center mb-5">Create Game</h2>
-          </div>
-          <div class="form-outline mb-4">
-            <button>X</button>
-            <span id="save1" class="saved-word"></span>
+            <h2 class="text-uppercase text-center mb-5">Word Bank</h2>
           </div>
 
-          <div class="form-outline mb-4">
-            <button>X</button>
-            <span id="save2" class="save-word"></span>
-          </div>
+          <div class="form-outline mb-4" id="saved-word-container">
 
-          <div class="form-outline mb-4">
-            <button>X</button>
-            <span id="save3" class="saved-word"></span>
-          </div>
-          <div class="form-outline mb-4">
-            <button>X</button>
-            <span></span>
-          </div>
-          <div class="form-outline mb-4">
-            <button>X</button>
-            <span></span>
-          </div>
-          <div class="form-outline mb-4">
-            <button>X</button>
-            <span></span>
-          </div>
-          <div class="form-outline mb-4">
-            <button>X</button>
-            <span></span>
-          </div>
-          <div class="form-outline mb-4">
-            <button>X</button>
-            <span></span>
           </div>
 
           <button
-            onclick="createGame()"
+            onclick="closeWordBank"
             class="btn btn-warning"
             style="font-family: fortune"
           >
-            Create
+            Close
           </button>
           <button
-            onclick="closeCreateGame()"
+            onclick="saveWordToBank()"
             class="btn btn-warning"
             style="font-family: fortune"
           >
-            Cancel
+            Add New Word
           </button>
         </div>
       </div>

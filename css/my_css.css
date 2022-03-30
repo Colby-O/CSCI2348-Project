@@ -275,3 +275,19 @@ body {
 .keyboardKey--active::after {
   background: red;
 }
+
+/* Colby O'Keefe (A00428974) */
+.delete-word-button {
+  margin-right: 10px;
+  margin-bottom: 25px;
+}
+
+.saved-word {
+  margin-right: 10px;
+  margin-bottom: 25px;
+}
+
+.edit-word-button {
+  margin-right: 25px;
+  margin-bottom: 25px;
+}

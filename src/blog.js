@@ -11,8 +11,10 @@
 */
 
 // Server URL
-//const SERVER_URL = "http://127.0.0.1:3033";
-const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
+const SERVER_URL = "http://127.0.0.1:3033";
+//const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
+
+const MAX_NUM_SVAED_WORDS_PER_ROW = 4;
 
 // Stores last blog ID selected
 let currentBlogID = null;
@@ -33,6 +35,8 @@ let checkedContainer = null;
 
 let currentEditing = null;
 
+let savedWordContainer = null;
+
 let savedWords = [];
 
 /*
@@ -41,11 +45,6 @@ let savedWords = [];
   Author(s): Colby O'Keefe(A00428974) + SDR
 */
 function setup() {
-  document.querySelectorAll(".saved-word").forEach((word) => {
-    savedWords.push(word);
-  });
-  fetchSavedWords();
-
   // Gets page elements
   keyboard = $("#kbd").get(0);
   blog = $("#blogArea").get(0);
@@ -57,6 +56,9 @@ function setup() {
   title3 = $("#title3").get(0);
   checkedContainer = $("#blog-option-container").get(0);
   currentEditing = $("#currently-editing-blog").get(0);
+  savedWordContainer = $("#saved-word-container").get(0);
+
+  $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
 
   $.get(SERVER_URL + "/getBlog", { blogIndex: 1 }).done((req) => {
     $("#publish1").prop("checked", req.published);
@@ -166,13 +168,58 @@ function setup() {
   });
 }
 
-function fetchSavedWords() {
-  savedWords.forEach((word) => {
-    let index = parseInt(word.id.replace(/save/i, ""));
-    $.get(SERVER_URL + "/getSaveWordBank", { saveIndex: index }).done((req) => {
-      $(word.id).html(req);
-    });
+function fetchSavedWords(bank) {
+  savedWordContainer.innerHTML = "";
+  let rowDiv = null;
+  bank.forEach((word, index) => {
+    if (index % MAX_NUM_SVAED_WORDS_PER_ROW === 0) rowDiv = document.createElement("div");
+
+    let deleteButton =  document.createElement("a");
+    deleteButton.innerHTML = "<i class='bi bi-x-square'></i>"
+    deleteButton.classList.add("btn", "btn-primary", "delete-word-button");
+    deleteButton.setAttribute("data-role", "button");
+    deleteButton.onclick = () => deleteSavedWord(index);
+
+    let wordName = document.createElement("a");
+    wordName.innerHTML = word;
+    wordName.classList.add("btn", "btn-danger", "saved-word");
+    wordName.setAttribute("data-role", "button");
+    wordName.onclick = () => { addWordToBlog(word) };
+
+    let editButton = document.createElement("a");
+    editButton.innerHTML = "Edit";
+    editButton.classList.add("btn", "btn-primary", "edit-word-button");
+    editButton.setAttribute("data-role", "button");
+    editButton.onclick = () => { addWordToBank(word, index) };
+
+    rowDiv.append(deleteButton, wordName, editButton);
+    savedWordContainer.append(rowDiv);
   });
+}
+function deleteSavedWord(index) {
+  $.post(SERVER_URL + "/deleteWord", {"index": index});
+  $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
+}
+
+function addWordToBank(initalWord, index) {
+  swal({
+    title: "Enter Word To Save",
+    content: {
+      element: "input",
+      attributes: {
+        defaultValue: initalWord
+      }
+    }
+  }).then((word) => {
+    if (word === "") word = initalWord;
+    $.post(SERVER_URL + "/saveWord", {"index": index, "word": word});
+    $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
+  });
+}
+
+function addWordToBlog(word) {
+  let currentValue = $("#textbox").val();
+  $("#textbox").val(currentValue + `${word} `);
 }
 
 /**
