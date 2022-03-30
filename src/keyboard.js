@@ -12,6 +12,7 @@ const Keyboard = {
     main: null,
     keysContainer: null,
     keys: [],
+    textbox: null
   },
 
   eventHandlers: {
@@ -19,7 +20,7 @@ const Keyboard = {
   },
 
   properties: {
-    values: "",
+    value: "",
     capsLock: false,
     shiftPressed: false,
   },
@@ -206,42 +207,6 @@ const Keyboard = {
             );
           });
           break;
-
-        case "Word":
-          /*
-            Word bank button group
-            Mohammed Al-Bashiri (A00391502)
-            Colby O'Keefe (A00428974) + SDR + FDR
-          */
-          // creates bank button
-          let bankBtn = document.createElement("a");
-          bankBtn.classList.add("btn", "btn-primary", "word-bank");
-          bankBtn.innerHTML = "Word";
-          bankBtn.innerHTML += createIcon("bi bi-piggy-bank");
-          bankBtn.setAttribute("data-role", "button");
-
-          // create textbox
-          let textbox = document.createElement("input");
-          textbox.setAttribute("type", "text");
-          textbox.classList.add("wb-textbox");
-
-          // Adds the ability to use the keybaord on the textbox
-          $(textbox).focus(() => {
-            this.startup($(textbox).val(), (currentValue) => {
-              $(textbox).val(currentValue);
-            });
-          });
-
-          // create star button
-          let saveBtn = document.createElement("a");
-          saveBtn.classList.add("btn", "btn-primary", "star-btn");
-          saveBtn.innerHTML = createIcon("bi bi-star");
-          saveBtn.setAttribute("data-role", "button");
-
-          // append each elements to keyElement
-          keyElement.append(bankBtn, textbox, saveBtn);
-          break;
-
         case "backspace":
           // Adds classes + icon to the backspace key
           keyElement.classList.add("btn", "btn-primary", "blue-key");
@@ -249,10 +214,9 @@ const Keyboard = {
 
           // Adds the functionaility for the backspace key
           keyElement.addEventListener("click", () => {
-            this.properties.value = this.properties.value.substring(
-              0,
-              this.properties.value.length - 1
-            );
+            let pos = this.elements.textbox.selectionStart;
+            let oldValue = this.properties.value;
+            this.properties.value = oldValue.substring(0, pos - 1) + oldValue.slice(pos);
             this._triggerEvent("oninput");
 
             if (this.shiftPressed) {
@@ -273,7 +237,7 @@ const Keyboard = {
 
           // Adds the functionaility for the enter key
           keyElement.addEventListener("click", () => {
-            this.properties.value += "\n";
+            this._updateValue("\n");
             this._triggerEvent("oninput");
 
             if (this.shiftPressed) {
@@ -294,7 +258,7 @@ const Keyboard = {
 
           // Adds the functionaility for the space key
           keyElement.addEventListener("click", () => {
-            this.properties.value += " ";
+            this._updateValue(" ");
             this._triggerEvent("oninput");
 
             if (this.shiftPressed) {
@@ -315,14 +279,16 @@ const Keyboard = {
 
           // Adds the functionaility for a genertic key
           keyElement.addEventListener("click", () => {
+            
+            //console.log(pos);
             if (this.constants.unshiftedKeys.test(key)) {
-              this.properties.value += this.properties.capsLock
+              this._updateValue(this.properties.capsLock
                 ? this._swapDigitsAndSpecial(key)
-                : key;
+                : key);
             } else {
-              this.properties.value += this.properties.capsLock
+              this._updateValue(this.properties.capsLock
                 ? key.toUpperCase()
-                : key.toLowerCase();
+                : key.toLowerCase());
             }
             this._triggerEvent("oninput");
 
@@ -353,6 +319,12 @@ const Keyboard = {
     return fragment;
   },
   /*Colby O'Keefe (A00428974)*/
+  _updateValue(char) {
+    let pos = this.elements.textbox.selectionStart;
+    let oldValue = this.properties.value;   
+    this.properties.value = oldValue.slice(0, pos) + char + oldValue.slice(pos);
+  },
+  /*Colby O'Keefe (A00428974)*/
   _triggerEvent(handlerName) {
     /* Handles a trigger evenet */
     if (typeof this.eventHandlers[handlerName] == "function") {
@@ -380,7 +352,6 @@ const Keyboard = {
   },
   /*Colby O'Keefe (A00428974) & FDR*/
   _swapDigitsAndSpecial(char) {
-    console.log(char);
     if (this.constants.unshiftedKeys.test(char))
       return this.constants.shiftKeyMap[char];
     else
@@ -389,11 +360,32 @@ const Keyboard = {
       });
   },
   /*Colby O'Keefe (A00428974)*/
-  startup(initalValue, oninput) {
+  startup(initalValue, textbox, oninput) {
     this.properties.value = initalValue || "";
+    this.elements.textbox = textbox;
     this.eventHandlers.oninput = oninput;
   },
 };
+
+/* Colby O'Keefe (A00428974) */
+function setSelectionRange(textbox, selectionStart, selectionEnd) {
+    if (textbox.setSelectionRange) {
+        textbox.focus();
+        textbox.setSelectionRange(selectionStart, selectionEnd);
+    }
+    else if (textbox.createTextRange) {
+        var range = textbox.createTextRange();
+        range.collapse(true);
+        range.moveEnd('character', selectionEnd);
+        range.moveStart('character', selectionStart);
+        range.select();
+    }
+}
+
+/* Colby O'Keefe (A00428974) */
+function setCursorToPos(textbox, pos) {
+       setSelectionRange(textbox, pos, pos);
+}
 
 /*Colby O'Keefe (A00428974)*/
 window.addEventListener("DOMContentLoaded", () => {
@@ -404,8 +396,11 @@ window.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".use-keyboard").forEach((element) => {
     $(element).focus(() => {
       if ($(element).hasClass("keyboard-disable")) return;
-      Keyboard.startup($(element).val(), (currentValue) => {
+      Keyboard.startup($(element).val(), element, (currentValue) => {
+        let pos = element.selectionEnd;
         $(element).val(currentValue);
+        pos += 1;
+        setCursorToPos(element, pos)
       });
     });
   });
