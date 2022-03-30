@@ -224,7 +224,7 @@
           <a>
             <input class="width wb-textbox use-keyboard" type="text" id="words" />
           </a>
-          <a data-role="button" class="btn btn-primary star-btn" id="saveWord" onclick='displayWarning(`Are you sure you want to add "${$(wordBankTextbox).val()}" to the word bank?`, "", () => {addWordToBank();})'>
+          <a data-role="button" class="btn btn-primary star-btn" id="saveWord" onclick='displayWarning(`Are you sure you want to add "${$(wordBankTextbox).val()}" to the word bank?`, "", addWordToBank)'>
             <i class="bi bi-star"></i>
           </a>
         </div>
