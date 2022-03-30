@@ -40,7 +40,7 @@ npm test
 ~[C-07] The keyboard shall initially display lowercase keys.~ <br>
 ~[C-08] A space will automatically be inserted after a word in the wordbank.~ <br>
 ~[C-09] A shift key shall be present.~ <br>
-~[C-10] When the shift key is pressed, the whole keyboard will change to uppercase letters.~
+~[C-10] When the shift key is pressed, the whole keyboard will change to uppercase letters.~ <br>
 ~[C-11] Numeric and symbol keys may be organized so they are useable in one of the two uppercase or lowercase modes.~ <br>
 ~[C-12] Once a key is clicked, the effect of the shift key is terminated.~ <br>
 ~[C-13] A caps-lock toggle key shall be present.~ <br>
