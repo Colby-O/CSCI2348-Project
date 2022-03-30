@@ -11,8 +11,8 @@
 */
 
 // Server URL
-//const SERVER_URL = "http://127.0.0.1:3033";
-const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
+const SERVER_URL = "http://127.0.0.1:3033";
+//const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
 
 const MAX_NUM_SVAED_WORDS_PER_ROW = 4;
 
@@ -287,6 +287,7 @@ function setBlog(req) {
  * SDR March 6, 2022 + Colby O'Keefe (A00428974)
  * Created: Mohammed Al-Bashiri March 25, 2022
  * Modified: Colby O'Keefe(A00428974)
+ * Modified: Colby O'Keefe (A00428974) March 30th 2022
  */
 function save() {
     const packet = {
@@ -301,6 +302,7 @@ function save() {
   Created: Mohammed Al-Bashiri March 25, 2022
   Modified: Colby O'Keefe(A00428974)
   Modified: March 28, 2022 (SDR + FDR)
+  Modified: Colby O'Keefe (A00428974) March 30th 2022
 */
 function cancel(req) {
   edit1.checked = edit2.checked = edit3.checked = false;

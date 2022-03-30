@@ -251,33 +251,40 @@
       </div>
     </div>
 
-    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-      <div
-        class="card bg-dark"
-        style="
-          border-radius: 15px;
-          color: rgb(255, 223, 79);
-          --bs-bg-opacity: 0.8;
-        "
-      >
-        <div class="card-body p-5" id="word-bank-container">
-          <div>
-            <h2 class="text-uppercase text-center mb-5">Word Bank</h2>
+<section style = "position: fixed; width: 100vw; height: 60vh; margin:0 auto; top: 1%;" id="word-bank-container" >
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+	  <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+        <div
+         class="card bg-dark"
+         style="
+            border-radius: 15px;
+            color: rgb(255, 223, 79);
+            --bs-bg-opacity: 0.8;
+          "
+       >
+          <div class="card-body p-5">
+            <div>
+              <h2 class="text-uppercase text-center mb-5">Word Bank</h2>
+            </div>
+
+            <div class="form-outline mb-4" id="saved-word-container">
+
+            </div>
+
+            <button
+              onclick="toggleWordBank()"
+              class="btn btn-warning"
+              style="font-family: fortune;"
+            >
+              Close
+            </button>
           </div>
-
-          <div class="form-outline mb-4" id="saved-word-container">
-
-          </div>
-
-          <button
-            onclick="toggleWordBank()"
-            class="btn btn-warning"
-            style="font-family: fortune;"
-          >
-            Close
-          </button>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+ </section>
+</body>
 </html>
