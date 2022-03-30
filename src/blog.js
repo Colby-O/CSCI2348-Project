@@ -182,7 +182,7 @@ function fetchSavedWords(bank) {
     deleteButton.innerHTML = "<i class='bi bi-x-square'></i>"
     deleteButton.classList.add("btn", "btn-primary", "delete-word-button");
     deleteButton.setAttribute("data-role", "button");
-    deleteButton.onclick = () => deleteSavedWord(index);
+    deleteButton.onclick = () => deleteSavedWord(index, word);
 
     let wordName = document.createElement("a");
     wordName.innerHTML = word;
@@ -202,9 +202,32 @@ function fetchSavedWords(bank) {
 }
 
 /* Colby O'Keefe (A00428974) */
-function deleteSavedWord(index) {
-  $.post(SERVER_URL + "/deleteWord", {"index": index});
-  $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
+function deleteSavedWord(index, word) {
+  swal({
+    title: `Are you sure you want to delete "${word}" from the word bank?`,
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (!willDelete) {
+      swal("No changes were saved.");
+      return;
+    }
+    swal({
+      title: "ARE YOU SURE?!",
+      text: "You will not be able to go back!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((confirmDelete) => {
+      if (!confirmDelete) {
+        swal("No changes were saved.");
+        return;
+      }
+      $.post(SERVER_URL + "/deleteWord", {"index": index});
+      $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
+    }); 
+  }); 
 }
 
 /* Colby O'Keefe (A00428974) */
