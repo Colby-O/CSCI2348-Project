@@ -398,8 +398,9 @@ window.addEventListener("DOMContentLoaded", () => {
       if ($(element).hasClass("keyboard-disable")) return;
       Keyboard.startup($(element).val(), element, (currentValue) => {
         let pos = element.selectionEnd;
+        let oldValue = $(element).val()
         $(element).val(currentValue);
-        pos += 1;
+        pos += $(element).val().length - oldValue.length;
         setCursorToPos(element, pos)
       });
     });
