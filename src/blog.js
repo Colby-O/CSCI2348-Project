@@ -11,7 +11,6 @@
 */
 
 // Server URL
-//const SERVER_URL = "http://127.0.0.1:3033";
 const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
 
 const MAX_NUM_SVAED_WORDS_PER_ROW = 2;
@@ -170,7 +169,10 @@ function setup() {
   });
 }
 
-/* Colby O'Keefe (A00428974) */
+/* 
+  This is the modal that will warn the user.
+  Colby O'Keefe (A00428974) + SDR 
+*/
 function displayWarning(warningTitle, warningText, callback) {
   swal({
     title: warningTitle,
@@ -178,8 +180,8 @@ function displayWarning(warningTitle, warningText, callback) {
     icon: "warning",
     buttons: true,
     dangerMode: true,
-  }).then((confrim1) => {
-    if (!confrim1) {
+  }).then((confirm1) => {
+    if (!confirm1) {
       swal("No changes were saved.");
       return;
     }
@@ -189,8 +191,8 @@ function displayWarning(warningTitle, warningText, callback) {
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    }).then((confrim2) => {
-      if (!confrim2) {
+    }).then((confirm2) => {
+      if (!confirm2) {
         swal("No changes were saved.");
         return;
       }
@@ -332,7 +334,10 @@ function undo() {
   $("#textbox").focus();
 }
 
-// clicking the star would add then to word bank
+/* 
+  Clicking the star would add then to word bank 
+  Author: Mohammed Al-Bashiri (A00391502)
+*/
 function addWordWarning() {
   if ($(wordBankTextbox).val() !== "")
     displayWarning(
@@ -344,7 +349,10 @@ function addWordWarning() {
     );
 }
 
-// save warning
+/* 
+  Displays a warning before you save. 
+  Author: Mohammed Al-Bashiri (A00391502)
+*/
 function saveWarning() {
   displayWarning(
     "Are you sure you want to save?",
@@ -353,7 +361,10 @@ function saveWarning() {
   );
 }
 
-// cancel warning
+/* 
+  Displays a warning before you cancel.
+  Author: Mohammed Al-Bashiri (A00391502)
+*/
 function cancelWarning() {
   displayWarning(
     "Are you sure you want to cancel?",

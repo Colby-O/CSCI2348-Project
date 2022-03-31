@@ -3,23 +3,30 @@
 # Installation
 
 The software can be installed and setup as follows:
+
 ```
 git clone https://github.com/Colby-O/CSCI2356-Project
 ```
+
 ```
 cd project-folder/server
 ```
+
 ```
-npm install 
+npm install
 ```
+
 ```
 npm start
 ```
+
 The software is now ready to be used. <br>
 NOTE: npm start is setup to run the server as a background process that automatically restart upon a crash. To run a single instance of the server the following command can be ran:
+
 ```
 npm test
 ```
+
 # TODO
 
 ## Interface Software Requirements:
@@ -44,7 +51,7 @@ npm test
 ~[C-11] Numeric and symbol keys may be organized so they are useable in one of the two uppercase or lowercase modes.~ <br>
 ~[C-12] Once a key is clicked, the effect of the shift key is terminated.~ <br>
 ~[C-13] A caps-lock toggle key shall be present.~ <br>
-[C-14] The keyboard shall contain a word bank area. <br>
+~[C-14] The keyboard shall contain a word bank area.~ <br>
 ~[C-15] The client shall be able to enter a word or phrase into the word bank by typing it out.~ <br>
 ~[C-16] Every word or phrase in the word bank is visible to the user at the same time.~ <br>
 ~[C-17] The colour scheme shall have a Montreal Canadians theme.~ <br>
@@ -68,7 +75,7 @@ npm test
 ~[S-03] The blogs and publish buttons status shall be lost when the server program stops.~ <br>
 
 ## Particular Additions:
- 
+
 ~[P-01] Add indicator for what blog we are editing, since the blogs, edits, and publish are supposed to disappear.~ <br>
-[P-02] Add blinking line to tell you what line you are currently editing (currently disappears after you start typing). <br>
+~[P-02] Add blinking line to tell you what line you are currently editing (currently disappears after you start typing).~ <br>
 ~[P-03] Allow editing of previous words. Currently when you select where you want to edit, it adds that change to the last word or space you typed, instead of where you wanted to edit.~ <br>

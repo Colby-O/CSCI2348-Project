@@ -66,15 +66,9 @@
         <!-- Created: Mohammed Al-Bashiri March 2, 2022 -->
         <!-- this is for the blog numbers -->
         <div class="col" role="group" aria-label="blog one">
-          <p
-            class="name-style use-keyboard keyboard-disable"
-            id="title1"
-            type="text"
-            readonly
-            aria-label="First blog"
-          >
+          <span class="name-style use-keyboard keyboard-disable" id="title1">
             1.
-          </p>
+          </span>
         </div>
 
         <!-- Created: Mohammed Al-Bashiri March 3, 2022 -->
@@ -112,15 +106,9 @@
         <!-- Mohammed Al-Bashiri (A00391502) March 2, 2022 -->
         <!-- this is for the blog numbers -->
         <div class="col" role="group" aria-label="blog two">
-          <p
-            class="name-style use-keyboard keyboard-disable"
-            id="title2"
-            type="text"
-            readonly
-            aria-label="Second blog"
-          >
+          <span class="name-style use-keyboard keyboard-disable" id="title2">
             2.
-          </p>
+          </span>
         </div>
 
         <!-- Created: Mohammed Al-Bashiri March 3, 2022 -->
@@ -156,15 +144,9 @@
         <!-- Mohammed Al-Bashiri March 2, 2022 -->
         <!-- this is for the blog numbers -->
         <div class="col" role="group" aria-label="blog three">
-          <p
-            class="name-style use-keyboard keyboard-disable"
-            id="title3"
-            type="text"
-            readonly
-            aria-label="Third blog"
-          >
+          <span class="name-style use-keyboard keyboard-disable" id="title3">
             3.
-          </p>
+          </span>
         </div>
 
         <!-- Created: Mohammed Al-Bashiri March 3, 2022 -->
@@ -218,13 +200,22 @@
           Undo
         </a>
         <div class="m-1">
-          <a data-role="button" class="btn btn-primary word-bank" onclick="toggleWordBank()">
+          <a
+            data-role="button"
+            class="btn btn-primary word-bank"
+            onclick="toggleWordBank()"
+          >
             Word<i class="bi bi-piggy-bank"></i>
           </a>
-          <a>
-            <input class="width wb-textbox use-keyboard" type="text" id="words" />
-          </a>
-          <a data-role="button" class="btn btn-primary star-btn" id="saveWord" onclick="addWordWarning()">
+
+          <input class="width wb-textbox use-keyboard" type="text" id="words" />
+
+          <a
+            data-role="button"
+            class="btn btn-primary star-btn"
+            id="saveWord"
+            onclick="addWordWarning()"
+          >
             <i class="bi bi-star"></i>
           </a>
         </div>
@@ -251,40 +242,44 @@
       </div>
     </div>
 
-<section style = "position: fixed; width: 100vw; height: 60vh; margin:0 auto; top: 20%; right: 10%;" id="word-bank-container" >
-  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-	  <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-        <div
-         class="card bg-primary"
-         style="
-            border-radius: 15px;
-            color: rgb(255, 223, 79);
-            --bs-bg-opacity: 0.8;
-          "
-       >
-          <div class="card-body p-5">
-            <div>
-              <h2 class="text-uppercase text-center mb-5">Word Bank</h2>
+    <section id="word-bank-container">
+      <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+          <div
+            class="row d-flex justify-content-center align-items-center h-100"
+          >
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+              <div
+                class="card bg-primary"
+                style="
+                  border-radius: 15px;
+                  color: rgb(255, 223, 79);
+                  --bs-bg-opacity: 0.8;
+                "
+              >
+                <div class="card-body p-5">
+                  <div>
+                    <h2 class="text-uppercase text-center mb-5">Word Bank</h2>
+                  </div>
+
+                  <div
+                    class="form-outline mb-4"
+                    id="saved-word-container"
+                  ></div>
+
+                  <button
+                    onclick="toggleWordBank()"
+                    class="btn btn-danger"
+                    style="font-family: fortune"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
             </div>
-
-            <div class="form-outline mb-4" id="saved-word-container">
-
-            </div>
-
-            <button
-              onclick="toggleWordBank()"
-              class="btn btn-danger"
-              style="font-family: fortune;"
-            >
-              Close
-            </button>
           </div>
         </div>
       </div>
-    </div>
-  </div>
- </section>
-</body>
+    </section>
+  </body>
 </html>

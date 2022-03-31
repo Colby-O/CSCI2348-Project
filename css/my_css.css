@@ -15,6 +15,7 @@ body {
   background-image: url(../images/background.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Mohammed Al-Bashiri March 7, 2022 */
@@ -260,14 +261,6 @@ body {
   color: white;
 }
 
-/*
-  For the position of the buttons.
-  Created: March 28, 2022 (SDR + FDR)
-*/
-.swal-buttons {
-  position: center !important;
-}
-
 /* Colby O'Keefe (A00428974) */
 #currently-editing-blog {
   color: white;
@@ -318,11 +311,12 @@ body {
   z-index: 1000;
 }
 
-/* .word-bank-container{
+/* Colby + Mo */
+#word-bank-container{
   position: fixed; 
   width: 100vw; 
   height: 60vh; 
   margin:0 auto; 
   top: 20%; 
   right: 10%;
-} */
+}
