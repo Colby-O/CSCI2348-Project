@@ -176,63 +176,66 @@
     <!-- Blog Area -->
     <div class="container pad-div div-width" id="blogArea">
       <!-- 
-        Save, cancel, and clear buttons before blog (SDR March 5, 2022) & FDR
-        Modified: March 9, 2022 (SDR)
-      -->
-      <div class="input-group">
-        <a
-          data-role="button"
-          class="btn btn-danger snc-btn"
-          id="save"
-          onclick="saveWarning()"
-        >
-          Save
-        </a>
-        <a
-          data-role="button"
-          class="btn btn-warning snc-btn"
-          id="cancel"
-          onclick="cancelWarning()"
-        >
-          Cancel
-        </a>
-        <a data-role="button" class="btn btn-info snc-btn" onclick="undo()">
-          Undo
-        </a>
-        <div class="m-1">
-          <a
-            data-role="button"
-            class="btn btn-primary word-bank"
-            onclick="toggleWordBank()"
-          >
-            Word<i class="bi bi-piggy-bank"></i>
-          </a>
-
-          <input class="width wb-textbox use-keyboard" type="text" id="words" />
-
-          <a
-            data-role="button"
-            class="btn btn-primary star-btn"
-            id="saveWord"
-            onclick="addWordWarning()"
-          >
-            <i class="bi bi-star"></i>
-          </a>
-        </div>
-        <span id="currently-editing-blog"> </span>
-      </div>
-
-      <!-- 
         Blog text box 
         Modified: March 12, 2022 (SDR)
         Modified: March 26, 2022 Mohammed Al-Bashiri (added different textboxes)
       -->
-      <div class="container pad-div">
+      <div class="row pad-div">
         <textarea
           rows="20"
           id="textbox"
-          class="use-keyboard blog-size"
+          class="use-keyboard blog-size col-5"
         ></textarea>
+        <!-- 
+        Save, cancel, and clear buttons before blog (SDR March 5, 2022) & FDR
+        Modified: March 9, 2022 (SDR)
+      -->
+        <div class="input-group col">
+          <a
+            data-role="button"
+            class="btn btn-danger snc-btn"
+            id="save"
+            onclick="saveWarning()"
+          >
+            Save
+          </a>
+          <a
+            data-role="button"
+            class="btn btn-warning snc-btn"
+            id="cancel"
+            onclick="cancelWarning()"
+          >
+            Cancel
+          </a>
+          <a data-role="button" class="btn btn-info snc-btn" onclick="undo()">
+            Undo
+          </a>
+          <div class="m-1 row">
+            <a
+              data-role="button"
+              class="btn btn-primary word-bank"
+              onclick="toggleWordBank()"
+            >
+              Word<i class="bi bi-piggy-bank"></i>
+            </a>
+
+            <input
+              class="width wb-textbox use-keyboard"
+              type="text"
+              id="words"
+            />
+
+            <a
+              data-role="button"
+              class="btn btn-primary star-btn"
+              id="saveWord"
+              onclick="addWordWarning()"
+            >
+              <i class="bi bi-star"></i>
+            </a>
+          </div>
+          <!-- <span id="currently-editing-blog"> </span> -->
+        </div>
 
         <!-- Keyboard -->
         <div

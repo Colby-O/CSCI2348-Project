@@ -12,7 +12,7 @@ const Keyboard = {
     main: null,
     keysContainer: null,
     keys: [],
-    textbox: null
+    textbox: null,
   },
 
   eventHandlers: {
@@ -42,12 +42,12 @@ const Keyboard = {
       "'": '"',
       ",": "<",
       ".": ">",
-      "?": "/",
+      "/": "?",
       "-": "_",
       "=": "+",
     },
-    unshiftedKeys: /[0-9;',.]/,
-    allShiftedCharacters: /[0-9!@#$%^&*(){};:'",<.>]/,
+    unshiftedKeys: /[0-9;',.\[\]\/\-\=]/,
+    allShiftedCharacters: /[0-9!@#$%^&*()?\-\_\=\+\/\[\]{};:'",<.>]/,
   },
   /*Colby O'Keefe (A00428974)*/
   init() {
@@ -131,7 +131,6 @@ const Keyboard = {
       "[",
       "]",
       ";",
-      "?",
       "-",
       "=",
       "--",
@@ -216,7 +215,8 @@ const Keyboard = {
           keyElement.addEventListener("click", () => {
             let pos = this.elements.textbox.selectionStart;
             let oldValue = this.properties.value;
-            this.properties.value = oldValue.substring(0, pos - 1) + oldValue.slice(pos);
+            this.properties.value =
+              oldValue.substring(0, pos - 1) + oldValue.slice(pos);
             this._triggerEvent("oninput");
 
             if (this.shiftPressed) {
@@ -279,16 +279,15 @@ const Keyboard = {
 
           // Adds the functionaility for a genertic key
           keyElement.addEventListener("click", () => {
-            
             //console.log(pos);
             if (this.constants.unshiftedKeys.test(key)) {
-              this._updateValue(this.properties.capsLock
-                ? this._swapDigitsAndSpecial(key)
-                : key);
+              this._updateValue(
+                this.properties.capsLock ? this._swapDigitsAndSpecial(key) : key
+              );
             } else {
-              this._updateValue(this.properties.capsLock
-                ? key.toUpperCase()
-                : key.toLowerCase());
+              this._updateValue(
+                this.properties.capsLock ? key.toUpperCase() : key.toLowerCase()
+              );
             }
             this._triggerEvent("oninput");
 
@@ -321,7 +320,7 @@ const Keyboard = {
   /*Colby O'Keefe (A00428974)*/
   _updateValue(char) {
     let pos = this.elements.textbox.selectionStart;
-    let oldValue = this.properties.value;   
+    let oldValue = this.properties.value;
     this.properties.value = oldValue.slice(0, pos) + char + oldValue.slice(pos);
   },
   /*Colby O'Keefe (A00428974)*/
@@ -369,22 +368,21 @@ const Keyboard = {
 
 /* Colby O'Keefe (A00428974) */
 function setSelectionRange(textbox, selectionStart, selectionEnd) {
-    if (textbox.setSelectionRange) {
-        textbox.focus();
-        textbox.setSelectionRange(selectionStart, selectionEnd);
-    }
-    else if (textbox.createTextRange) {
-        let range = textbox.createTextRange();
-        range.collapse(true);
-        range.moveEnd('character', selectionEnd);
-        range.moveStart('character', selectionStart);
-        range.select();
-    }
+  if (textbox.setSelectionRange) {
+    textbox.focus();
+    textbox.setSelectionRange(selectionStart, selectionEnd);
+  } else if (textbox.createTextRange) {
+    let range = textbox.createTextRange();
+    range.collapse(true);
+    range.moveEnd("character", selectionEnd);
+    range.moveStart("character", selectionStart);
+    range.select();
+  }
 }
 
 /* Colby O'Keefe (A00428974) */
 function setCursorToPos(textbox, pos) {
-       setSelectionRange(textbox, pos, pos);
+  setSelectionRange(textbox, pos, pos);
 }
 
 /*Colby O'Keefe (A00428974)*/
@@ -398,10 +396,10 @@ window.addEventListener("DOMContentLoaded", () => {
       if ($(element).hasClass("keyboard-disable")) return;
       Keyboard.startup($(element).val(), element, (currentValue) => {
         let pos = element.selectionEnd;
-        let oldValue = $(element).val()
+        let oldValue = $(element).val();
         $(element).val(currentValue);
         pos += $(element).val().length - oldValue.length;
-        setCursorToPos(element, pos)
+        setCursorToPos(element, pos);
       });
     });
   });
