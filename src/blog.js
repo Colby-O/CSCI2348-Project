@@ -334,6 +334,12 @@ function undo() {
   $("#textbox").focus();
 }
 
+/* Colby O'Keefe (A00428974) */ 
+function clear() {
+  $("#textbox").val("");
+  $("#textbox").focus();
+}
+
 /* 
   Clicking the star would add then to word bank 
   Author: Mohammed Al-Bashiri (A00391502)
@@ -372,3 +378,13 @@ function cancelWarning() {
     cancel
   );
 }
+
+function clearWarning() {
+  displayWarning(
+    "Are you sure you want to clear the blog?",
+    "",
+    clear
+  );
+}
+
+
