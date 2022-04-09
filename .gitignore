@@ -1,2 +1,3 @@
 server/node_modules/
+server/mysqldb.inc
 .DS_Store
