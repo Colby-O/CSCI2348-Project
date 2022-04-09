@@ -37,7 +37,7 @@ function addWordToBank(id) {
     // Place code to add a word to the bank here!
 }
 
-async function deleteWordFromBank(id) {
+function deleteWordFromBank(id) {
     // Place code to delete a word from the bank here!
 }
 
