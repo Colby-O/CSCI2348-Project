@@ -25,6 +25,7 @@ async function getBlog(id) {
 }
 
 // Created: Mohammed Al-Bashiri April 12
+// Modified: Colby O'Keefe (A00428974) April 12
 async function getWordBank() {
   return await new Promise((res, rej) => {
     // Place code to get word bank here!
@@ -40,19 +41,19 @@ async function getWordBank() {
 }
 
 // Created: Mohammed Al-Bashiri April 12
+// Modified: Colby O'Keefe (A00428974) April 12
 function updateBlog(id, content) {
   // Place code to update a blogs content here!
   let query = `UPDATE Blogs SET blog_content = ${content} WHERE blog_id = ${id}`;
   pool.query(query, (err, result) => {
     if (err) {
       console.log("ERROR: " + err);
-    } else {
-      res(result);
     }
   });
 }
 
 // Created: Mohammed Al-Bashiri April 12
+// Modified: Colby O'Keefe (A00428974) April 12
 function changeBlogsPublishStatus(id, published) {
   // Place code to chnage a blog publish status here!
   let status = published ? "P" : "NP";
@@ -65,10 +66,11 @@ function changeBlogsPublishStatus(id, published) {
 }
 
 // Created: Mohammed Al-Bashiri April 12
+// Modified: Colby O'Keefe (A00428974) April 12
 async function getNumberOfWords() {
   return await new Promise((res, rej) => {
     let query = `SELECT COUNT(*) FROM WordBank`;
-    pool.query(numberOfWords, (err, result) => {
+    pool.query(query, (err, result) => {
       if (err) {
         console.log("ERROR: " + err);
       } else {
@@ -79,11 +81,11 @@ async function getNumberOfWords() {
 }
 
 // Created: Mohammed Al-Bashiri April 12
+// Modified: Colby O'Keefe (A00428974) April 12
 async function addWordToBank(word) {
-  // Place code to add a word to the bank here!
-  //if(word_id<=10){ }
   let numberOfWords = await getNumberOfWords();
   if (numberOfWords > 10) {
+    // TODO: Add function let user know the word bank is full
     return;
   }
   let query = `INSERT INTO WordBank 
@@ -94,11 +96,10 @@ async function addWordToBank(word) {
       console.log("ERROR: " + err);
     }
   });
-  // Note Terry said we need a maximum number of words let say 10
-  // Send user an error if there are already 10 entries in the bank
 }
 
 // Created: Mohammed Al-Bashiri April 12
+// Modified: Colby O'Keefe (A00428974) April 12
 function deleteWordFromBank(id) {
   // Place code to delete a word from the bank here!
   let query = `DELETE FROM WordBank WHERE word_id = ${id}`;
