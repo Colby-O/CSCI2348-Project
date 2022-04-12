@@ -44,7 +44,7 @@ async function getWordBank() {
 // Modified: Colby O'Keefe (A00428974) April 12
 function updateBlog(id, content) {
   // Place code to update a blogs content here!
-  let query = `UPDATE Blogs SET blog_content = ${content} WHERE blog_id = ${id}`;
+  let query = `UPDATE Blogs SET blog_content = '${content}' WHERE blog_id = ${id}`;
   pool.query(query, (err, result) => {
     if (err) {
       console.log("ERROR: " + err);
@@ -57,7 +57,7 @@ function updateBlog(id, content) {
 function changeBlogsPublishStatus(id, published) {
   // Place code to chnage a blog publish status here!
   let status = published ? "P" : "NP";
-  let query = `UPDATE Blogs SET blog_status = ${status} WHERE blog_id = ${id}`;
+  let query = `UPDATE Blogs SET blog_status = '${status}' WHERE blog_id = ${id}`;
   pool.query(query, (err, result) => {
     if (err) {
       console.log("ERROR: " + err);
@@ -80,6 +80,7 @@ async function getNumberOfWords() {
   });
 }
 
+// Created: Colby O'Keefe (A00428974) April 12
 async function isWordInBank(word) {
   return await new Promise((res, rej) => {
     let query = `SELECT COUNT(*) as no_words FROM WordBank WHERE word='${word}'`;
