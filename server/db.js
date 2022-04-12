@@ -40,7 +40,7 @@ function changeBlogsPublishStatus(id, status) {
   // Place code to chnage a blog publish status here!
 }
 
-function addWordToBank(id) {
+function addWordToBank(word) {
   // Place code to add a word to the bank here!
   // Note Terry said we need a maximum number of words let say 10
   // Send user an error if there are already 10 entries in the bank
