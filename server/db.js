@@ -16,7 +16,7 @@ async function getBlog(id) {
     let query = `SELECT * FROM Blogs WHERE blog_id = ${id}`;
     pool.query(query, (err, result) => {
       if (err) {
-        console.log("ERROR: " + err);
+        console.log(err);
       } else {
         res(result[0]);
       }
@@ -32,7 +32,7 @@ async function getWordBank() {
     let query = `SELECT * FROM WordBank`;
     pool.query(query, (err, result) => {
       if (err) {
-        console.log("ERROR: " + err);
+        console.log(err);
       } else {
         res(result);
       }
@@ -47,7 +47,7 @@ function updateBlog(id, content) {
   let query = `UPDATE Blogs SET blog_content = '${content}' WHERE blog_id = ${id}`;
   pool.query(query, (err, result) => {
     if (err) {
-      console.log("ERROR: " + err);
+      console.log(err);
     }
   });
 }
@@ -60,7 +60,7 @@ function changeBlogsPublishStatus(id, published) {
   let query = `UPDATE Blogs SET blog_status = '${status}' WHERE blog_id = ${id}`;
   pool.query(query, (err, result) => {
     if (err) {
-      console.log("ERROR: " + err);
+      console.log(err);
     }
   });
 }
@@ -72,7 +72,7 @@ async function getNumberOfWords() {
     let query = `SELECT COUNT(*) as no_words FROM WordBank`;
     pool.query(query, (err, result) => {
       if (err) {
-        console.log("ERROR: " + err);
+        console.log(err);
       } else {
         res(result[0]['no_words']);
       }
@@ -86,7 +86,7 @@ async function isWordInBank(word) {
     let query = `SELECT COUNT(*) as no_words FROM WordBank WHERE word='${word}'`;
         pool.query(query, (err, result) => {
       if (err) {
-        console.log("ERROR: " + err);
+        console.log(err);
       } else {
         if (result[0]['no_words'] > 0) {
           res(true);
@@ -120,7 +120,7 @@ async function addWordToBank(word) {
     )`;
   pool.query(query, (err, result) => {
     if (err) {
-      console.log("ERROR: " + err);
+      console.log(err);
     }
   });
 }
@@ -132,7 +132,7 @@ function deleteWordFromBank(id) {
   let query = `DELETE FROM WordBank WHERE word_id = ${id}`;
   pool.query(query, (err, result) => {
     if (err) {
-      console.log("ERROR: " + err);
+      console.log(err);
     }
   });
 }
