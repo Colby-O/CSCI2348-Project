@@ -15,9 +15,14 @@ async function getBlog(id) {
   return await new Promise((res, rej) => {
     let query = `SELECT * FROM Blogs WHERE blog_id = ${id}`;
     pool.query(query, (err, result) => {
-      res(result);
+      if (err) {
+        console.log(
+          "An error has been thrown while inserting for your record."
+        );
+      } else {
+        res(result);
+      }
     });
-    // Place code to get blog here!
   });
 }
 
