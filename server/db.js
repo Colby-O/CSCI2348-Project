@@ -88,11 +88,7 @@ async function isWordInBank(word) {
       if (err) {
         console.log(err);
       } else {
-        if (result[0]['no_words'] > 0) {
-          res(true);
-        } else {
-          res(false);
-        }
+        res(result[0]['no_words'] > 0);
       }
     });
   });
