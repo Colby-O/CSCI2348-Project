@@ -17,7 +17,7 @@ async function getBlog(id) {
     pool.query(query, (err, result) => {
       if (err) {
         console.log(
-          "An error has been thrown while inserting for your record."
+          "ERROR: " + err
         );
       } else {
         res(result);
