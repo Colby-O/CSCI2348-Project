@@ -18,7 +18,7 @@ async function getBlog(id) {
       if (err) {
         console.log("ERROR: " + err);
       } else {
-        res(result);
+        res(result[0]);
       }
     });
   });
