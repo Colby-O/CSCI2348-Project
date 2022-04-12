@@ -82,7 +82,7 @@ async function getNumberOfWords() {
 
 async function isWordInBank(word) {
   return await new Promise((res, rej) => {
-    let query = `SELECT COUNT(*) as no_words WHERE word=${word}`;
+    let query = `SELECT COUNT(*) as no_words FROM WordBank WHERE word='${word}'`;
         pool.query(query, (err, result) => {
       if (err) {
         console.log("ERROR: " + err);
