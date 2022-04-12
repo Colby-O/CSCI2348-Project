@@ -29,6 +29,14 @@ async function getBlog(id) {
 async function getWordBank() {
   return await new Promise((res, rej) => {
     // Place code to get word bank here!
+    let query = `SELECT * FROM WordBank WHERE word_id = ${id}`;
+    pool.query(query, (err, result) => {
+      if (err) {
+        console.log("ERROR: " + err);
+      } else {
+        res(result);
+      }
+    });
   });
 }
 
