@@ -74,7 +74,24 @@ async function getNumberOfWords() {
       if (err) {
         console.log("ERROR: " + err);
       } else {
-        res(result[0]);
+        res(result[0]['no_words']);
+      }
+    });
+  });
+}
+
+async function isWordInBank(word) {
+  return await new Promise((res, rej) => {
+    let query = `SELECT COUNT(*) as no_words WHERE word=${word}`;
+        pool.query(query, (err, result) => {
+      if (err) {
+        console.log("ERROR: " + err);
+      } else {
+        if (result[0]['no_words'] > 0) {
+          res(true);
+        } else {
+          res(false);
+        }
       }
     });
   });
@@ -83,17 +100,22 @@ async function getNumberOfWords() {
 // Created: Mohammed Al-Bashiri April 12
 // Modified: Colby O'Keefe (A00428974) April 12
 async function addWordToBank(word) {
-  const res = await getNumberOfWords();
-  let numberOfWords = res['no_words'];
+  let numberOfWords = await getNumberOfWords();
+  let isInWordBank = await isWordInBank(word);
+
   if (numberOfWords > 10) {
     // TODO: Add function let user know the word bank is full
     return;
+  } else if (isInWordBank) {
+    // TODO: Let user know the word is already in the word bank
+    return;
   }
+
   let wordID = numberOfWords + 1;
   let query = `INSERT INTO WordBank VALUES (
     ${wordID}, 
     '${word}', 
-    DATETIME()
+    NOW()
     )`;
   pool.query(query, (err, result) => {
     if (err) {
