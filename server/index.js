@@ -26,30 +26,21 @@ server.listen(port, function () {
 });
 // ---------------------------------------------------------------------------------
 
-// word-bank words
-const wordBank = [];
-
-// blog array
-const blogs = [
-  { content: "", published: false },
-  { content: "", published: false },
-  { content: "", published: false },
-];
-
 server.post("/publishBlog", (req, res) => {
-  blogs[req.body.blogIndex - 1].published = req.body.published === "true";
+  req.body.published = req.body.published === "true";
   console.log(
-    (blogs[req.body.blogIndex - 1].published ? "Publishing" : "Unpublishing") +
+    (req.body.published ? "Publishing" : "Unpublishing") +
       " Blog " +
       req.body.blogIndex
   );
 
+  db.changeBlogsPublishStatus(req.body.blogIndex, req.body.published);
   return res.status(200);
 });
 
 server.post("/saveWord", (req, res) => {
   console.log(`Saving ${req.body.word} to the word bank.`);
-  wordBank.push(req.body.word);
+  db.addWordToBank(req.body.word);
   return res.status(200);
 });
 
@@ -59,26 +50,25 @@ server.post("/saveBlog", (req, res) => {
     `Saving Blog ${req.body.blogIndex}'s Content: ${req.body.blogContent}`
   );
 
-  blogs[req.body.blogIndex - 1].content = req.body.blogContent;
+  db.updateBlog(req.body.blogIndex, req.body.blogContent);
 
   return res.status(200);
 });
 
 server.post("/deleteWord", (req, res) => {
-  let deletedValue = wordBank[req.body.index];
-  console.log(`${deletedValue} was deleted from the word bank.`);
-  wordBank.splice(req.body.index, 1);
+  console.log(`Word ${req.body.index} was deleted from the word bank.`);
+  db.deleteWordFromBank(req.body.index);
   return res.status(200);
 });
 
 // Upon receiving a post at this url execute callback function
 server.get("/getBlog", (req, res) => {
   console.log(`Getting Blog ${req.query.blogIndex}`);
-  return res.status(200).send(blogs[req.query.blogIndex - 1]);
+  return res.status(200).send(db.getBlog(req.query.blogIndex));
 });
 
 // word bank get
 server.get("/getWordBank", (req, res) => {
   console.log("Fetching the word bank.");
-  return res.status(200).send(wordBank);
+  return res.status(200).send(db.getWordBank());
 });
