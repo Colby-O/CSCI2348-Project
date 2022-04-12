@@ -69,12 +69,12 @@ function changeBlogsPublishStatus(id, published) {
 // Modified: Colby O'Keefe (A00428974) April 12
 async function getNumberOfWords() {
   return await new Promise((res, rej) => {
-    let query = `SELECT COUNT(*) FROM WordBank`;
+    let query = `SELECT COUNT(*) as no_words FROM WordBank`;
     pool.query(query, (err, result) => {
       if (err) {
         console.log("ERROR: " + err);
       } else {
-        res(result);
+        res(result[0]);
       }
     });
   });
@@ -83,16 +83,20 @@ async function getNumberOfWords() {
 // Created: Mohammed Al-Bashiri April 12
 // Modified: Colby O'Keefe (A00428974) April 12
 async function addWordToBank(word) {
-  let numberOfWords = await getNumberOfWords();
+  const res = await getNumberOfWords();
+  let numberOfWords = res['no_words'];
   if (numberOfWords > 10) {
     // TODO: Add function let user know the word bank is full
     return;
   }
-  let query = `INSERT INTO WordBank 
-  VALUES (${numberOfWords + 1}, ${word}, DATETIME())`;
+  let wordID = numberOfWords + 1;
+  let query = `INSERT INTO WordBank VALUES (
+    ${wordID}, 
+    '${word}', 
+    DATETIME()
+    )`;
   pool.query(query, (err, result) => {
     if (err) {
-      // if(word_id >10)
       console.log("ERROR: " + err);
     }
   });
