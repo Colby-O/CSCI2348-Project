@@ -11,7 +11,7 @@
 */
 
 // Server URL
-const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
+const SERVER_URL = "http://ugdev.cs.smu.ca:3034";
 
 const MAX_NUM_SVAED_WORDS_PER_ROW = 2;
 
@@ -64,13 +64,14 @@ function setup() {
   $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
 
   $.get(SERVER_URL + "/getBlog", { blogIndex: 1 }).done((req) => {
-    $("#publish1").prop("checked", req.published);
+    console.log(req);
+    $("#publish1").prop("checked", req.blog_status === "P");
   });
   $.get(SERVER_URL + "/getBlog", { blogIndex: 2 }).done((req) => {
-    $("#publish2").prop("checked", req.published);
+    $("#publish2").prop("checked", req.blog_status === "P");
   });
   $.get(SERVER_URL + "/getBlog", { blogIndex: 3 }).done((req) => {
-    $("#publish3").prop("checked", req.published);
+    $("#publish3").prop("checked", req.blog_status === "P");
   });
 
   // hides the blog + keyboard
@@ -199,7 +200,6 @@ function displayWarning(warningTitle, warningText, callback) {
 function fetchSavedWords(bank) {
   savedWordContainer.innerHTML = "";
   let rowDiv = null;
-  console.log(bank);
   bank.forEach((word, index) => {
     if (index % MAX_NUM_SVAED_WORDS_PER_ROW === 0)
       rowDiv = document.createElement("div");
@@ -210,20 +210,20 @@ function fetchSavedWords(bank) {
     deleteButton.setAttribute("data-role", "button");
     deleteButton.onclick = () =>
       displayWarning(
-        `Are you sure you want to delete "${word}" from the word bank?`,
+        `Are you sure you want to delete "${word.word}" from the word bank?`,
         "",
-        () => deleteSavedWord(index, word)
+        () => deleteSavedWord(index + 1, word.word)
       );
 
     let wordName = document.createElement("a");
-    wordName.innerHTML = word;
+    wordName.innerHTML = word.word;
     wordName.classList.add("btn", "btn-light", "saved-word");
 
     let addButton = document.createElement("a");
     addButton.innerHTML = "Add";
     addButton.classList.add("btn", "btn-info", "add-word-button");
     addButton.setAttribute("data-role", "button");
-    addButton.onclick = () => addWordToBlog(word);
+    addButton.onclick = () => addWordToBlog(word.word);
 
     rowDiv.append(deleteButton, wordName, addButton);
     savedWordContainer.append(rowDiv);
@@ -232,8 +232,7 @@ function fetchSavedWords(bank) {
 
 /* Colby O'Keefe (A00428974) */
 function deleteSavedWord(index, word) {
-  $.post(SERVER_URL + "/deleteWord", { index: index });
-  $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
+  $.post(SERVER_URL + "/deleteWord", { index: index }).done($.get(SERVER_URL + "/getWordBank").done(fetchSavedWords));
 }
 
 /* Colby O'Keefe (A00428974) */
@@ -247,9 +246,8 @@ function toggleWordBank() {
 function addWordToBank() {
   let word = $(wordBankTextbox).val();
   if (word === "") return;
-  $.post(SERVER_URL + "/saveWord", { word: word });
+  $.post(SERVER_URL + "/saveWord", { word: word }).done($.get(SERVER_URL + "/getWordBank").done(fetchSavedWords));
   $(wordBankTextbox).val("");
-  $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
 }
 
 /* Colby O'Keefe (A00428974) */
@@ -282,7 +280,7 @@ function getKbd() {
 
 /* Colby O'Keefe (A00428974) */
 function setBlog(req) {
-  $("#textbox").val(req.content);
+  $("#textbox").val(req.blog_content);
   // Updates keybaord
   $("#textbox").focus();
 }
