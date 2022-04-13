@@ -92,4 +92,4 @@ npm test
 [P-14] Ensure the word bank expands downward, not sideways (if the wordbank exists on the right side of the keyboard). <br>
 ~[P-15] Make sure that ONLY the shift or CAPS keys can be active at one time, and that selecting the other when one is active, does nothing.~ <br>
 [P-16] Fixed Adding/Deleting From Word Bank i.e. need to find smallest available word_id. <br>
-[P-17] Fixed word bank updating client side. <br>
+[P-17] Fixed word bank box updating client side. <br>
