@@ -38,9 +38,9 @@ server.post("/publishBlog", (req, res) => {
   return res.status(200);
 });
 
-server.post("/saveWord", (req, res) => {
+server.post("/saveWord", async (req, res) => {
   console.log(`Saving ${req.body.word} to the word bank.`);
-  db.addWordToBank(req.body.word);
+  await db.addWordToBank(req.body.word);
   return res.status(200);
 });
 
@@ -62,13 +62,15 @@ server.post("/deleteWord", (req, res) => {
 });
 
 // Upon receiving a post at this url execute callback function
-server.get("/getBlog", (req, res) => {
+server.get("/getBlog", async (req, res) => {
   console.log(`Getting Blog ${req.query.blogIndex}`);
-  return res.status(200).send(db.getBlog(req.query.blogIndex));
+  let blog = await db.getBlog(req.query.blogIndex);
+  return res.status(200).send(blog);
 });
 
 // word bank get
-server.get("/getWordBank", (req, res) => {
+server.get("/getWordBank", async (req, res) => {
   console.log("Fetching the word bank.");
-  return res.status(200).send(db.getWordBank());
+  let wordBank = await db.getWordBank();
+  return res.status(200).send(wordBank);
 });

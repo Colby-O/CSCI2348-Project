@@ -90,8 +90,6 @@ function setup() {
     // Sets selected blog id
     currentBlogID = "blog1";
 
-    currentEditing.innerHTML = "You are currently editing blog 1";
-
     // Gets saved value from local storage if its supported by the browser
     $.get(SERVER_URL + "/getBlog", { blogIndex: 1 }).done(setBlog);
 
@@ -113,8 +111,6 @@ function setup() {
     // Gets saved value from local storage if its supported by the browser
     currentBlogID = "blog2";
 
-    currentEditing.innerHTML = "You are currently editing blog 2";
-
     $.get(SERVER_URL + "/getBlog", { blogIndex: 2 }).done(setBlog);
 
     // focus the blog textarea so the keybaord will update
@@ -134,8 +130,6 @@ function setup() {
 
     // Sets selected blog id
     currentBlogID = "blog3";
-
-    currentEditing.innerHTML = "You are currently editing blog 3";
 
     // Gets saved value from local storage if its supported by the browser
     $.get(SERVER_URL + "/getBlog", { blogIndex: 3 }).done(setBlog);
@@ -205,6 +199,7 @@ function displayWarning(warningTitle, warningText, callback) {
 function fetchSavedWords(bank) {
   savedWordContainer.innerHTML = "";
   let rowDiv = null;
+  console.log(bank);
   bank.forEach((word, index) => {
     if (index % MAX_NUM_SVAED_WORDS_PER_ROW === 0)
       rowDiv = document.createElement("div");
