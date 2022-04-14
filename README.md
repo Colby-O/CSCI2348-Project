@@ -79,7 +79,7 @@ npm test
 ~[P-01] Add indicator for what blog we are editing, since the blogs, edits, and publish are supposed to disappear.~ <br>
 ~[P-02] Add blinking line to tell you what line you are currently editing (currently disappears after you start typing).~ <br>
 ~[P-03] Allow editing of previous words. Currently when you select where you want to edit, it adds that change to the last word or space you typed, instead of where you wanted to edit.~ <br>
-~[P-04] Caps should only deal with capital letters, NOT special characters. <br>~
+[P-04] Caps should only deal with capital letters, NOT special characters. <br>
 ~[P-05] Tab key is missing.~ <br>
 [P-06] All keys should expand,including shift, CAPS, Tab, save, cancel, etc. <br>
 [P-07] Check if CAPS remains highlighted when in use. <br>
