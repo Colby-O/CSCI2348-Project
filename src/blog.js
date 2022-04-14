@@ -195,6 +195,22 @@ function displayWarning(warningTitle, warningText, callback) {
   });
 }
 
+/* 
+  This is the modal that will warn the user that an error has
+  occured.
+
+  Colby O'Keefe (A00428974) + SDR, April 14
+*/
+function displayError(errorTitle, errorText) {
+  swal({
+    title: errorTitle,
+    text: errorText,
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  });
+}
+
 /* Colby O'Keefe (A00428974) */
 function fetchSavedWords(bank) {
   savedWordContainer.innerHTML = "";

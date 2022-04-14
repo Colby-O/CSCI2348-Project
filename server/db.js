@@ -1,6 +1,8 @@
 let mySQL = require("mysql2");
 let htpassed = require("./mysqldb.js");
 
+const CHAR_LIMIT = 16;
+
 let pool = mySQL.createPool({
   connectionLimit: 10,
   host: htpassed.host,
@@ -105,6 +107,9 @@ async function addWordToBank(word) {
     return;
   } else if (isInWordBank) {
     // TODO: Let user know the word is already in the word bank
+    return;
+  } else if (word.length >= CHAR_LIMIT) {
+    // TODO: Let user know the word is already above the character limit.
     return;
   }
 
