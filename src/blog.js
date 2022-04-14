@@ -11,7 +11,7 @@
 */
 
 // Server URL
-const SERVER_URL = "http://ugdev.cs.smu.ca:3034";
+const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
 
 const MAX_NUM_SVAED_WORDS_PER_ROW = 2;
 
@@ -232,7 +232,9 @@ function fetchSavedWords(bank) {
 
 /* Colby O'Keefe (A00428974) */
 function deleteSavedWord(index, word) {
-  $.post(SERVER_URL + "/deleteWord", { index: index }).done($.get(SERVER_URL + "/getWordBank").done(fetchSavedWords));
+  $.post(SERVER_URL + "/deleteWord", { index: index }).done(
+    $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords)
+  );
 }
 
 /* Colby O'Keefe (A00428974) */
@@ -246,7 +248,9 @@ function toggleWordBank() {
 function addWordToBank() {
   let word = $(wordBankTextbox).val();
   if (word === "") return;
-  $.post(SERVER_URL + "/saveWord", { word: word }).done($.get(SERVER_URL + "/getWordBank").done(fetchSavedWords));
+  $.post(SERVER_URL + "/saveWord", { word: word }).done(
+    $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords)
+  );
   $(wordBankTextbox).val("");
 }
 
@@ -327,7 +331,7 @@ function undo() {
   $("#textbox").focus();
 }
 
-/* Colby O'Keefe (A00428974) */ 
+/* Colby O'Keefe (A00428974) */
 function clear() {
   $("#textbox").val("");
   $("#textbox").focus();
@@ -373,11 +377,5 @@ function cancelWarning() {
 }
 
 function clearWarning() {
-  displayWarning(
-    "Are you sure you want to clear the blog?",
-    "",
-    clear
-  );
+  displayWarning("Are you sure you want to clear the blog?", "", clear);
 }
-
-
