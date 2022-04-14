@@ -235,9 +235,10 @@ body {
   Created: March 28, 2022 (SDR + FDR)
 */
 .swal-modal {
-  background-color: solid royalblue;
+  background-color: royalblue;
   border: 3px solid rgba(255, 0, 0, 0.527);
   text-align: center;
+  overflow-x: visible;
 }
 
 /*
@@ -306,11 +307,6 @@ body {
   margin-right: 25px;
   margin-bottom: 25px;
 }
-
-/* Colby O'Keefe (A00428974)
-.keyboard-container {
-  z-index: 1000;
-} */
 
 /* Colby + Mo */
 #word-bank-container {

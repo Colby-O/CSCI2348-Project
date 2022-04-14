@@ -64,7 +64,6 @@ function setup() {
   $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
 
   $.get(SERVER_URL + "/getBlog", { blogIndex: 1 }).done((req) => {
-    console.log(req);
     $("#publish1").prop("checked", req.blog_status === "P");
   });
   $.get(SERVER_URL + "/getBlog", { blogIndex: 2 }).done((req) => {

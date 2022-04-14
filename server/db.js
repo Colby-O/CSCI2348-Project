@@ -74,7 +74,7 @@ async function getNumberOfWords() {
       if (err) {
         console.log(err);
       } else {
-        res(result[0]['no_words']);
+        res(result[0]["no_words"]);
       }
     });
   });
@@ -84,11 +84,11 @@ async function getNumberOfWords() {
 async function isWordInBank(word) {
   return await new Promise((res, rej) => {
     let query = `SELECT COUNT(*) as no_words FROM WordBank WHERE word='${word}'`;
-        pool.query(query, (err, result) => {
+    pool.query(query, (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        res(result[0]['no_words'] > 0);
+        res(result[0]["no_words"] > 0);
       }
     });
   });
@@ -121,8 +121,23 @@ async function addWordToBank(word) {
   });
 }
 
-// Created: Mohammed Al-Bashiri April 12
-// Modified: Colby O'Keefe (A00428974) April 12
+/*
+  Created by Colby O'Keefe (A00428974) + SDR, April 14
+*/
+function decreaseID(id) {
+  let query = `UPDATE WordBank SET word_id = word_id - 1 WHERE word_id > ${id}`;
+  pool.query(query, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+}
+
+/*
+  Created: Mohammed Al-Bashiri April 12
+  Modified: Colby O'Keefe (A00428974) April 12
+  Modified: SDR, April 14.
+*/
 function deleteWordFromBank(id) {
   // Place code to delete a word from the bank here!
   let query = `DELETE FROM WordBank WHERE word_id = ${id}`;
@@ -131,6 +146,7 @@ function deleteWordFromBank(id) {
       console.log(err);
     }
   });
+  decreaseID(id);
 }
 
 // Exports
