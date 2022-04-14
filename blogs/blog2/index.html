@@ -50,10 +50,8 @@
 
   <footer>
     <script>
-      let blog = null;
-
       $.get(SERVER_URL + "/getBlog", { blogIndex: 2 }).done((res) => {
-        blog = res;
+        let blog = res;
         let unpublishedMsg = "Sorry. This blog is currently not available.";
         let publishedMsg = blog.blog_content;
 
