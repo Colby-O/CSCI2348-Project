@@ -177,7 +177,7 @@ body {
 .star-btn {
   width: 60px;
   height: 60px;
-  margin-left: 2px;
+  margin-left: 20px;
   margin-right: 2px;
   font-size: 1.5em;
 }
@@ -208,7 +208,7 @@ body {
   March 12, 2022 (SDR)
 */
 .wb-textbox {
-  width: 235px;
+  width: 223px;
   height: 54px;
   margin-left: 0px;
   margin-right: 2px;
@@ -235,7 +235,7 @@ body {
   Created: March 28, 2022 (SDR + FDR)
 */
 .swal-modal {
-  background-color: royalblue;
+  background-color: solid royalblue;
   border: 3px solid rgba(255, 0, 0, 0.527);
   text-align: center;
 }
