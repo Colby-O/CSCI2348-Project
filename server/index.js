@@ -40,8 +40,8 @@ server.post("/publishBlog", (req, res) => {
 
 server.post("/saveWord", async (req, res) => {
   console.log(`Saving ${req.body.word} to the word bank.`);
-  await db.addWordToBank(req.body.word);
-  return res.status(200);
+  let error = await db.addWordToBank(req.body.word);
+  return res.status(200).send(error);
 });
 
 // Upon receiving a post at this url execute callback function

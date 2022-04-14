@@ -84,7 +84,7 @@ npm test
 ~[P-06] All keys should expand,including shift, CAPS, Tab, save, cancel, etc.~ <br>
 ~[P-07] Check if CAPS remains highlighted when in use.~ <br>
 ~[P-08] Place holder text may be useful, for example in the wordbank when it is empty.~ <br>
-[P-09] Character limit on the words in the wordbank. <br>
+~[P-09] Character limit on the words in the wordbank.~ <br>
 [P-10] Ensure there are NO SCROLL BARS! <br>
 [P-11] To prevent scrolling with the wordbank, consider making a limit for the words on one page of the wordbank, when full it adds to the next page. <br>
 [P-12] Consider making a separate tab (like on chrome) dedicated to switching between the wordbank and the keyboard. (Check with instructor if this idea is valid) <br>

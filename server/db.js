@@ -104,13 +104,16 @@ async function addWordToBank(word) {
 
   if (numberOfWords > 10) {
     // TODO: Add function let user know the word bank is full
-    return;
+    return { error: 1, msg: `Number of words exceeds word bank limit of 10!` };
   } else if (isInWordBank) {
     // TODO: Let user know the word is already in the word bank
-    return;
+    return { error: 1, msg: `${word} already exists in word bank!` };
   } else if (word.length >= CHAR_LIMIT) {
     // TODO: Let user know the word is already above the character limit.
-    return;
+    return {
+      error: 1,
+      msg: `${word} exceeds character limit of ${CHAR_LIMIT}!`,
+    };
   }
 
   let wordID = numberOfWords + 1;
@@ -124,6 +127,7 @@ async function addWordToBank(word) {
       console.log(err);
     }
   });
+  return { error: 0 };
 }
 
 /*

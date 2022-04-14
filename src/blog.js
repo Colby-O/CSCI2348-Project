@@ -262,10 +262,14 @@ function toggleWordBank() {
 /* Colby O'Keefe (A00428974) */
 function addWordToBank() {
   let word = $(wordBankTextbox).val();
+
   if (word === "") return;
-  $.post(SERVER_URL + "/saveWord", { word: word }).done(
-    $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords)
-  );
+
+  $.post(SERVER_URL + "/saveWord", { word: word }).done((res) => {
+    if (res.error) displayError("Error : ", res.msg);
+    else $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
+  });
+
   $(wordBankTextbox).val("");
 }
 
