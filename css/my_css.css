@@ -58,7 +58,7 @@ body {
   This is the style for the blog content accessed through the URLs.
   SDR April 16, 2022
 */
-.blog_URL_content_style {
+#blog_URL_content {
   width: auto;
   height: auto;
   font-size: 1.5em;
