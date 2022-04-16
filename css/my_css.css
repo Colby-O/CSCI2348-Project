@@ -29,19 +29,19 @@ body {
   Mohammed Al-Bashiri March 7, 2022
   might not need this anymore (SDR March 23, 2022)
 /* blog name input text boxes */
-.box-width {
+/* .box-width {
   width: 300px !important;
   height: 40px;
-}
+} */
 
 /*
   For <type name> font size. (SDR March 12, 2022)
   might not need this anymore (SDR March 23, 2022)
 */
-.box-text-size {
+/* .box-text-size {
   padding: 25px;
   font-size: 1.5em;
-}
+} */
 
 /* Mohammed Al-Bashiri March 7, 2022 */
 /* switches */
@@ -235,7 +235,7 @@ body {
   Created: March 28, 2022 (SDR + FDR)
 */
 .swal-modal {
-  background-color: rgba(0,0, 255, 1.0);
+  background-color: royalblue;
   border: 3px solid rgba(255, 0, 0, 0.527);
   text-align: center;
   overflow-x: visible;

@@ -266,7 +266,7 @@ function addWordToBank() {
   if (word === "") return;
 
   $.post(SERVER_URL + "/saveWord", { word: word }).done((res) => {
-    if (res.error) displayError("Error : ", res.msg);
+    if (res.error) displayError("Error : Max words reached", res.msg);
     else $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
   });
 
