@@ -1,8 +1,8 @@
 /**
- * this code has functions that post and get data
- * form the server from the server side
+ *  This code has functions that post and get data
+ *  form the server from the server side
  *
- * Mohammed Al-Bashiri (A00391502) + Colby O'Keefe (A00428974)
+ *  Mohammed Al-Bashiri (A00391502) + Colby O'Keefe (A00428974)
  */
 
 const express = require("express"); // start express application

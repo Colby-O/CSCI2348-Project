@@ -45,7 +45,7 @@
   </head>
 
   <body>
-    <span id="blog" style="background-color: white"></span>
+    <span class="blog_URL_content_style" id="blog_URL_content"></span>
   </body>
 
   <footer>
@@ -55,7 +55,7 @@
         let unpublishedMsg = "Sorry. This blog is currently not available.";
         let publishedMsg = blog.blog_content;
 
-        $("#blog").html(
+        $("#blog_URL_content").html(
           blog.blog_status === "P" ? publishedMsg : unpublishedMsg
         );
       });

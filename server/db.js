@@ -1,3 +1,12 @@
+/*
+  Author: Sebastian Duque Rivera (A00441528) or SDR
+  Author: Felipe Duque Rivera (A00446745) or FDR
+  Author: Mohammed Al-Bashiri (A00391502)
+  Author: Colby O'Keefe (A00428974)
+
+  This file will be used as the data base for the wordbank and blog.
+*/
+
 let mySQL = require("mysql2");
 let htpassed = require("./mysqldb.js");
 

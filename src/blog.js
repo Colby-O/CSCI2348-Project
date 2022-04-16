@@ -5,9 +5,9 @@
   Author: Colby O'Keefe (A00428974)
 
   This file will be used throughout our project for the three phases of our service learning
-  assignment for Northwood Care. This is our javascript file.
+  assignment for Northwood Care. This is our blog javascript file.
     
-  Current Phase: 1 , Date created: March 3, 2022.
+  Current Phase: 3, Date created: March 3, 2022.
 */
 
 // Server URL
