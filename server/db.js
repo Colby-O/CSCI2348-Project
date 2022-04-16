@@ -117,7 +117,7 @@ async function addWordToBank(word) {
   } else if (isInWordBank) {
     // TODO: Let user know the word is already in the word bank
     return { error: 1, msg: `${word} already exists in word bank!` };
-  } else if (word.length >= CHAR_LIMIT) {
+  } else if (word.length > CHAR_LIMIT) {
     // TODO: Let user know the word is already above the character limit.
     return {
       error: 1,
