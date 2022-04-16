@@ -111,7 +111,7 @@ async function addWordToBank(word) {
   let numberOfWords = await getNumberOfWords();
   let isInWordBank = await isWordInBank(word);
 
-  if (numberOfWords > 10) {
+  if (numberOfWords >= 10) {
     // TODO: Add function let user know the word bank is full
     return { error: 1, msg: `Number of words exceeds word bank limit of 10!` };
   } else if (isInWordBank) {
