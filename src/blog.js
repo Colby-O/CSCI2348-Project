@@ -398,3 +398,17 @@ function cancelWarning() {
 function clearWarning() {
   displayWarning("Are you sure you want to clear the blog?", "", clear);
 }
+
+/* 
+  Displays the limits of the wordbank. 
+  Author: SDR April 16, 2022
+*/
+function displayLimits() {
+  swal({
+    title: "Word Bank Limits: ",
+    text: "1. Only 10 words per page.\n2. No repeating words.\n3. No word shall exceed 16 characters.",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  });
+}
