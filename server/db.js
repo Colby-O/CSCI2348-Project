@@ -6,11 +6,13 @@
 
   This file will be used as the data base for the wordbank and blog.
 */
+"use strict";
 
 let mySQL = require("mysql2");
 let htpassed = require("./mysqldb.js");
 
 const CHAR_LIMIT = 16;
+const WORD_LIMIT = 30;
 
 let pool = mySQL.createPool({
   connectionLimit: 10,
@@ -41,6 +43,7 @@ async function getWordBank() {
   return await new Promise((res, rej) => {
     // Place code to get word bank here!
     let query = `SELECT * FROM WordBank`;
+
     pool.query(query, (err, result) => {
       if (err) {
         console.log(err);
@@ -111,13 +114,16 @@ async function addWordToBank(word) {
   let numberOfWords = await getNumberOfWords();
   let isInWordBank = await isWordInBank(word);
 
-  if (numberOfWords >= 10) {
+  if (numberOfWords >= WORD_LIMIT) {
     // TODO: Add function let user know the word bank is full
-    return { error: 1, msg: `Number of words exceeds word bank limit of 10!` };
+    return {
+      error: 1,
+      msg: `Number of words exceeds word bank limit of ${WORD_LIMIT}!`,
+    };
   } else if (isInWordBank) {
     // TODO: Let user know the word is already in the word bank
     return { error: 1, msg: `${word} already exists in word bank!` };
-  } else if (word.length > CHAR_LIMIT) {
+  } else if (word.length >= CHAR_LIMIT) {
     // TODO: Let user know the word is already above the character limit.
     return {
       error: 1,

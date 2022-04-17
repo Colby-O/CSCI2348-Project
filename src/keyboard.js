@@ -6,6 +6,7 @@
  *  Author: Sebastian Duque Rivera (A00441528) or SDR
  *  Author: Felipe Duque Rivera (A00446745) or FDR
  */
+"use strict";
 
 const Keyboard = {
   elements: {

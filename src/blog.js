@@ -9,11 +9,13 @@
     
   Current Phase: 3, Date created: March 3, 2022.
 */
+"use strict";
 
 // Server URL
 const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
 
 const MAX_NUM_SVAED_WORDS_PER_ROW = 2;
+const WORDS_PER_PAGE = 10;
 
 // Stores last blog ID selected
 let currentBlogID = null;
@@ -37,6 +39,7 @@ let wordBankTextbox = null;
 let wordBankContainer = null;
 
 let savedWords = [];
+let currentPage = 0;
 
 /*
   Sets up the keyboard and blog list to be hidden.
@@ -212,10 +215,15 @@ function displayError(errorTitle, errorText) {
 }
 
 /* Colby O'Keefe (A00428974) */
-function fetchSavedWords(bank) {
+function fetchSavedWords(bank, page) {
   savedWordContainer.innerHTML = "";
   let rowDiv = null;
-  bank.forEach((word, index) => {
+
+  let startIndex = WORDS_PER_PAGE * page;
+  let endIndex = WORDS_PER_PAGE * (page + 1);
+  let firstHalf = bank.slice(startIndex, endIndex);
+
+  firstHalf.forEach((word, index) => {
     if (index % MAX_NUM_SVAED_WORDS_PER_ROW === 0)
       rowDiv = document.createElement("div");
 
@@ -247,9 +255,11 @@ function fetchSavedWords(bank) {
 
 /* Colby O'Keefe (A00428974) */
 function deleteSavedWord(index, word) {
-  $.post(SERVER_URL + "/deleteWord", { index: index }).done(
-    $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords)
-  );
+  $.post(SERVER_URL + "/deleteWord", { index: index }).done((res) => {
+    $.get(SERVER_URL + "/getWordBank").done((res) => {
+      fetchSavedWords(res, currentPage);
+    });
+  });
 }
 
 /* Colby O'Keefe (A00428974) */
@@ -267,7 +277,10 @@ function addWordToBank() {
 
   $.post(SERVER_URL + "/saveWord", { word: word }).done((res) => {
     if (res.error) displayError("Error:", res.msg);
-    else $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
+    else
+      $.get(SERVER_URL + "/getWordBank").done((res) => {
+        fetchSavedWords(res, currentPage);
+      });
   });
 
   $(wordBankTextbox).val("");
@@ -410,5 +423,19 @@ function displayLimits() {
     icon: "warning",
     buttons: true,
     dangerMode: true,
+  });
+}
+
+function nextPage() {
+  currentPage += 1;
+  $.get(SERVER_URL + "/getWordBank").done((res) => {
+    fetchSavedWords(res, currentPage);
+  });
+}
+
+function previousPage() {
+  currentPage -= 1;
+  $.get(SERVER_URL + "/getWordBank").done((res) => {
+    fetchSavedWords(res, currentPage);
   });
 }

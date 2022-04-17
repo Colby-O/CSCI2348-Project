@@ -4,6 +4,7 @@
  *
  *  Mohammed Al-Bashiri (A00391502) + Colby O'Keefe (A00428974)
  */
+"use strict";
 
 const express = require("express"); // start express application
 let db = require("./db.js");
