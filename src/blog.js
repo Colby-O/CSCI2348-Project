@@ -432,7 +432,7 @@ function clearWarning() {
 function displayLimits() {
   swal({
     title: "Word Bank Limits: ",
-    text: "1. Only 10 words per page.\n2. No repeating words.\n3. No word shall exceed 16 characters.",
+    text: "1. 16 characters words only.\n2. No repeating words.\n3. Only 12 words per page.\n4. Max 36 words in word bank.",
     icon: "warning",
     buttons: true,
     dangerMode: true,

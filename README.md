@@ -86,12 +86,11 @@ npm test
 ~[P-08] Place holder text may be useful, for example in the wordbank when it is empty.~ <br>
 ~[P-09] Character limit on the words in the wordbank.~ <br>
 [P-10] Ensure there are NO SCROLL BARS! <br>
-[P-11] To prevent scrolling with the wordbank, consider making a limit for the words on one page of the wordbank, when full it adds to the next page. <br>
-[P-12] Consider making a separate tab (like on chrome) dedicated to switching between the wordbank and the keyboard. (Check with instructor if this idea is valid) <br>
-~[P-13] Ensure there is a delete mode for the deleting words in the wordbank (maybe add a trash icon on the button).~ <br>
-~[P-14] Ensure the word bank expands downward, not sideways (if the wordbank exists on the right side of the keyboard). ~ <br>
-~[P-15] Make sure that ONLY the shift or CAPS keys can be active at one time, and that selecting the other when one is active, does nothing.~ <br>
-~[P-16] Fixed Adding/Deleting From Word Bank i.e. need to find smallest available word_id.~ <br>
-[P-17] Fixed word bank box updating client side. <br>
-[P-18] Error detection for database i.e. no word slots left or word already in bank. <br>
-[P-19] Add another modal for instructions on word bank limits and functionality. <br>
+~[P-11] To prevent scrolling with the wordbank, consider making a limit for the words on one page of the wordbank, when full it adds to the next page.~ <br>
+~[P-12] Ensure there is a delete mode for the deleting words in the wordbank (maybe add a trash icon on the button).~ <br>
+~[P-13] Ensure the word bank expands downward, not sideways (if the wordbank exists on the right side of the keyboard). ~ <br>
+~[P-14] Make sure that ONLY the shift or CAPS keys can be active at one time, and that selecting the other when one is active, does nothing.~ <br>
+~[P-15] Fixed Adding/Deleting From Word Bank i.e. need to find smallest available word_id.~ <br>
+[P-16] Fixed word bank box updating client side. <br>
+[P-17] Error detection for database i.e. no word slots left or word already in bank. <br>
+~[P-18] Add another modal for instructions on word bank limits and functionality.~ <br>
