@@ -265,14 +265,7 @@
             class="row d-flex justify-content-center align-items-center h-100"
           >
             <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-              <div
-                class="card bg-primary"
-                style="
-                  border-radius: 15px;
-                  color: rgb(255, 223, 79);
-                  --bs-bg-opacity: 1;
-                "
-              >
+              <div id="wb-box" class="card bg-primary">
                 <div class="card-body p-5">
                   <div>
                     <h2 class="text-uppercase text-center mb-5">Word Bank</h2>
@@ -292,6 +285,7 @@
                   </button>
 
                   <button
+                    id="prevBtn"
                     onclick="previousPage()"
                     class="btn btn-danger"
                     style="font-family: fortune"
@@ -300,6 +294,7 @@
                   </button>
 
                   <button
+                    id="nextBtn"
                     onclick="nextPage()"
                     class="btn btn-danger"
                     style="font-family: fortune"

@@ -14,8 +14,8 @@
 // Server URL
 const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
 
-const MAX_NUM_SVAED_WORDS_PER_ROW = 2;
-const WORDS_PER_PAGE = 10;
+const MAX_NUM_SVAED_WORDS_PER_ROW = 4;
+const WORDS_PER_PAGE = 12;
 
 // Stores last blog ID selected
 let currentBlogID = null;
@@ -64,7 +64,9 @@ function setup() {
 
   wordBankContainer.style.display = "none";
 
-  $.get(SERVER_URL + "/getWordBank").done(fetchSavedWords);
+  $.get(SERVER_URL + "/getWordBank").done((res) => {
+    fetchSavedWords(res, currentPage);
+  });
 
   $.get(SERVER_URL + "/getBlog", { blogIndex: 1 }).done((req) => {
     $("#publish1").prop("checked", req.blog_status === "P");
@@ -76,8 +78,9 @@ function setup() {
     $("#publish3").prop("checked", req.blog_status === "P");
   });
 
-  // hides the blog + keyboard
+  // hides the blog + keyboard + prevBtn
   blog.style.visibility = keyboard.style.visibility = "hidden";
+  $("#prevBtn").get(0).style.display = "none";
 
   $("#edit1").change(() => {
     // Check if switch is checked
@@ -222,6 +225,16 @@ function fetchSavedWords(bank, page) {
   let startIndex = WORDS_PER_PAGE * page;
   let endIndex = WORDS_PER_PAGE * (page + 1);
   let firstHalf = bank.slice(startIndex, endIndex);
+  let numPages = Math.floor(bank.length / WORDS_PER_PAGE);
+  let next = $("#nextBtn").get(0);
+
+  if (page >= numPages) {
+    next.style.backgroundColor = "gray";
+    next.onclick = null;
+  } else {
+    next.style.backgroundColor = "red";
+    next.onclick = nextPage;
+  }
 
   firstHalf.forEach((word, index) => {
     if (index % MAX_NUM_SVAED_WORDS_PER_ROW === 0)
@@ -428,6 +441,9 @@ function displayLimits() {
 
 function nextPage() {
   currentPage += 1;
+
+  $("#prevBtn").get(0).style.display = "inline-block";
+
   $.get(SERVER_URL + "/getWordBank").done((res) => {
     fetchSavedWords(res, currentPage);
   });
@@ -435,6 +451,11 @@ function nextPage() {
 
 function previousPage() {
   currentPage -= 1;
+
+  if (currentPage === 0) {
+    $("#prevBtn").get(0).style.display = "none";
+  }
+
   $.get(SERVER_URL + "/getWordBank").done((res) => {
     fetchSavedWords(res, currentPage);
   });

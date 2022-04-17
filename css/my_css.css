@@ -323,9 +323,19 @@ body {
 /* Colby + Mo */
 #word-bank-container {
   position: fixed;
-  width: 100vw;
-  height: 60vh;
+  width: 82vw;
+  height: 53vh;
   margin: 0 auto;
-  top: 20%;
+  top: 45%;
   right: 10%;
+}
+
+
+#wb-box{
+  width: 82vw;
+  height: 53vh;
+  right: 55%;
+  border-radius: 15px;
+  color: rgb(255, 223, 79);
+  --bs-bg-opacity: 1; 
 }
