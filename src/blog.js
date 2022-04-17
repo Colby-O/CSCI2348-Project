@@ -225,7 +225,7 @@ function fetchSavedWords(bank, page) {
   let startIndex = WORDS_PER_PAGE * page;
   let endIndex = WORDS_PER_PAGE * (page + 1);
   let firstHalf = bank.slice(startIndex, endIndex);
-  let numPages = Math.floor(bank.length / WORDS_PER_PAGE);
+  let numPages = Math.floor(bank.length / (WORDS_PER_PAGE + 1));
   let next = $("#nextBtn").get(0);
 
   if (page >= numPages) {
