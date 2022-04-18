@@ -74,10 +74,28 @@ body {
   overflow: scroll;
   color: white;
 }
-
 #blog-title {
   color: white; 
+  position: absolute;
+  left: 45%;
+  top: 20px;
+}
+
+#title {
+  color: white; 
   text-align: center;
+}
+
+#blog-view {
+  display: flex;
+}
+
+.view-btn {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
 }
 
 /* 
