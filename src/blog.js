@@ -44,21 +44,6 @@ let currentPage = 0;
 let hasWordbankChanged = false;
 
 setInterval(() => {
-  $.ajax({
-    url: SERVER_URL,
-    type: "GET",
-    dataType: "json",
-    timeout: 1000,
-    async: false,
-    error: function(xmlhttprequest, textstatus, message) {
-        if(textstatus === "timeout") {
-          displayServerOffine();
-        }
-    }
-});
-}, TEST_CONNECTION_INTERVAL);
-
-setInterval(() => {
   if (!hasWordbankChanged) return;
   $.get(SERVER_URL + "/getWordBank").done((res) => {
     fetchSavedWords(res, currentPage);
@@ -87,7 +72,10 @@ function setup() {
   savedWordContainer = $("#saved-word-container").get(0);
   wordBankContainer = $("#word-bank-container").get(0);
 
+  // hides the wordbank + blog + keyboard + prevBtn
   wordBankContainer.style.display = "none";
+  blog.style.visibility = keyboard.style.visibility = "hidden";
+  $("#prevBtn").get(0).style.display = "none";
 
   $.get(SERVER_URL + "/getWordBank").done((res) => {
     fetchSavedWords(res, currentPage);
@@ -102,10 +90,6 @@ function setup() {
   $.get(SERVER_URL + "/getBlog", { blogIndex: 3 }).done((req) => {
     $("#publish3").prop("checked", req.blog_status === "P");
   });
-
-  // hides the blog + keyboard + prevBtn
-  blog.style.visibility = keyboard.style.visibility = "hidden";
-  $("#prevBtn").get(0).style.display = "none";
 
   $("#edit1").change(() => {
     // Check if switch is checked
@@ -192,15 +176,6 @@ function setup() {
     };
     $.post(SERVER_URL + "/publishBlog", packet);
   });
-}
-
-function displayServerOffine() {
-  swal({
-    title: "Server Is Not Reachable",
-    text: "Try agian later!",
-    icon: "warning",
-    dangerMode: true,
-  })
 }
 
 /* 
