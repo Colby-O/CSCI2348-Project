@@ -168,9 +168,10 @@ function deleteWordFromBank(id) {
   pool.query(query, (err, result) => {
     if (err) {
       console.log(err);
+    } else {
+      decreaseID(id);
     }
   });
-  decreaseID(id);
 }
 
 // Exports

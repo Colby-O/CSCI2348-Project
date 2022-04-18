@@ -14,6 +14,7 @@
 // Server URL
 const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
 const UPDATE_INTERVAL = 1000;
+const TEST_CONNECTION_INTERVAL = 20000;
 const MAX_NUM_SVAED_WORDS_PER_ROW = 4;
 const WORDS_PER_PAGE = 12;
 
@@ -43,10 +44,24 @@ let currentPage = 0;
 let hasWordbankChanged = false;
 
 setInterval(() => {
+  $.ajax({
+    url: SERVER_URL,
+    type: "GET",
+    dataType: "json",
+    timeout: 1000,
+    error: function(xmlhttprequest, textstatus, message) {
+        if(textstatus === "timeout") {
+          displayServerOffine();
+        }
+    }
+});
+}, TEST_CONNECTION_INTERVAL);
+
+setInterval(() => {
   if (!hasWordbankChanged) return;
   $.get(SERVER_URL + "/getWordBank").done((res) => {
     fetchSavedWords(res, currentPage);
-  });
+  }).fail(displayServerOffine);
   hasWordbankChanged = false;
 }, UPDATE_INTERVAL);
 
@@ -176,6 +191,15 @@ function setup() {
     };
     $.post(SERVER_URL + "/publishBlog", packet);
   });
+}
+
+function displayServerOffine() {
+  swal({
+    title: "Server Is Not Reachable",
+    text: "Try agian later!",
+    icon: "warning",
+    dangerMode: true,
+  })
 }
 
 /* 
