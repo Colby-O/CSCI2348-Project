@@ -13,7 +13,7 @@
 
 // Server URL
 const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
-
+const UPDATE_INTERVAL = 1000;
 const MAX_NUM_SVAED_WORDS_PER_ROW = 4;
 const WORDS_PER_PAGE = 12;
 
@@ -40,6 +40,13 @@ let wordBankContainer = null;
 
 let savedWords = [];
 let currentPage = 0;
+
+setInterval(() => {
+  console.log("yo");
+  $.get(SERVER_URL + "/getWordBank").done((res) => {
+    fetchSavedWords(res, currentPage);
+  });
+}, UPDATE_INTERVAL);
 
 /*
   Sets up the keyboard and blog list to be hidden.
@@ -225,7 +232,7 @@ function fetchSavedWords(bank, page) {
   let startIndex = WORDS_PER_PAGE * page;
   let endIndex = WORDS_PER_PAGE * (page + 1);
   let firstHalf = bank.slice(startIndex, endIndex);
-  let numPages = Math.floor(bank.length / (WORDS_PER_PAGE + 1));
+  let numPages = Math.floor((bank.length - 1) / WORDS_PER_PAGE);
   let next = $("#nextBtn").get(0);
 
   if (page >= numPages) {
@@ -268,11 +275,7 @@ function fetchSavedWords(bank, page) {
 
 /* Colby O'Keefe (A00428974) */
 function deleteSavedWord(index, word) {
-  $.post(SERVER_URL + "/deleteWord", { index: index }).done((res) => {
-    $.get(SERVER_URL + "/getWordBank").done((res) => {
-      fetchSavedWords(res, currentPage);
-    });
-  });
+  $.post(SERVER_URL + "/deleteWord", { index: index });
 }
 
 /* Colby O'Keefe (A00428974) */
@@ -290,10 +293,6 @@ function addWordToBank() {
 
   $.post(SERVER_URL + "/saveWord", { word: word }).done((res) => {
     if (res.error) displayError("Error:", res.msg);
-    else
-      $.get(SERVER_URL + "/getWordBank").done((res) => {
-        fetchSavedWords(res, currentPage);
-      });
   });
 
   $(wordBankTextbox).val("");
