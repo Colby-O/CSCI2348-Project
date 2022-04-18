@@ -4,7 +4,7 @@
   Author: Mohammed Al-Bashiri (A00391502)
   Author: Colby O'Keefe (A00428974)
 
-  This file will be used for blog 2.
+  This file will be used for blog 1.
     
   Date created: April 14, 2022.
 -->
@@ -36,29 +36,14 @@
       crossorigin="anonymous"
     ></script>
     <script src="../../externals/jquery-3.6.0.js"></script>
-
+    <script>let id = 2;</script>
+    <script src="../../src/published.js"></script>
     <link rel="stylesheet" href="../../css/my_css.css" />
-
-    <script>
-      const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
-    </script>
   </head>
 
   <body>
+    <h2 id="blog-title">Blog 2</h2>
     <span id="blog_URL_content"></span>
   </body>
-
-  <footer>
-    <script>
-      $.get(SERVER_URL + "/getBlog", { blogIndex: 2 }).done((res) => {
-        let blog = res;
-        let unpublishedMsg = "Sorry. This blog is currently not available.";
-        let publishedMsg = blog.blog_content;
-
-        $("#blog_URL_content").html(
-          blog.blog_status === "P" ? publishedMsg : unpublishedMsg
-        );
-      });
-    </script>
-  </footer>
 </html>
+

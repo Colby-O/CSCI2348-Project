@@ -40,12 +40,14 @@ let wordBankContainer = null;
 
 let savedWords = [];
 let currentPage = 0;
+let hasWordbankChanged = false;
 
 setInterval(() => {
-  console.log("yo");
+  if (!hasWordbankChanged) return;
   $.get(SERVER_URL + "/getWordBank").done((res) => {
     fetchSavedWords(res, currentPage);
   });
+  hasWordbankChanged = false;
 }, UPDATE_INTERVAL);
 
 /*
@@ -276,6 +278,7 @@ function fetchSavedWords(bank, page) {
 /* Colby O'Keefe (A00428974) */
 function deleteSavedWord(index, word) {
   $.post(SERVER_URL + "/deleteWord", { index: index });
+  hasWordbankChanged = true;
 }
 
 /* Colby O'Keefe (A00428974) */
@@ -290,7 +293,7 @@ function addWordToBank() {
   let word = $(wordBankTextbox).val();
 
   if (word === "") return;
-
+  hasWordbankChanged = true;
   $.post(SERVER_URL + "/saveWord", { word: word }).done((res) => {
     if (res.error) displayError("Error:", res.msg);
   });

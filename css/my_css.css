@@ -57,17 +57,27 @@ body {
 /*
   This is the style for the blog content accessed through the URLs.
   SDR April 16, 2022
+    padding: 50px;
+  margin: 30px;
+  Modified: Colby O'Keefe (A00428974)
 */
 #blog_URL_content {
-  width: auto;
-  height: auto;
+  width: 80%;
+  height: 80%;
   font-size: 1.5em;
-  color: #fdfffb;
-  background: #761c21;
+  background: rgba(118,28,33,0.9); /*761c21;*/
   border: 15px solid #17254a;
-  padding: 50px;
-  margin: 30px;
-  position: absolute;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: scroll;
+  color: white;
+}
+
+#blog-title {
+  color: white; 
+  text-align: center;
 }
 
 /* 
