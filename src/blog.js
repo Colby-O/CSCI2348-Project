@@ -47,7 +47,7 @@ setInterval(() => {
   if (!hasWordbankChanged) return;
   $.get(SERVER_URL + "/getWordBank").done((res) => {
     fetchSavedWords(res, currentPage);
-  }).fail(displayServerOffine);
+  });
   hasWordbankChanged = false;
 }, UPDATE_INTERVAL);
 
