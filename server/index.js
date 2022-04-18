@@ -7,7 +7,7 @@
 "use strict";
 
 const express = require("express"); // start express application
-let db = require("./db.js");
+const db = require("./src/db.js");
 const server = express(); // define top level function
 const port = 3033;
 

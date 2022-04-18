@@ -1,16 +1,16 @@
 {
   "name": "blog",
   "version": "1.0.0",
-  "description": "A cool blog",
+  "description": "This is a development project for a blog at SMU.",
   "main": "index.js",
   "scripts": {
-    "test": "node ./index.js",
+    "startOne": "node ./index.js",
     "start": "sh -c 'while [ 1 -eq 1 ]; do node ./index.js; done' &"
   },
   "keywords": [
     "blog"
   ],
-  "author": "",
+  "author": "Colby O'Keefe, Mohammed Al-Bashiri, Felipe Duque Rivera, and Sebastian Duque Rivera",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3"
