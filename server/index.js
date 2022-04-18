@@ -56,9 +56,9 @@ server.post("/saveBlog", (req, res) => {
   return res.status(200);
 });
 
-server.post("/deleteWord", (req, res) => {
+server.post("/deleteWord", async (req, res) => {
   console.log(`Word ${req.body.index} was deleted from the word bank.`);
-  db.deleteWordFromBank(req.body.index);
+  await db.deleteWordFromBank(req.body.index);
   return res.status(200);
 });
 

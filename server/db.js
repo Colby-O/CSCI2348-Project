@@ -162,15 +162,17 @@ function decreaseID(id) {
   Modified: Colby O'Keefe (A00428974) April 12
   Modified: SDR, April 14.
 */
-function deleteWordFromBank(id) {
-  // Place code to delete a word from the bank here!
-  let query = `DELETE FROM WordBank WHERE word_id = ${id}`;
-  pool.query(query, (err, result) => {
-    if (err) {
-      console.log(err);
-    }
-  });
-  decreaseID(id);
+async function deleteWordFromBank(id) {
+  return await new Promise((res, rej) => {
+    // Place code to delete a word from the bank here!
+    let query = `DELETE FROM WordBank WHERE word_id = ${id}`;
+    pool.query(query, (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+    decreaseID(id);
+});
 }
 
 // Exports
