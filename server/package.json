@@ -13,6 +13,7 @@
   "author": "Colby O'Keefe, Mohammed Al-Bashiri, Felipe Duque Rivera, and Sebastian Duque Rivera",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3"
   }
 }
