@@ -4,7 +4,7 @@
   "description": "This is a development project for a blog at SMU.",
   "main": "index.js",
   "scripts": {
-    "startOne": "node ./index.js",
+    "test": "node ./index.js",
     "start": "sh -c 'while [ 1 -eq 1 ]; do node ./index.js; done' &"
   },
   "keywords": [
