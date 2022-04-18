@@ -11,8 +11,6 @@ The program requires the following dependencies:
 
 Note that these don't have to be install directly It will be discussed how to download these later in this section, however the install will make use of the npm package manger.
 
-<br>
-
 # Installation
 
 The software can be installed and setup as follows:
