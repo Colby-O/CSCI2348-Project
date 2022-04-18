@@ -5,8 +5,8 @@
 The program requires the following dependencies:
 
 <ol>
-    <li><a href="https://www.npmjs.com/package/express%22%3EExpress">Express</a></li>
-    <li><a href="https://www.npmjs.com/package/mysql2%22%3Emysql2">mySQL2</a></li>
+    <li><a href="https://www.npmjs.com/package/express">Express</a></li>
+    <li><a href="https://www.npmjs.com/package/mysql2">mySQL2</a></li>
 </ol>
 
 Note that these don't have to be install directly It will be discussed how to download these later in this section, however the install will make use of the npm package manger.
