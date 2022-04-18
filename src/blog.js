@@ -14,7 +14,7 @@
 // Server URL
 const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
 const UPDATE_INTERVAL = 1000;
-const TEST_CONNECTION_INTERVAL = 20000;
+const TEST_CONNECTION_INTERVAL = 60000;
 const MAX_NUM_SVAED_WORDS_PER_ROW = 4;
 const WORDS_PER_PAGE = 12;
 
@@ -49,6 +49,7 @@ setInterval(() => {
     type: "GET",
     dataType: "json",
     timeout: 1000,
+    async: false,
     error: function(xmlhttprequest, textstatus, message) {
         if(textstatus === "timeout") {
           displayServerOffine();
@@ -301,7 +302,7 @@ function fetchSavedWords(bank, page) {
 
 /* Colby O'Keefe (A00428974) */
 function deleteSavedWord(index, word) {
-  $.post(SERVER_URL + "/deleteWord", { index: index });
+  $.post(SERVER_URL + "/deleteWord", { index: index  + WORDS_PER_PAGE * currentPage });
   hasWordbankChanged = true;
 }
 
