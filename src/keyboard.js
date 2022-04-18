@@ -77,7 +77,7 @@ const Keyboard = {
     // Create a fragment for the keys
     const fragment = document.createDocumentFragment();
 
-    // Keybaord layout
+    // Keyboard layout
     const keyLayout = [
       //Modified by FDR (2022-03-28)
       "1",
@@ -163,10 +163,6 @@ const Keyboard = {
         case "--":
           /*line break*/
           break;
-
-        /*
-        README: Needs to be changed to capitalize only one character
-        */
         case "shift":
           // Adds classes + icon to the shift key
           keyElement.classList.add("btn", "btn-primary", "blue-key");
@@ -178,7 +174,6 @@ const Keyboard = {
             this._toggleCaps();
           });
           break;
-
         case "caps": //Added by FDR (2022-03-23)
           // Adds classes to the caps key
           keyElement.classList.add(
@@ -230,7 +225,6 @@ const Keyboard = {
             }
           });
           break;
-
         case "enter":
           // Adds classes + icon to the enter key
           keyElement.classList.add("btn", "btn-primary", "blue-key");
@@ -251,7 +245,6 @@ const Keyboard = {
             }
           });
           break;
-
         case "space":
           // Adds classes + icon to the space key
           keyElement.classList.add("btn", "btn-primary", "space-key"); //Modified by FDR (2022-03-23)
@@ -272,7 +265,6 @@ const Keyboard = {
             }
           });
           break;
-
         default:
           // Adds classes + icon to a genertic key
           keyElement.classList.add("btn", "btn-danger", "red-key");
@@ -280,7 +272,6 @@ const Keyboard = {
 
           // Adds the functionaility for a genertic key
           keyElement.addEventListener("click", () => {
-            //console.log(pos);
             if (this.constants.unshiftedKeys.test(key)) {
               this._updateValue(
                 this.properties.capsLock ? this._swapDigitsAndSpecial(key) : key
@@ -391,7 +382,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // Inits the keyboard
   Keyboard.init();
 
-  // adds the keyboard for element with the class use-keyboard
+  // Adds the keyboard for element with the class use-keyboard
   document.querySelectorAll(".use-keyboard").forEach((element) => {
     $(element).focus(() => {
       if ($(element).hasClass("keyboard-disable")) return;

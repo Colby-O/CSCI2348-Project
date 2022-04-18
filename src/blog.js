@@ -6,16 +6,14 @@
 
   This file will be used throughout our project for the three phases of our service learning
   assignment for Northwood Care. This is our blog javascript file.
-    
-  Current Phase: 3, Date created: March 3, 2022.
+
 */
 "use strict";
 
 // Server URL
 const SERVER_URL = "http://ugdev.cs.smu.ca:3033";
 const UPDATE_INTERVAL = 1000;
-const TEST_CONNECTION_INTERVAL = 60000;
-const MAX_NUM_SVAED_WORDS_PER_ROW = 4;
+const MAX_NUM_SAVED_WORDS_PER_ROW = 4;
 const WORDS_PER_PAGE = 12;
 
 // Stores last blog ID selected
@@ -246,7 +244,7 @@ function fetchSavedWords(bank, page) {
   }
 
   firstHalf.forEach((word, index) => {
-    if (index % MAX_NUM_SVAED_WORDS_PER_ROW === 0)
+    if (index % MAX_NUM_SAVED_WORDS_PER_ROW === 0)
       rowDiv = document.createElement("div");
 
     let deleteButton = document.createElement("a");
@@ -277,7 +275,9 @@ function fetchSavedWords(bank, page) {
 
 /* Colby O'Keefe (A00428974) */
 function deleteSavedWord(index, word) {
-  $.post(SERVER_URL + "/deleteWord", { index: index  + WORDS_PER_PAGE * currentPage });
+  $.post(SERVER_URL + "/deleteWord", {
+    index: index + WORDS_PER_PAGE * currentPage,
+  });
   hasWordbankChanged = true;
 }
 
@@ -353,9 +353,9 @@ function save() {
 }
 
 /*
-  Cancels the current blog edit
+  Cancels the current blog edit.
+
   Created: Mohammed Al-Bashiri March 25, 2022
-  Modified: Colby O'Keefe(A00428974)
   Modified: March 28, 2022 (SDR + FDR)
   Modified: Colby O'Keefe (A00428974) March 30th 2022
 */

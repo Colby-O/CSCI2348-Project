@@ -1,6 +1,6 @@
 /**
  *  This code has functions that post and get data
- *  form the server from the server side
+ *  from the server side.
  *
  *  Mohammed Al-Bashiri (A00391502) + Colby O'Keefe (A00428974)
  */
@@ -23,7 +23,7 @@ let allowCrossDomain = function (req, res, next) {
 server.use(allowCrossDomain); // implement allowable domain characteristics
 
 server.listen(port, function () {
-  console.log("Listening on port 3033");
+  console.log(`Listening on port ${port}`);
 });
 // ---------------------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ server.get("/getBlog", async (req, res) => {
   return res.status(200).send(blog);
 });
 
-// word bank get
+// Gets word bank
 server.get("/getWordBank", async (req, res) => {
   console.log("Fetching the word bank.");
   let wordBank = await db.getWordBank();
